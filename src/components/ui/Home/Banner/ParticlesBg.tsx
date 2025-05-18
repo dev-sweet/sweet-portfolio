@@ -9,7 +9,7 @@ import {
 } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 const ParticlesBg = () => {
-  const [init, setInit] = useState(false);
+  const [, setInit] = useState(false);
 
   // this should be run only once per application lifetime
   useEffect(() => {
@@ -22,7 +22,7 @@ const ParticlesBg = () => {
   }, []);
 
   const particlesLoaded = async (container?: Container): Promise<void> => {
-    // console.log(container);
+    console.log(container);
   };
 
   const options: ISourceOptions = useMemo(
@@ -38,8 +38,8 @@ const ParticlesBg = () => {
       interactivity: {
         events: {
           onClick: {
-            enable: true,
-            // mode: "push",
+            enable: false,
+            mode: "push",
           },
           onHover: {
             enable: true,
@@ -51,17 +51,17 @@ const ParticlesBg = () => {
             quantity: 4,
           },
           repulse: {
-            distance: 100,
+            distance: 200,
             duration: 0.4,
           },
         },
       },
       particles: {
         color: {
-          value: "#010030",
+          value: "#ffffff",
         },
         links: {
-          color: "#010030",
+          color: "#0084c2",
           distance: 200,
           enable: true,
           opacity: 1,
@@ -74,14 +74,14 @@ const ParticlesBg = () => {
             default: OutMode.out,
           },
           random: false,
-          speed: 6,
+          speed: 2,
           straight: false,
         },
         number: {
           density: {
             enable: true,
           },
-          value: 80,
+          value: 120,
         },
         opacity: {
           value: 0.5,
@@ -90,7 +90,7 @@ const ParticlesBg = () => {
           type: "circle",
         },
         size: {
-          value: { min: 1, max: 5 },
+          value: { min: 1, max: 4 },
         },
       },
 

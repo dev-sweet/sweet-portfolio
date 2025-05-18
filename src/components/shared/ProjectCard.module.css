@@ -1,0 +1,16 @@
+/* w-80 m-4 bg-[# w-80 m-4 bg-[#1a1a1a]*/
+.projectCard {
+  width: 350px;
+  background-color: linear-gradient(to bottom right, #1a1a1a, #979797);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px 3px rgb(0, 1, 11);
+  transition: all 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #1a1a1a;
+  cursor: pointer;
+}
+
+.projectCard:hover {
+  box-shadow: 0px 2px 10px 3px rgb(0, 3, 49);
+  transform: scale(1.05);
+}
