@@ -4,7 +4,7 @@ import ProjectCard from "@/components/shared/ProjectCard";
 import Image from "next/image";
 import bgColor from "/public/projectsbg1.jpg";
 import bgWhite from "/public/projectsbg.jpg";
-import styles from "./Projects.module.css";
+import styles from "./rojects.module.css";
 import { MouseEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 const Projects = () => {
