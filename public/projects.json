@@ -1,0 +1,20 @@
+[
+  {
+    "title": "React & Next.js Developer Portfolio",
+    "description": "I’m a passionate Full-Stack Web Developer specializing in React, Next.js, Node.js, Express, and MongoDB. With hands-on experience in building modern, scalable, and responsive web applications.",
+    "image": "/projects/2.png",
+    "liveLink": "/"
+  },
+  {
+    "title": "Tech Gear-Full Stack E-commerce",
+    "description": "Tech Gear is a modern e-commerce platform designed for selling the latest gadgets and accessories. Built with React.js, Node.js, Express, and MongoDB, it offers a fast, responsive, and secure shopping experience.",
+    "image": "/projects/1.png",
+    "liveLink": "https://tech-gear-client-side.vercel.app/"
+  },
+  {
+    "title": "Smile Dental Care",
+    "description": "Smile Dental Care is a modern web application designed for a dental clinic to manage appointments, patients, and services efficiently. Built with  React, Node.js, Express, and MongoDB.",
+    "image": "/projects/3.png",
+    "liveLink": "https://smile-dental-care-8ca9b.web.app/"
+  }
+]

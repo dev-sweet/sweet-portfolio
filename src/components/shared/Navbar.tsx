@@ -15,8 +15,8 @@ import {
 import { AlignJustify } from "lucide-react";
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 flex items-center justify-between w-[90%] mx-auto py-4 z-10">
-      <Link href="/" className="text-2xl text-[#018673] font-semibold">
+    <nav className="fixed top-0 left-0 right-0 flex items-center justify-between w-[90%] mx-auto py-4 z-1000">
+      <Link href="/" className="text-2xl text-[#009c86] font-bold">
         &lt;/Sweet&gt;
       </Link>
       <NavigationMenu className="hidden md:flex items-center justify-center">
@@ -45,7 +45,7 @@ const Navbar = () => {
       </NavigationMenu>
       <Sheet>
         <SheetTrigger asChild>
-          <Button className="cursor-pointer">
+          <Button className="cursor-pointer md:hidden">
             <AlignJustify />
           </Button>
         </SheetTrigger>

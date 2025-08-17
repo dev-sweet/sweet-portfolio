@@ -1,17 +1,34 @@
 import Image from "next/image";
-import techGear from "/public/tech-gear.png";
 import styles from "./ProjectCard.module.css";
-const ProjectCard = () => {
+import { RainbowButton } from "../magicui/rainbow-button";
+import { Code, Link } from "lucide-react";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const ProjectCard = ({ project }: { project: any }) => {
   return (
     <div className={styles.projectCard}>
-      <Image src={techGear} width={400} height={400} alt="project image" />
+      <div className="h-[200px] overflow-hidden">
+        <Image
+          src={project.image}
+          alt="Tech Gear Project"
+          className={styles.projectCardImage}
+          width={300}
+          height={200}
+        />
+      </div>
       <div className="text-gray-200 p-4">
-        <h2 className="text-xl font-bold">Tech Gear-Full Stack E-commerce</h2>
-        <p className="mt-2 text-gray-400 text-sm">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor
-          pariatur eum, repellat ex sed earum iste eius officiis esse ea fugiat
-          eveniet accusamus saepe quibusdam aliquam quo temporibus quam maiores?
-        </p>
+        <h2 className="text-xl font-bold">{project.title}</h2>
+        <p className="mt-2 text-gray-400 text-sm">{project.description}</p>
+
+        <div className="mt-4 flex gap-4 items-center justify-center">
+          <RainbowButton>
+            <Link />
+            Live Link
+          </RainbowButton>
+          <RainbowButton variant="outline">
+            <Code />
+            Github
+          </RainbowButton>
+        </div>
       </div>
     </div>
   );

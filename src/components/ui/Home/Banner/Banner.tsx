@@ -8,18 +8,33 @@ const Banner = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden bg-[#000000]">
       <ParticlesBg />
-      <div className="absolute top-0 left-10 right-10 flex md:flex-row flex-col h-full w-full items-center justify-between p-4  z-0">
-        <div className="text-white md:w-1/2 w-full">
+      <div className="absolute top-0 left-0 right-0 flex md:flex-row flex-col md:gap-16 gap-8 h-full w-[90%] items-center justify-between p-4 mx-auto  z-0">
+        <div className="text-white md:w-[60%] w-full">
           <h1 className="md:text-4xl text-2xl font-bold">
-            Hey, I&apos;m <span className="text-[#018673]">Sweet 👋</span>
+            Hey, I&apos;m <span className="text-[#018673]">Sweet </span>
+            <motion.span
+              initial={{ rotate: 0 }}
+              animate={{ rotate: [0, 20, -10, 20, -5, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              style={{
+                display: "inline-block",
+                transformOrigin: "bottom center",
+              }}
+            >
+              👋
+            </motion.span>
           </h1>
           <h2 className="md:text-5xl text-2xl font-bold mt-5">
             <span className="text-[#018673]">
               <Typewriter
                 words={[
-                  "JavaScript Developer",
-                  "Frontend Developer",
-                  "React Enthusiast",
+                  "Full-Stack Developer",
+                  "Scalable App Architect",
+                  "React/Next.js Navigator",
                 ]}
                 loop={true}
                 cursor
@@ -31,15 +46,15 @@ const Banner = () => {
             </span>
           </h2>
           <p className="text-gray-400 mt-5 md:text-lg text-sm">
-            I&apos;m a passionate Frontend Web Developer with experience
+            I&apos;m a passionate Full-Stack Web Developer with experience
             building modern, responsive, and user-friendly web applications
-            using React.js, Next.js, and Tailwind CSS. I specialize in creating
-            seamless user interfaces and enjoy turning complex problems into
-            clean, maintainable code.
+            using Next/React.js, Node.js, Express.js, MySql and MongoDB. I
+            specialize in creating seamless user interfaces and enjoy turning
+            complex problems into clean, maintainable code.
           </p>
-          <motion.div
+          <motion.button
             whileHover={{
-              borderColor: "#6366F1", // Tailwind's indigo-500
+              borderColor: "#6366F1",
               boxShadow: "0 0 0 2px rgba(99, 102, 241, 0.5)",
             }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -56,16 +71,18 @@ const Banner = () => {
             >
               <ArrowDown />
             </motion.div>
-          </motion.div>
+          </motion.button>
         </div>
-        <div className="md:w-1/2 w-full">
-          <Image
-            className="mx-auto border border-lg border-[#018673] rounded shadow-lg shadow-[#018673]"
-            width={350}
-            height={350}
-            src="/bg.png"
-            alt=""
-          />
+        <div className="md:w-[40%] w-full">
+          <div className="rounded  py-8 w-[80%] ml-auto  shadow-lg shadow-[#018673] border border-lg border-[#018673] bg-[#03191d]">
+            <Image
+              className="mx-auto"
+              width={350}
+              height={350}
+              src="/bg.png"
+              alt=""
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -2,7 +2,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import {
-  type Container,
   type ISourceOptions,
   MoveDirection,
   OutMode,
@@ -21,25 +20,20 @@ const ParticlesBg = () => {
     });
   }, []);
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
-  };
-
   const options: ISourceOptions = useMemo(
     () => ({
       background: {
         color: {
-          // value: "#000000",
+          value: "#000000",
         },
       },
       fullScreen: { enable: false },
 
-      fpsLimit: 300,
+      fpsLimit: 60,
       interactivity: {
         events: {
           onClick: {
             enable: false,
-            mode: "push",
           },
           onHover: {
             enable: true,
@@ -51,21 +45,20 @@ const ParticlesBg = () => {
             quantity: 4,
           },
           repulse: {
-            distance: 200,
+            distance: 150,
             duration: 0.4,
           },
         },
       },
       particles: {
         color: {
-          value: "#ffffff",
+          value: "#9c9c9c",
         },
         links: {
           color: "#0084c2",
-          distance: 200,
+          distance: 220,
           enable: true,
-          opacity: 1,
-          width: 1,
+          opacity: 0.8,
         },
         move: {
           direction: MoveDirection.none,
@@ -74,23 +67,23 @@ const ParticlesBg = () => {
             default: OutMode.out,
           },
           random: false,
-          speed: 2,
+          speed: 1,
           straight: false,
         },
         number: {
           density: {
-            enable: true,
+            // enable: true,
           },
-          value: 120,
+          value: 70,
         },
         opacity: {
-          value: 0.5,
+          value: 1,
         },
         shape: {
           type: "circle",
         },
         size: {
-          value: { min: 1, max: 4 },
+          value: { min: 1, max: 2 },
         },
       },
 
@@ -99,12 +92,7 @@ const ParticlesBg = () => {
     []
   );
   return (
-    <Particles
-      id="tsparticles"
-      particlesLoaded={particlesLoaded}
-      options={options}
-      className="z-0"
-    />
+    <Particles id="tsparticles" options={options} className="z-0 h-screen" />
   );
 };
 

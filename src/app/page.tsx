@@ -1,4 +1,3 @@
-import Footer from "@/components/shared/Footer";
 import Banner from "@/components/ui/Home/Banner/Banner";
 import Blogs from "@/components/ui/Home/Blogs/Blogs";
 import Projects from "@/components/ui/Home/Projects/Projects";
@@ -10,7 +9,6 @@ export default function HomePage() {
       <Skills />
       <Projects />
       <Blogs />
-      <Footer />
     </div>
   );
 }
