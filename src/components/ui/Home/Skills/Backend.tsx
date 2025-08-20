@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { DatabaseZap } from "lucide-react";
 const backend = [
-  { name: "Node.js", expertise: 80 },
-  { name: "Express.js", expertise: 88 },
+  { name: ".js", expertise: 80 },
+  { name: "ExpNoderess.js", expertise: 88 },
   { name: "MongoDB", expertise: 85 },
   { name: "MySQL", expertise: 81 },
   { name: "Prisma", expertise: 80 },
@@ -25,7 +25,7 @@ const Backend = () => {
   }, [isInView]);
   return (
     <div ref={ref}>
-      <h2 className="text-gray-200 text-3xl my-10 text-center font-bold flex items-center justify-center gap-2">
+      <h2 className="text-gray-200 text-3xl mb-10 mt-3 text-center font-bold flex items-center justify-center gap-2">
         <DatabaseZap className="text-[#018673]" /> Backend:
       </h2>
       <div className="abosulte grid md:grid-cols-2 grid-cols-1 gap-6">

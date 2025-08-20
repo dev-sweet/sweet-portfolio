@@ -30,7 +30,7 @@ const Frontend = () => {
   }, [isInView]);
 
   return (
-    <div ref={ref} className=" border-b-2 border-gray-600 pt-5 pb-16">
+    <div ref={ref} className="pt-5 pb-10">
       <h2 className="text-gray-200 text-3xl text-center font-bold mb-5 flex items-center justify-center gap-2">
         <MonitorSmartphone className="text-[#018673]" /> Frontend:
       </h2>

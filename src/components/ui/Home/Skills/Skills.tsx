@@ -1,7 +1,8 @@
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import Backend from "./Backend";
 import Frontend from "./Frontend";
-import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+import { InteractiveGridPattern } from "@/components/magicui/interactive-grid-pattern";
+import { cn } from "@/lib/utils";
 
 const Skills = () => {
   return (
@@ -9,17 +10,19 @@ const Skills = () => {
       className="relative flex w-full flex-col items-center justify-center overflow-hidden h-[1000px]
      "
     >
-      <FlickeringGrid
-        className="relative inset-0 z-0 w-full   after:content-[''] after:absolute after:inset-0 
-     after:bg-black/30 after:backdrop-blur-[2px]"
-        squareSize={10}
-        gridGap={6}
-        color="#050047e6"
-        maxOpacity={0.8}
-        flickerChance={0.1}
+      <InteractiveGridPattern
+        className={cn(
+          "[mask-image:radial-gradient(880px_circle_at_center,#050047e6,transparent)]"
+        )}
+        width={20}
+        height={20}
+        squares={[80, 80]}
+        squaresClassName="hover:fill-blue-500"
       />
-
-      <div className="absolute min-h-screen w-full mx-auto py-20 text-white z-0">
+      <div
+        className="absolute z-0 min-h-screen w-full mx-auto py-20 text-white pointer-events-none bg-gradient-to-b from-black/0 via-black/30 to-transparent 
+            backdrop-blur-[2px]"
+      >
         <div className="w-[90%] mx-auto">
           <h1 className="text-4xl font-bold text-gray-200 text-center">
             Technical <span className="text-[#018673]">Skills</span>
@@ -30,8 +33,10 @@ const Skills = () => {
           <Frontend />
           <Backend />
 
-          <div className="flex items-center justify-center mt-10">
-            <RainbowButton className="px-8 py-6">Contact Me</RainbowButton>
+          <div className="flex items-center justify-center my-10">
+            <RainbowButton className="px-8 py-6 mt-4 cursor-pointer">
+              Contact Me
+            </RainbowButton>
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@ const Projects = () => {
   }, []);
   return (
     <div
-      className="relative w-full h-screen overflow-hidden"
+      className="relative w-full overflow-hidden h-screen"
       ref={containerRef}
       onMouseMove={handleMouseMove}
       style={
@@ -58,7 +58,7 @@ const Projects = () => {
         <h1 className="text-4xl font-bold text-white">
           Featured <span className="text-[#018673]">Projects</span>{" "}
         </h1>
-        <p className="mt-4 text-lg text-gray-400">
+        <p className="mt-4 text-lg text-gray-100">
           Here are some of my projects that I have worked on.
         </p>
         <div className="flex flex-wrap items-center justify-center mt-8 gap-8">
