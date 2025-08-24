@@ -4,6 +4,7 @@ import { ArrowDown } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+import Link from "next/link";
 const Banner = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden bg-[#000000]">
@@ -52,26 +53,28 @@ const Banner = () => {
             specialize in creating seamless user interfaces and enjoy turning
             complex problems into clean, maintainable code.
           </p>
-          <motion.button
-            whileHover={{
-              borderColor: "#6366F1",
-              boxShadow: "0 0 0 2px rgba(99, 102, 241, 0.5)",
-            }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="inline-flex items-center px-6 py-3 text-white font-semibold rounded-lg shadow-md bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-[length:200%_200%] animate-gradientY mt-10 cursor-pointer"
-          >
-            Download Resume
-            <motion.div
-              animate={{ y: [0, -5, 0] }}
-              transition={{
-                repeat: Infinity,
-                duration: 1,
-                ease: "easeInOut",
+          <Link href="/resume.pdf" target="_blank" download>
+            <motion.button
+              whileHover={{
+                borderColor: "#6366F1",
+                boxShadow: "0 0 0 2px rgba(99, 102, 241, 0.5)",
               }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="inline-flex items-center px-6 py-3 text-white font-semibold rounded-lg shadow-md bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-[length:200%_200%] animate-gradientY mt-10 cursor-pointer"
             >
-              <ArrowDown />
-            </motion.div>
-          </motion.button>
+              Download Resume
+              <motion.div
+                animate={{ y: [0, -5, 0] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1,
+                  ease: "easeInOut",
+                }}
+              >
+                <ArrowDown />
+              </motion.div>
+            </motion.button>
+          </Link>
         </div>
         <div className="md:w-[40%] w-full">
           <div className="rounded  py-8 w-[80%] ml-auto  shadow-lg shadow-[#018673] border border-lg border-[#018673] bg-[#03191d]">
