@@ -1,11 +1,11 @@
-import Banner from "@/components/ui/Home/Banner/Banner";
+import Hero from "@/components/ui/Home/Hero/Hero";
 import Blogs from "@/components/ui/Home/Blogs/Blogs";
 import Projects from "@/components/ui/Home/Projects/Projects";
 import Skills from "@/components/ui/Home/Skills/Skills";
 export default function HomePage() {
   return (
-    <div className="bg-[#080808] z-0 custom-cursor">
-      <Banner />
+    <div className="z-0 custom-cursor">
+      <Hero />
       <Skills />
       <Projects />
       <Blogs />

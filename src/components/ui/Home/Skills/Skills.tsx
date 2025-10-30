@@ -1,8 +1,8 @@
+"use client";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import Backend from "./Backend";
 import Frontend from "./Frontend";
-import { InteractiveGridPattern } from "@/components/magicui/interactive-grid-pattern";
-import { cn } from "@/lib/utils";
+// import LightRays from "@/components/LightRays";
 
 const Skills = () => {
   return (
@@ -10,17 +10,9 @@ const Skills = () => {
       className="relative flex w-full flex-col items-center justify-center overflow-hidden h-[1000px]
      "
     >
-      <InteractiveGridPattern
-        className={cn(
-          "[mask-image:radial-gradient(880px_circle_at_center,#050047e6,transparent)]"
-        )}
-        width={20}
-        height={20}
-        squares={[80, 80]}
-        squaresClassName="hover:fill-blue-500"
-      />
+      {/* <LightRays /> */}
       <div
-        className="absolute z-0 min-h-screen w-full mx-auto py-20 text-white pointer-events-none bg-gradient-to-b from-black/0 via-black/30 to-transparent 
+        className="absolute backdrop-blur-sm z-0 min-h-screen w-full mx-auto py-20 text-white bg-gradient-to-b from-black/0 via-black/30 to-transparent 
             backdrop-blur-[2px]"
       >
         <div className="w-[90%] mx-auto">

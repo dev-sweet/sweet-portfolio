@@ -1,18 +1,22 @@
 "use client";
-import ParticlesBg from "@/components/ui/Home/Banner/ParticlesBg";
 import { ArrowDown } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import Link from "next/link";
-const Banner = () => {
+import LetterGlitch from "@/components/LetterGlitch";
+// import ProfileCard from "@/components/ProfileCard";
+import GlareHover from "@/components/GlareHover";
+const Hero = () => {
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-[#000000]">
-      <ParticlesBg />
-      <div className="absolute top-0 left-0 right-0 flex md:flex-row flex-col md:gap-16 gap-8 h-full w-[90%] items-center justify-between p-4 mx-auto  z-0">
+    <div className="relative h-screen w-full overflow-hidden">
+      <LetterGlitch />
+
+      <div className="bg-[#0f001c]/70 backdrop-blur-[0.5px] absolute top-0 left-0 right-0 flex md:flex-row flex-col md:gap-16 gap-8 h-full px-[10%] items-center justify-between p-4 mx-auto z-0 rounded-lg">
         <div className="text-white md:w-[60%] w-full">
-          <h1 className="md:text-4xl text-2xl font-bold">
-            Hey, I&apos;m <span className="text-[#018673]">Sweet </span>
+          <h1 className="md:text-3xl text-2xl font-bold">
+            Hey, I&apos;m{" "}
+            <span className="text-4xl text-[#9f55e0]">Sweet </span>
             <motion.span
               initial={{ rotate: 0 }}
               animate={{ rotate: [0, 20, -10, 20, -5, 0] }}
@@ -29,12 +33,12 @@ const Banner = () => {
               👋
             </motion.span>
           </h1>
-          <h2 className="md:text-5xl text-2xl font-bold mt-5">
-            <span className="text-[#018673]">
+          <h2 className="lg:text-7xl md:text-6xl text-2xl font-bold mt-5">
+            <span className="text-[#9f55e0]">
               <Typewriter
                 words={[
                   "Full-Stack Developer",
-                  "Scalable App Architect",
+                  "Scalable Web Architect",
                   "React/Next.js Navigator",
                 ]}
                 loop={true}
@@ -46,7 +50,7 @@ const Banner = () => {
               />
             </span>
           </h2>
-          <p className="text-gray-400 mt-5 md:text-lg text-sm">
+          <p className="text-gray-200 mt-5 md:text-xl text-sm">
             I&apos;m a passionate Full-Stack Web Developer with experience
             building modern, responsive, and user-friendly web applications
             using Next/React.js, Node.js, Express.js, MySql and MongoDB. I
@@ -77,14 +81,27 @@ const Banner = () => {
           </Link>
         </div>
         <div className="md:w-[40%] w-full">
-          <div className="rounded  py-8 w-[80%] ml-auto  shadow-lg shadow-[#018673] border border-lg border-[#018673] bg-[#03191d]">
-            <Image
-              className="mx-auto"
-              width={350}
-              height={350}
-              src="/bg.png"
-              alt=""
-            />
+          <div className="h-[500px] overflow-hidden w-[350px]">
+            <GlareHover
+              glareColor="#004266ff"
+              glareOpacity={0.3}
+              glareAngle={-30}
+              glareSize={350}
+              transitionDuration={800}
+              playOnce={false}
+            >
+              <div className="text-center text-white">
+                <h4 className="text-4xl font-bold">Sweet Ali</h4>
+                <p>Software Developer</p>
+              </div>
+              <Image
+                className="mx-auto mt-5 max-w-full h-auto"
+                width={350}
+                height={350}
+                src="/bg.png"
+                alt=""
+              />
+            </GlareHover>
           </div>
         </div>
       </div>
@@ -92,4 +109,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default Hero;
