@@ -15,9 +15,9 @@ import {
 import { AlignJustify } from "lucide-react";
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 flex items-center justify-between w-[90%] mx-auto py-4 z-1000">
-      <Link href="/" className="text-2xl text-[#009c86] font-bold">
-        &lt;/Sweet&gt;
+    <nav className="fixed top-0 h-[80px]  lg:px-30 md:px-15 px-7 border-b left-0 right-0 flex items-center justify-between mx-auto py-4 z-1000">
+      <Link href="/" className="text-2xl text-gray-200  font-bold">
+        &lt;/<span className="text-[#9f55e0]">Sweet</span>&gt;
       </Link>
       <NavigationMenu className="hidden md:flex items-center justify-center">
         <NavigationMenuList>
