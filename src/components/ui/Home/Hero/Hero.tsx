@@ -10,9 +10,9 @@ import { RainbowButton } from "@/components/magicui/rainbow-button";
 const Hero = () => {
   return (
     <div className="relative h-auto lg:h-screen w-full">
-      {/* <div className="absolute inset-0 h-full -z-10">
+      <div className="absolute inset-0 h-full -z-10">
         <LetterGlitch outerVignette />
-      </div> */}
+      </div>
       <div className="lg:h-screen md:py-10 z-1000 bg-[#0f001c]/70 backdrop-blur-[0.5px] ">
         <div className="mt-[80px] lg:!h-[calc(100vh-80px)] lg:px-32 md:px-16 sm:px-8 px-6 flex lg:flex-row flex-col lg:gap-20 md:gap-16 gap-8 justify-between items-center rounded-lg">
           <div className="text-white lg:w-[60%] w-full">
