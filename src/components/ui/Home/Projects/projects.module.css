@@ -30,7 +30,7 @@
 }
 
 .projectsContainer {
-  z-index: 100;
+  /* z-index: 100;
   position: absolute;
   left: 0;
   top: 0;
@@ -39,5 +39,14 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  height: 100vh; */
+  z-index: 100;
+  position: relative; /* change from absolute */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh; /* keeps nice spacing for first render */
+  padding: 4rem 0; /* adds space at top and bottom */
 }

@@ -29,7 +29,7 @@ const Projects = () => {
   }, []);
   return (
     <div
-      className="relative w-full overflow-hidden h-screen"
+      className="relative w-full h-screen"
       ref={containerRef}
       onMouseMove={handleMouseMove}
       style={
@@ -54,25 +54,27 @@ const Projects = () => {
         priority
       />
 
-      <div className={styles.projectsContainer}>
-        <h1 className="text-4xl font-bold text-white">
-          Featured <span className="text-[#018673]">Projects</span>{" "}
-        </h1>
-        <p className="mt-4 text-lg text-gray-100">
-          Here are some of my projects that I have worked on.
-        </p>
-        <div className="flex flex-wrap items-center justify-center mt-8 gap-8">
-          {projects.map((project: any) => (
-            <ProjectCard project={project} key={project.title} />
-          ))}
-        </div>
-        <div className="text-center">
-          <Link
-            href="/projects"
-            className="mt-12 inline-flex items-center justify-center px-6 py-3 bg-[#1e1e1e] text-white rounded-md hover:bg-[#1e1e1e] border border-gray-300 transition-all font-bold hover:border-[#018673]"
-          >
-            View All Projects
-          </Link>
+      <div className="h-full overflow-y-auto">
+        <div className={styles.projectsContainer}>
+          <h1 className="text-4xl font-bold text-white">
+            Featured <span className="text-[#018673]">Projects</span>{" "}
+          </h1>
+          <p className="mt-4 text-lg text-gray-100">
+            Here are some of my projects that I have worked on.
+          </p>
+          <div className="flex flex-wrap items-center justify-center mt-8 gap-8">
+            {projects.map((project: any) => (
+              <ProjectCard project={project} key={project.title} />
+            ))}
+          </div>
+          <div className="text-center">
+            <Link
+              href="/projects"
+              className="mt-12 inline-flex items-center justify-center px-6 py-3 bg-[#1e1e1e] text-white rounded-md hover:bg-[#1e1e1e] border border-gray-300 transition-all font-bold hover:border-[#018673]"
+            >
+              View All Projects
+            </Link>
+          </div>
         </div>
       </div>
     </div>

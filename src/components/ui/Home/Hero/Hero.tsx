@@ -9,11 +9,12 @@ import GlareHover from "@/components/GlareHover";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 const Hero = () => {
   return (
-    <div className="overflow-hidden relative h-screen w-full">
-      <LetterGlitch />
-
-      <div className="h-screen md:overflow-scroll bg-[#0f001c]/70 backdrop-blur-[0.5px] absolute top-0 left-0 right-0 bottom-0 ">
-        <div className="mt-[80px] !h-[calc(100vh-80px)] lg:px-32 md:px-16 sm:px-8 px-6 flex lg:flex-row flex-col lg:gap-20 md:gap-16 gap-8 items-center justify-between mx-auto z-0 rounded-lg">
+    <div className="relative h-auto lg:h-screen w-full">
+      {/* <div className="absolute inset-0 h-full -z-10">
+        <LetterGlitch outerVignette />
+      </div> */}
+      <div className="lg:h-screen md:py-10 z-1000 bg-[#0f001c]/70 backdrop-blur-[0.5px] ">
+        <div className="mt-[80px] lg:!h-[calc(100vh-80px)] lg:px-32 md:px-16 sm:px-8 px-6 flex lg:flex-row flex-col lg:gap-20 md:gap-16 gap-8 justify-between items-center rounded-lg">
           <div className="text-white lg:w-[60%] w-full">
             <h1 className="md:text-2xl text-2xl font-bold">
               Hey, I&apos;m <span className="text-[#9f55e0]">Sweet</span>
@@ -57,7 +58,7 @@ const Hero = () => {
               specialize in creating seamless user interfaces and enjoy turning
               complex problems into clean, maintainable code.
             </p>
-            <Link href="/resume.pdf" target="_blank" download>
+            <Link href="/resume-sweet.pdf" target="_blank" download>
               <motion.button
                 whileHover={{
                   borderColor: "#6366F1",
@@ -83,7 +84,7 @@ const Hero = () => {
           <div className="lg:w-[40%] w-full flex items-center justify-end">
             {/* <div className="h-[500px] overflow-hidden w-[350px] border-1 border-[#9f55e0] rounded"> */}
             <GlareHover
-              className="ml-auto 2xl:w-[420px] xl:w-[400px] w-full height-[500px] bg-gradient-to-r from-[#1b0e26] to-[#200e30] backdrop-blur-md"
+              className="ml-auto 2xl:w-[420px] xl:w-[400px] w-full bg-gradient-to-r from-[#1b0e26] to-[#200e30] backdrop-blur-md"
               glareColor="#9f55e0"
               borderColor="#9f55e087"
               glareOpacity={0.3}
