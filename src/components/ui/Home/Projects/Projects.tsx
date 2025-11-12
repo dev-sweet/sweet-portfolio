@@ -6,7 +6,7 @@ import bgColor from "/public/projectsbg1.jpg";
 import bgWhite from "/public/projectsbg.jpg";
 import styles from "./projects.module.css";
 import { MouseEvent, useEffect, useRef, useState } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -29,7 +29,7 @@ const Projects = () => {
   }, []);
   return (
     <div
-      className="relative w-full h-screen"
+      className="relative w-full h-auto"
       ref={containerRef}
       onMouseMove={handleMouseMove}
       style={
@@ -54,7 +54,7 @@ const Projects = () => {
         priority
       />
 
-      <div className="h-full overflow-y-auto">
+      <div className="h-full">
         <div className={styles.projectsContainer}>
           <h1 className="text-4xl font-bold text-white">
             Featured <span className="text-[#018673]">Projects</span>{" "}
@@ -67,14 +67,14 @@ const Projects = () => {
               <ProjectCard project={project} key={project.title} />
             ))}
           </div>
-          <div className="text-center">
+          {/* <div className="text-center">
             <Link
               href="/projects"
               className="mt-12 inline-flex items-center justify-center px-6 py-3 bg-[#1e1e1e] text-white rounded-md hover:bg-[#1e1e1e] border border-gray-300 transition-all font-bold hover:border-[#018673]"
             >
               View All Projects
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -9,14 +9,14 @@ import GlareHover from "@/components/GlareHover";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 const Hero = () => {
   return (
-    <div className="relative h-auto lg:h-screen w-full">
+    <div className="relative h-auto w-full">
       <div className="absolute inset-0 h-full -z-10">
         <LetterGlitch outerVignette />
       </div>
-      <div className="lg:h-screen md:py-10 z-1000 bg-[#0f001c]/70 backdrop-blur-[0.5px] ">
-        <div className="mt-[80px] lg:!h-[calc(100vh-80px)] lg:px-32 md:px-16 sm:px-8 px-6 flex lg:flex-row flex-col lg:gap-20 md:gap-16 gap-8 justify-between items-center rounded-lg">
+      <div className="pt-[80px] z-1000 bg-[#0f001c]/40 backdrop-blur-[4px]">
+        <div className="md:py-[80px] py-[40px] lg:px-32 md:px-16 sm:px-8 px-6 flex lg:flex-row flex-col lg:gap-20 md:gap-16 gap-8 justify-between items-center rounded-lg">
           <div className="text-white lg:w-[60%] w-full">
-            <h1 className="md:text-2xl text-2xl font-bold">
+            <h1 className="md:text-2xl font-bold">
               Hey, I&apos;m <span className="text-[#9f55e0]">Sweet</span>
               <motion.span
                 initial={{ rotate: 0 }}
@@ -34,7 +34,7 @@ const Hero = () => {
                 👋
               </motion.span>
             </h1>
-            <h2 className="text-[34px] font-bold mt-5">
+            <h2 className="my-4 2xl:text-7xl xl:text-5xl lg:text-4xl text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
               <span className="text-[#9f55e0]">
                 <Typewriter
                   words={[
@@ -42,7 +42,7 @@ const Hero = () => {
                     "Scalable Web Architect",
                     "React/Next.js Navigator",
                   ]}
-                  // loop={true}
+                  loop={true}
                   cursor
                   cursorStyle="|"
                   typeSpeed={70}
@@ -51,7 +51,7 @@ const Hero = () => {
                 />
               </span>
             </h2>
-            <p className="text-gray-200 mt-5 md:text-xl text-sm">
+            <p className="text-gray-300 md:text-xl text-sm">
               I&apos;m a passionate Full-Stack Web Developer with experience
               building modern, responsive, and user-friendly web applications
               using Next/React.js, Node.js, Express.js, MySql and MongoDB. I

@@ -51,14 +51,14 @@ const Blogs = () => {
           ))}
         </div>
 
-        <div className="text-center">
+        {/* <div className="text-center">
           <Link
             href="/blogs"
             className="mt-12 inline-flex items-center justify-center px-6 py-3 bg-[#1e1e1e] text-white rounded-md hover:bg-[#1e1e1e] border border-gray-300 transition-all font-bold hover:border-[#018673]"
           >
             View All Blogs
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );
