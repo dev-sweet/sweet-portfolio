@@ -37,7 +37,7 @@ const Backend = () => {
             </h3>
             <Progress
               value={progressValues[i]}
-              className="w-full h-8 rounded-full bg-neutral-900 border border-neutral-700"
+              className="w-full h-8 rounded-full bg-neutral-900"
             />
           </div>
         ))}

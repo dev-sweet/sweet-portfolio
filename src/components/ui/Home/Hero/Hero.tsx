@@ -7,17 +7,18 @@ import Link from "next/link";
 import LetterGlitch from "@/components/LetterGlitch";
 import GlareHover from "@/components/GlareHover";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
+
 const Hero = () => {
   return (
-    <div className="relative h-auto w-full">
-      <div className="absolute inset-0 h-full -z-10">
-        <LetterGlitch outerVignette />
+    <div className="relative h-auto w-full overflow-hidden">
+      <div className="absolute inset-0 h-full z-0">
+        <LetterGlitch />
       </div>
-      <div className="pt-[80px] z-1000 bg-[#0f001c]/40 backdrop-blur-[4px]">
+      <div className="pt-[80px] relative z-100 bg-[#4f3361]/60 backdrop-blur-[3px]">
         <div className="md:py-[80px] py-[40px] lg:px-32 md:px-16 sm:px-8 px-6 flex lg:flex-row flex-col lg:gap-20 md:gap-16 gap-8 justify-between items-center rounded-lg">
-          <div className="text-white lg:w-[60%] w-full">
+          <div className="text-wShite lg:w-[60%] w-full">
             <h1 className="md:text-2xl font-bold">
-              Hey, I&apos;m <span className="text-[#9f55e0]">Sweet</span>
+              Hey, <br /> I&apos;m <span className="text-[#9f55e0]">Sweet</span>
               <motion.span
                 initial={{ rotate: 0 }}
                 animate={{ rotate: [0, 20, -10, 20, -5, 0] }}
@@ -34,13 +35,13 @@ const Hero = () => {
                 👋
               </motion.span>
             </h1>
-            <h2 className="my-4 2xl:text-7xl xl:text-5xl lg:text-4xl text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
-              <span className="text-[#9f55e0]">
+            <h2 className="my-4 2xl:text-7xl xl:text-5xl lg:text-4xl text-2xl font-bold bg-gradient-to-r from-[#a855f7] to-[#f43f5e] bg-clip-text text-transparent">
+              <span>
                 <Typewriter
                   words={[
                     "Full-Stack Developer",
                     "Scalable Web Architect",
-                    "React/Next.js Navigator",
+                    "Next.js Navigator",
                   ]}
                   loop={true}
                   cursor
@@ -48,10 +49,11 @@ const Hero = () => {
                   typeSpeed={70}
                   deleteSpeed={50}
                   delaySpeed={1000}
-                />
+                />{" "}
               </span>
             </h2>
-            <p className="text-gray-300 md:text-xl text-sm">
+
+            <p className="text-gray-100 md:text-xl text-sm">
               I&apos;m a passionate Full-Stack Web Developer with experience
               building modern, responsive, and user-friendly web applications
               using Next/React.js, Node.js, Express.js, MySql and MongoDB. I
@@ -65,7 +67,7 @@ const Hero = () => {
                   boxShadow: "0 0 0 2px rgba(99, 102, 241, 0.5)",
                 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="inline-flex items-center px-6 py-3 text-white font-semibold rounded-lg shadow-md bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-[length:200%_200%] animate-gradientY mt-10 cursor-pointer"
+                className="inline-flex items-center px-6 py-3 text-white font-semibold rounded-lg shadow-md bg-gradient-to-r  from-[#63048f] via-[#ed0970] to-[#ff4d8d] bg-[length:200%_200%] animate-gradientY mt-10 cursor-pointer"
               >
                 Download Resume
                 <motion.div
@@ -84,9 +86,9 @@ const Hero = () => {
           <div className="lg:w-[40%] w-full flex items-center justify-end">
             {/* <div className="h-[500px] overflow-hidden w-[350px] border-1 border-[#9f55e0] rounded"> */}
             <GlareHover
-              className="ml-auto 2xl:w-[420px] xl:w-[400px] w-full bg-gradient-to-r from-[#1b0e26] to-[#200e30] backdrop-blur-md"
+              className="ml-auto 2xl:w-[420px] xl:w-[400px] w-full bg-gradient-to-r from-[#1b0e26]/30 to-[#7d046f]/40  backdrop-blur-md"
               glareColor="#9f55e0"
-              borderColor="#9f55e087"
+              borderColor="#b14eca87"
               glareOpacity={0.3}
               glareAngle={-30}
               glareSize={200}
