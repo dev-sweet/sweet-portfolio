@@ -2,10 +2,10 @@
 import { Progress } from "@/components/ui/progress";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
-import { DatabaseZap } from "lucide-react";
+import Image from "next/image";
 const backend = [
-  { name: ".js", expertise: 80 },
-  { name: "ExpNoderess.js", expertise: 88 },
+  { name: "Node.js", expertise: 80 },
+  { name: "Express.js", expertise: 88 },
   { name: "MongoDB", expertise: 85 },
   { name: "MySQL", expertise: 81 },
   { name: "Prisma", expertise: 80 },
@@ -26,7 +26,8 @@ const Backend = () => {
   return (
     <div ref={ref}>
       <h2 className="text-gray-200 text-3xl mb-10 mt-3 text-center font-bold flex items-center justify-center gap-2">
-        <DatabaseZap className="text-[#018673]" /> Backend:
+        <Image src="/backend.png" height={40} width={40} alt="Backend iamge" />{" "}
+        Backend:
       </h2>
       <div className="abosulte grid md:grid-cols-2 grid-cols-1 gap-6">
         {backend.map((skill, i) => (

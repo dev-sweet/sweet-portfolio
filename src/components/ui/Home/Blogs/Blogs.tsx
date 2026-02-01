@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useScroll } from "framer-motion";
+import { useScroll, useSpring } from "framer-motion";
 import BlogCard from "./BlogCard";
+import { AuroraText } from "../../aurora-text";
 
 export interface Blog {
   id: number;
@@ -10,6 +11,7 @@ export interface Blog {
   shortDescription: string;
   image: string;
 }
+
 const Blogs = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -19,31 +21,56 @@ const Blogs = () => {
     offset: ["start start", "end end"],
   });
 
+  // 🧈 Ultra-smooth cinematic motion
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 30,
+    damping: 30,
+    mass: 1.6,
+  });
+
   useEffect(() => {
-    fetch("/blogs.json")
-      .then((res) => res.json())
-      .then((data) => setBlogs(data));
+    let mounted = true;
+
+    const loadBlogs = async () => {
+      try {
+        const res = await fetch("/blogs.json");
+        const data = await res.json();
+        if (mounted) setBlogs(data);
+      } catch (err) {
+        console.error("Failed to load blogs", err);
+      }
+    };
+
+    loadBlogs();
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return (
-    <div className="bg-[url('/bg.jpg')] bg-cover bg-center py-20">
+    <section className="bg-cover bg-center py-16">
       <div className="w-[90%] mx-auto">
         <h1 className="text-4xl font-semibold text-gray-200 text-center">
-          Featured <span className="text-[#018673]">Blogs</span>
+          Featured <AuroraText>Blogs</AuroraText>
         </h1>
 
-        <div ref={containerRef} className="relative h-[300vh] mt-16">
+        {/* Smooth & compact scroll container */}
+        <div
+          ref={containerRef}
+          className="relative mt-16"
+          style={{ height: `${blogs.length * 60}vh` }}
+        >
           {blogs.map((blog, index) => (
             <BlogCard
               key={blog.id}
               blog={blog}
               index={index}
-              scrollYProgress={scrollYProgress}
+              scrollYProgress={smoothProgress}
             />
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

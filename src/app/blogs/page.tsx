@@ -1,9 +1,7 @@
-const BlogsPage = () => {
-  return (
-    <div>
-      <h1 className="text-center py-10 text-green-500">This is blogs page</h1>
-    </div>
-  );
-};
+import React from "react";
 
-export default BlogsPage;
+function page() {
+  return <div>Blogs Page</div>;
+}
+
+export default page;

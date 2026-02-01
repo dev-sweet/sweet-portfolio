@@ -10,6 +10,14 @@ function Progress({
   value,
   ...props
 }: React.ComponentProps<typeof ProgressPrimitive.Root>) {
+  // const [progress, setProgress] =
+  //   React.useState < React.SetStateAction<number>(null);
+  // React.useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setProgress(value);
+  //   }, 100);
+  //   return () => clearTimeout(timer);
+  // }, []);
   return (
     <ProgressPrimitive.Root
       data-slot="progress"

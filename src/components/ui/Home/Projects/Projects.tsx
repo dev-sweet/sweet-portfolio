@@ -6,6 +6,7 @@ import bgColor from "/public/projectsbg1.jpg";
 import bgWhite from "/public/projectsbg.jpg";
 import styles from "./projects.module.css";
 import { MouseEvent, useEffect, useRef, useState } from "react";
+import { AuroraText } from "../../aurora-text";
 // import Link from "next/link";
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -57,7 +58,7 @@ const Projects = () => {
       <div className="h-full">
         <div className={styles.projectsContainer}>
           <h1 className="text-4xl font-bold text-white">
-            Featured <span className="text-[#018673]">Projects</span>{" "}
+            Featured <AuroraText>Projects</AuroraText>
           </h1>
           <p className="mt-4 text-lg text-gray-100">
             Here are some of my projects that I have worked on.

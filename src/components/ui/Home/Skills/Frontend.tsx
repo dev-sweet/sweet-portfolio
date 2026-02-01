@@ -14,7 +14,7 @@ const frontend = [
   { name: "ShadCN UI", expertise: 70 },
 ];
 import { useInView } from "framer-motion";
-import { MonitorSmartphone } from "lucide-react";
+import Image from "next/image";
 
 const Frontend = () => {
   const ref = useRef(null);
@@ -31,8 +31,14 @@ const Frontend = () => {
 
   return (
     <div ref={ref} className="pt-5 pb-10">
-      <h2 className="text-gray-200 text-3xl text-center font-bold mb-5 flex items-center justify-center gap-2">
-        <MonitorSmartphone className="text-[#018673]" /> Frontend:
+      <h2 className="text-gray-300 text-3xl text-center font-bold mb-5 flex items-center justify-center gap-2">
+        <Image
+          src="/frontend.png"
+          height={40}
+          width={40}
+          alt="Frontend image"
+        />{" "}
+        Frontend:
       </h2>
       <div className="abosulte grid md:grid-cols-3 grid-cols-1 gap-5">
         {frontend.map((skill, i) => (
@@ -45,7 +51,7 @@ const Frontend = () => {
             </h3>
             <Progress
               value={progressValues[i]}
-              className="w-full h-7 rounded-full bg-neutral-900 border border-neutral-700"
+              className="w-full h-7 rounded-full bg-neutral-900"
             />
           </div>
         ))}
