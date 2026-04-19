@@ -16,7 +16,7 @@ import {
 import { AlignJustify } from "lucide-react";
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 h-[80px]  lg:px-30 md:px-15 px-7 bg-white/10 backdrop-blur-[3px] border-b border-gray-500 left-0 right-0 flex items-center justify-between mx-auto  z-1000">
+    <nav className="fixed top-0 h-[80px] lg:px-32 md:px-16 sm:px-8 px-6 bg-white/10 backdrop-blur-[3px] border-b border-gray-500 left-0 right-0 flex items-center justify-between mx-auto  z-1000">
       <Link href="/" className="text-2xl text-gray-200  font-bold">
         &lt;/<AuroraText>Sweet</AuroraText>&gt;
       </Link>

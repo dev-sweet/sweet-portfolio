@@ -30,7 +30,7 @@ const BlogCard = ({ blog, index, scrollYProgress }: BlogCardProps) => {
         transformOrigin: "center top",
       }}
       className="
-        sticky top-24 mx-auto mb-24
+        sticky top-24 mx-auto mb-20
         w-[80%]
         rounded-2xl
         bg-[#0b0b0b]

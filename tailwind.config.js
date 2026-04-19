@@ -7,6 +7,7 @@ module.exports = {
         "glitch-before":
           "glitch var(--before-duration) infinite linear alternate-reverse",
         gradientX: "gradientX 6s ease infinite",
+        blink: "blink 1s step-end infinite",
       },
       keyframes: {
         glitch: {
@@ -35,6 +36,10 @@ module.exports = {
         gradientX: {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
+        },
+           blink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
         },
       },
     },
