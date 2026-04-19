@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, Variants } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { ArrowDown } from "lucide-react";
 
@@ -44,7 +44,7 @@ const STATS = [
 ];
 
 // ── Animation variants ──
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: (delay = 0) => ({
     opacity: 1,
@@ -53,7 +53,7 @@ const fadeUp = {
   }),
 };
 
-const fadeIn = {
+const fadeIn: Variants = {
   hidden: { opacity: 0 },
   show: (delay = 0) => ({
     opacity: 1,
@@ -111,7 +111,9 @@ function StatCell({
       className={[
         "flex flex-col items-center text-center py-2",
         hasBorderRight ? "border-r border-[#1a1a2e]" : "",
-        hasBorderTop ? "border-t border-[#1a1a2e] pt-6 sm:pt-2 sm:border-t-0" : "",
+        hasBorderTop
+          ? "border-t border-[#1a1a2e] pt-6 sm:pt-2 sm:border-t-0"
+          : "",
       ]
         .filter(Boolean)
         .join(" ")}
@@ -163,13 +165,10 @@ export default function HeroSection() {
 
   return (
     <section className="w-full min-h-screen bg-[#080810] flex flex-col justify-between md:py-[80px] py-[40px] lg:px-32 md:px-16 sm:px-8 px-6 pt-10 md:pt-20 pb-10">
-
       {/* ── Top grid ── */}
       <div className="w-full container mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center py-10">
-
         {/* ── Left column ── */}
         <div className="flex flex-col w-full">
-
           {/* Badge */}
           <motion.div
             variants={fadeUp}
@@ -192,7 +191,7 @@ export default function HeroSection() {
             custom={0.1}
             className="text-[12px] sm:text-[13px] text-[#5dcaa5] font-mono tracking-widest mb-2 sm:mb-3"
           >
-           { '//'} sweet_ali.init()
+            {"//"} sweet_ali.init()
           </motion.p>
 
           {/* Name */}
@@ -202,7 +201,10 @@ export default function HeroSection() {
             animate="show"
             custom={0.2}
             className="font-bold text-white leading-tight mb-3"
-            style={{ fontSize: "clamp(2rem, 7vw, 4rem)", letterSpacing: "-0.02em" }}
+            style={{
+              fontSize: "clamp(2rem, 7vw, 4rem)",
+              letterSpacing: "-0.02em",
+            }}
           >
             <span
               className="font-semibold text-white/70"
@@ -215,8 +217,16 @@ export default function HeroSection() {
             <motion.span
               initial={{ rotate: 0 }}
               animate={{ rotate: [0, 20, -10, 20, -5, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
-              style={{ display: "inline-block", transformOrigin: "bottom center" }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                repeatDelay: 1,
+              }}
+              style={{
+                display: "inline-block",
+                transformOrigin: "bottom center",
+              }}
               className="ml-2"
             >
               👋
@@ -231,7 +241,9 @@ export default function HeroSection() {
             custom={0.3}
             className="flex items-center gap-2 mb-5 sm:mb-7"
           >
-            <span className="text-[10px] sm:text-[11px] text-[#5f5e5a] font-mono">role:</span>
+            <span className="text-[10px] sm:text-[11px] text-[#5f5e5a] font-mono">
+              role:
+            </span>
             <span
               className="font-mono text-[#5dcaa5]"
               style={{ fontSize: "clamp(0.85rem, 2.5vw, 1.25rem)" }}
@@ -250,9 +262,13 @@ export default function HeroSection() {
             className="text-sm sm:text-[15px] text-[#9a9a9a] leading-relaxed w-full max-w-xl mb-6 sm:mb-8"
           >
             I architect and ship{" "}
-            <strong className="text-[#e0e0e0] font-medium">production-grade web applications</strong>{" "}
+            <strong className="text-[#e0e0e0] font-medium">
+              production-grade web applications
+            </strong>{" "}
             using React, Next.js, and Node.js. Specializing in{" "}
-            <strong className="text-[#e0e0e0] font-medium">scalable backends, type-safe APIs</strong>
+            <strong className="text-[#e0e0e0] font-medium">
+              scalable backends, type-safe APIs
+            </strong>
             , and seamless user experiences — including AI-powered features.
           </motion.p>
 
@@ -296,7 +312,11 @@ export default function HeroSection() {
               Download Resume
               <motion.span
                 animate={{ y: [0, -4, 0] }}
-                transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1,
+                  ease: "easeInOut",
+                }}
                 className="flex items-center"
               >
                 <ArrowDown size={13} />
@@ -335,19 +355,35 @@ export default function HeroSection() {
                 />
               </div>
             </div>
-            <div className="text-sm sm:text-[15px] font-semibold text-white text-center">Sweet Ali</div>
+            <div className="text-sm sm:text-[15px] font-semibold text-white text-center">
+              Sweet Ali
+            </div>
             <div className="text-[10px] sm:text-[11px] text-[#5dcaa5] font-mono text-center -mt-1 sm:-mt-2">
               full-stack engineer
             </div>
             <div className="flex items-center gap-2 bg-[#0a1a14] border border-[#0f6e56] rounded-full px-3 py-1">
               <span className="w-1.5 h-1.5 rounded-full bg-[#1d9e75] animate-pulse flex-shrink-0" />
-              <span className="text-[10px] sm:text-[11px] text-[#1d9e75]">Online · Open to work</span>
+              <span className="text-[10px] sm:text-[11px] text-[#1d9e75]">
+                Online · Open to work
+              </span>
             </div>
             <div className="flex gap-2">
               {[
-                { href: "https://github.com/dev-sweet", icon: <FaGithub size={14} />, label: "GitHub" },
-                { href: "https://linkedin.com/in/sweet-ali", icon: <FaLinkedin size={14} />, label: "LinkedIn" },
-                { href: "https://twitter.com/your-handle", icon: <FaTwitter size={14} />, label: "Twitter" },
+                {
+                  href: "https://github.com/dev-sweet",
+                  icon: <FaGithub size={14} />,
+                  label: "GitHub",
+                },
+                {
+                  href: "https://linkedin.com/in/sweet-ali",
+                  icon: <FaLinkedin size={14} />,
+                  label: "LinkedIn",
+                },
+                {
+                  href: "https://twitter.com/your-handle",
+                  icon: <FaTwitter size={14} />,
+                  label: "Twitter",
+                },
               ].map((l) => (
                 <a
                   key={l.label}
@@ -371,9 +407,14 @@ export default function HeroSection() {
             className="bg-[#0f0f20] border border-[#2a2a4a] rounded-xl p-4
                        w-full max-w-[280px] sm:max-w-[220px] lg:w-[220px]"
           >
-            <p className="text-[10px] text-[#5f5e5a] font-mono mb-3">{'//'} skill_proficiency</p>
+            <p className="text-[10px] text-[#5f5e5a] font-mono mb-3">
+              {"//"} skill_proficiency
+            </p>
             {SKILLS.map((s, i) => (
-              <div key={s.label} className="flex items-center gap-2 mb-2 last:mb-0">
+              <div
+                key={s.label}
+                className="flex items-center gap-2 mb-2 last:mb-0"
+              >
                 <span className="text-[10px] sm:text-[11px] text-[#9a9a9a] font-mono w-16 sm:w-[72px] flex-shrink-0">
                   {s.label}
                 </span>
@@ -383,7 +424,11 @@ export default function HeroSection() {
                     style={{ background: s.color }}
                     initial={{ width: 0 }}
                     animate={{ width: `${s.pct}%` }}
-                    transition={{ duration: 1, ease: "easeOut", delay: 0.7 + i * 0.1 }}
+                    transition={{
+                      duration: 1,
+                      ease: "easeOut",
+                      delay: 0.7 + i * 0.1,
+                    }}
                   />
                 </div>
                 <span className="text-[10px] text-[#5f5e5a] w-7 text-right flex-shrink-0">
