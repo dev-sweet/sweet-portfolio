@@ -2,8 +2,6 @@
 "use client";
 import ProjectCard from "@/components/shared/ProjectCard";
 import Image from "next/image";
-import bgColor from "/public/projectsbg1.jpg";
-import bgWhite from "/public/projectsbg.jpg";
 import styles from "./projects.module.css";
 import { MouseEvent, useEffect, useRef, useState } from "react";
 import { AuroraText } from "../../aurora-text";
@@ -41,14 +39,14 @@ const Projects = () => {
       }
     >
       <Image
-        src={bgWhite}
+        src="/projectsbg.jpg"
         alt="projects image color"
         className={styles.bgWhite}
         fill
         priority
       />
       <Image
-        src={bgColor}
+        src="/projectsbg1.jpg"
         alt="projects image black and white"
         className={styles.bgColor}
         fill
