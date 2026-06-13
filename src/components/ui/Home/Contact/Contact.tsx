@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import GlassInput from "./GlassInput";
-
+import toast from 'react-hot-toast';
 function Reveal({
   children,
   delay = 0,
@@ -20,10 +20,10 @@ function Reveal({
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   const offsets = {
-    up:    { x: 0,   y: 28 },
-    left:  { x: -28, y: 0  },
-    right: { x: 28,  y: 0  },
-    none:  { x: 0,   y: 0  },
+    up: { x: 0, y: 28 },
+    left: { x: -28, y: 0 },
+    right: { x: 28, y: 0 },
+    none: { x: 0, y: 0 },
   };
 
   return (
@@ -41,28 +41,42 @@ function Reveal({
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [errors, setErrors]     = useState({ name: "", email: "", message: "" });
-  const [sent, setSent]         = useState(false);
+  const [errors, setErrors] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev)   => ({ ...prev, [name]: "" }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const nextErrors = {
-      name:    formData.name.trim()    ? "" : "Name is required",
-      email:   formData.email.trim()   ? "" : "Email is required",
+      name: formData.name.trim() ? "" : "Name is required",
+      email: formData.email.trim() ? "" : "Email is required",
       message: formData.message.trim() ? "" : "Message is required",
     };
     setErrors(nextErrors);
     if (Object.values(nextErrors).some(Boolean)) return;
+    console.log(formData);
+    const semdEmail = fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(res => res.json())
+      .then(data => console.log(data));
 
-    console.log("Contact form data:", formData);
+    toast.promise(semdEmail, {
+      loading: "Sending message...",
+      success: "Message sent successfully",
+      error: "Failed to send message"
+    })
     setFormData({ name: "", email: "", message: "" });
     setSent(true);
     setTimeout(() => setSent(false), 3000);
@@ -78,7 +92,7 @@ const ContactForm = () => {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0f0f20] border border-[#2a2a4a] mb-6">
             <div className="w-2 h-2 rounded-full bg-[#1d9e75] animate-pulse" />
             <span className="text-[11px] font-mono text-[#afa9ec] uppercase tracking-widest">
-               contact
+              contact
             </span>
           </div>
         </Reveal>
@@ -99,9 +113,9 @@ const ContactForm = () => {
 
           <div className="flex flex-col justify-center gap-4">
             {[
-              { icon: <Mail size={18} />,   title: "Email us",      value: "hello@youragency.com",  delay: 0.18 },
-              { icon: <Phone size={18} />,  title: "Call us",       value: "+1 (555) 000-0000",     delay: 0.26 },
-              { icon: <MapPin size={18} />, title: "Our location",  value: "Crosby Street, NY, US", delay: 0.34 },
+              { icon: <Mail size={18} />, title: "Email us", value: "hello@youragency.com", delay: 0.18 },
+              { icon: <Phone size={18} />, title: "Call us", value: "+1 (555) 000-0000", delay: 0.26 },
+              { icon: <MapPin size={18} />, title: "Our location", value: "Crosby Street, NY, US", delay: 0.34 },
             ].map((card) => (
               <Reveal key={card.title} direction="left" delay={card.delay}>
                 <ContactInfoCard
@@ -113,7 +127,7 @@ const ContactForm = () => {
             ))}
             <Reveal direction="up" delay={0.42}>
               <p className="font-mono text-[11px] text-[#5f5e5a] mt-4 tracking-widest">
-                 response_time: &lt; 24hrs
+                response_time: &lt; 24hrs
               </p>
             </Reveal>
           </div>
@@ -122,7 +136,7 @@ const ContactForm = () => {
 
               <Reveal direction="up" delay={0.28}>
                 <p className="font-mono text-[11px] text-[#5dcaa5] tracking-widest mb-6">
-                   send_message()
+                  send_message()
                 </p>
               </Reveal>
 
@@ -163,11 +177,10 @@ const ContactForm = () => {
                       placeholder="How can we help?"
                       value={formData.message}
                       onChange={handleChange}
-                      className={`w-full bg-[#080810] border rounded-xl p-4 text-white text-sm placeholder:text-[#3a3a4a] font-mono focus:outline-none focus:ring-1 transition-all resize-none ${
-                        errors.message
-                          ? "border-red-500/50 focus:ring-red-500/30"
-                          : "border-[#2a2a4a] focus:ring-[#534ab7]/40 focus:border-[#534ab7]"
-                      }`}
+                      className={`w-full bg-[#080810] border rounded-xl p-4 text-white text-sm placeholder:text-[#3a3a4a] font-mono focus:outline-none focus:ring-1 transition-all resize-none ${errors.message
+                        ? "border-red-500/50 focus:ring-red-500/30"
+                        : "border-[#2a2a4a] focus:ring-[#534ab7]/40 focus:border-[#534ab7]"
+                        }`}
                     />
                     {errors.message && (
                       <p className="text-xs text-red-400 font-mono">{errors.message}</p>
@@ -180,11 +193,10 @@ const ContactForm = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.97 }}
                     type="submit"
-                    className={`w-full font-semibold py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 mt-2 text-sm ${
-                      sent
-                        ? "bg-[#1D9E75] text-white border border-[#1D9E75]"
-                        : "bg-[#534ab7] hover:bg-[#7f77dd] text-white border border-[#534ab7]"
-                    }`}
+                    className={`w-full font-semibold py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 mt-2 text-sm ${sent
+                      ? "bg-[#1D9E75] text-white border border-[#1D9E75]"
+                      : "bg-[#534ab7] hover:bg-[#7f77dd] text-white border border-[#534ab7]"
+                      }`}
                   >
                     {sent ? (
                       <>
