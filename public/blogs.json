@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Building Scalable Full-Stack Apps with Next.js, Node.js, and MongoDB",
-    "image": "/blogs/fullstack.png",
+    "image": "/blogs/fullstack.jpg",
     "shortDescription": "Learn to build scalable full-stack apps with Next.js, Node.js, and MongoDB using best practices for real-world projects.",
     "longDescription": "Building scalable full-stack applications is essential for modern web development, especially when your app needs to handle growing traffic and complex data. In this blog, we explore how to leverage Next.js, Node.js, and MongoDB to create applications that are not only functional but also maintainable and performant. We start by discussing the architecture of a full-stack app, explaining how Next.js handles server-side rendering, static generation, and API routes, while Node.js serves as a reliable backend for handling business logic and routing. Then, we dive into MongoDB, showing how to structure your database, define schemas, and use indexing for faster queries. Beyond the basics, this guide covers best practices for building scalable applications: from organizing your project into reusable components, managing state effectively, and optimizing API endpoints, to implementing authentication, error handling, and security measures. We also discuss strategies for deploying your full-stack app to production environments, ensuring high availability and performance. By the end, you'll understand how to build full-stack applications that grow with your users and maintain clean, modular code, with practical insights and examples for production-ready projects."
   },
