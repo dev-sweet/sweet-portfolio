@@ -39,7 +39,7 @@ function Reveal({
   );
 }
 
-const ContactForm = () => {
+const ContactForm = ({ hideHeader = false }: { hideHeader?: boolean }) => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
@@ -83,32 +83,36 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="min-h-screen md:py-[80px] py-[40px] lg:px-32 md:px-16 sm:px-8 px-6 bg-[#080810] text-white relative overflow-hidden">
+    <section id="contact" className="min-h-screen md:py-[80px] py-[40px] lg:px-32 md:px-16 sm:px-8 px-6 bg-[#080810] text-white relative overflow-hidden">
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-[#534AB7]/10 blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#1D9E75]/8 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <Reveal direction="up" delay={0}>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0f0f20] border border-[#2a2a4a] mb-6">
-            <div className="w-2 h-2 rounded-full bg-[#1d9e75] animate-pulse" />
-            <span className="text-[11px] font-mono text-[#afa9ec] uppercase tracking-widest">
-              contact
-            </span>
-          </div>
-        </Reveal>
+        {!hideHeader && (
+          <>
+            <Reveal direction="up" delay={0}>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0f0f20] border border-[#2a2a4a] mb-6">
+                <div className="w-2 h-2 rounded-full bg-[#1d9e75] animate-pulse" />
+                <span className="text-[11px] font-mono text-[#afa9ec] uppercase tracking-widest">
+                  contact
+                </span>
+              </div>
+            </Reveal>
 
-        <Reveal direction="up" delay={0.08}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
-            Get in{" "}
-            <span className="text-[#7f77dd]">touch</span>
-          </h1>
-        </Reveal>
+            <Reveal direction="up" delay={0.08}>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
+                Get in{" "}
+                <span className="text-[#7f77dd]">touch</span>
+              </h1>
+            </Reveal>
 
-        <Reveal direction="up" delay={0.14}>
-          <p className="text-[#9a9a9a] text-base sm:text-lg mb-14 max-w-md">
-            Have questions or ready to transform your business with AI automation?
-          </p>
-        </Reveal>
+            <Reveal direction="up" delay={0.14}>
+              <p className="text-[#9a9a9a] text-base sm:text-lg mb-14 max-w-md">
+                Have questions or ready to transform your business with AI automation?
+              </p>
+            </Reveal>
+          </>
+        )}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
 
           <div className="flex flex-col justify-center gap-4">

@@ -3,6 +3,15 @@ import Footer from "@/components/shared/Footer";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCurso";
 import { Toaster } from "react-hot-toast";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sweet Ali — Portfolio",
+  description: "Full-Stack Web Developer Portfolio",
+  icons: {
+    icon: "/favicon.png",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -10,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className="bg-[#000000] text-white">
         <CustomCursor
           defaultCursorImg="/cursor1.png"
