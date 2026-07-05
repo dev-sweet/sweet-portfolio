@@ -31,16 +31,16 @@ const BlogCard = ({ blog, index, scrollYProgress }: BlogCardProps) => {
       }}
       className="
         sticky top-24 mx-auto mb-20
-        w-[80%]
+        w-[90%] md:w-[80%]
         rounded-2xl
         bg-[#0b0b0b]
-        p-10
+        p-6 md:p-10
         shadow-xl
-        flex gap-6
+        flex flex-col md:flex-row gap-6
       "
     >
       {/* Image */}
-      <div className="w-1/3 relative">
+      <div className="w-full md:w-1/3 h-52 md:h-auto min-h-[220px] md:min-h-0 relative">
         <Image
           src={blog.image}
           alt={blog.title}
@@ -51,7 +51,7 @@ const BlogCard = ({ blog, index, scrollYProgress }: BlogCardProps) => {
       </div>
 
       {/* Content */}
-      <div className="w-2/3 text-gray-300 flex flex-col justify-between">
+      <div className="w-full md:w-2/3 text-gray-300 flex flex-col justify-between">
         <div>
           {/* Extra dummy meta */}
           <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
@@ -60,8 +60,8 @@ const BlogCard = ({ blog, index, scrollYProgress }: BlogCardProps) => {
             <span>• 6 min read</span>
           </div>
 
-          <h1 className="text-3xl font-bold">{blog.title}</h1>
-          <p className="mt-4 leading-relaxed">{blog.shortDescription}</p>
+          <h1 className="text-2xl md:text-3xl font-bold">{blog.title}</h1>
+          <p className="mt-4 leading-relaxed text-sm md:text-base">{blog.shortDescription}</p>
         </div>
 
         <div className="flex items-center justify-between mt-6">

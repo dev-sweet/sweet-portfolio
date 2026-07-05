@@ -62,8 +62,8 @@ const Projects = () => {
             Here are some of my projects that I have worked on.
           </p>
           <div className="flex flex-wrap items-center justify-center mt-8 gap-8">
-            {projects.map((project: any) => (
-              <ProjectCard project={project} key={project.title} />
+            {projects.map((project: any, index: number) => (
+              <ProjectCard project={{ ...project, id: index + 1 }} key={project.title} />
             ))}
           </div>
           {/* <div className="text-center">

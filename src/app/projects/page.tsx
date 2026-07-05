@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
 import { Search, Github, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 interface Project {
   id: number;
@@ -191,7 +192,7 @@ export default function ProjectsPage() {
         <section className="max-w-6xl mx-auto px-6 md:px-12 mb-8">
           <div className="group rounded-xl border border-zinc-800 bg-zinc-900/50 hover-border-accent transition-all overflow-hidden">
             <div className="grid md:grid-cols-2">
-              <div className="relative min-h-[240px] overflow-hidden">
+              <Link href={`/projects/${featuredProject.id}`} className="relative min-h-[240px] overflow-hidden block">
                 <img
                   src={featuredProject.image}
                   alt={featuredProject.title}
@@ -204,12 +205,14 @@ export default function ProjectsPage() {
                   </span>
                   live
                 </span>
-              </div>
+              </Link>
               <div className="p-8 flex flex-col justify-center">
                 <span className="font-mono text-xs accent-text mb-3">// featured</span>
-                <h2 className="text-2xl md:text-3xl font-bold mb-3 group-accent-text transition-colors">
-                  {featuredProject.title}
-                </h2>
+                <Link href={`/projects/${featuredProject.id}`} className="hover:underline">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-3 group-accent-text transition-colors">
+                    {featuredProject.title}
+                  </h2>
+                </Link>
                 <p className="text-zinc-400 mb-5 leading-relaxed">{featuredProject.description}</p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {featuredProject.tags.map((tag) => (
@@ -257,7 +260,7 @@ export default function ProjectsPage() {
                 key={project.id}
                 className="group flex flex-col rounded-xl border border-zinc-800 bg-zinc-900/50 group-accent-border hover:-translate-y-1 transition-all overflow-hidden"
               >
-                <div className="aspect-video overflow-hidden relative">
+                <Link href={`/projects/${project.id}`} className="aspect-video overflow-hidden relative block">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -267,11 +270,13 @@ export default function ProjectsPage() {
                     <span className="inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400"></span>
                     live
                   </span>
-                </div>
+                </Link>
                 <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-lg font-semibold mb-2 leading-snug group-accent-text transition-colors">
-                    {project.title}
-                  </h3>
+                  <Link href={`/projects/${project.id}`} className="hover:underline">
+                    <h3 className="text-lg font-semibold mb-2 leading-snug group-accent-text transition-colors">
+                      {project.title}
+                    </h3>
+                  </Link>
                   <p className="text-sm text-zinc-400 leading-relaxed mb-4 line-clamp-2">
                     {project.description}
                   </p>

@@ -12,6 +12,7 @@ import {
   Instagram,
   Twitter,
 } from "lucide-react";
+import Link from "next/link";
 
 interface BlogPost {
   id: number;
@@ -189,8 +190,8 @@ export default function BlogsPage() {
       {/* Featured post */}
       {featuredPost && (
         <section className="max-w-6xl mx-auto px-6 md:px-12 mb-8">
-          <a
-            href="#"
+          <Link
+            href={`/blogs/${featuredPost.id}`}
             className="group block rounded-xl border border-zinc-800 bg-zinc-900/50 hover-border-accent transition-all overflow-hidden"
           >
             <div className="grid md:grid-cols-2">
@@ -223,7 +224,7 @@ export default function BlogsPage() {
                 </span>
               </div>
             </div>
-          </a>
+          </Link>
         </section>
       )}
 
@@ -232,9 +233,9 @@ export default function BlogsPage() {
         {regularPosts.length > 0 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {regularPosts.map((post) => (
-              <a
+              <Link
                 key={post.id}
-                href="#"
+                href={`/blogs/${post.id}`}
                 className="group flex flex-col rounded-xl border border-zinc-800 bg-zinc-900/50 hover-border-accent hover:-translate-y-1 transition-all overflow-hidden"
               >
                 <div className="aspect-video overflow-hidden">
@@ -265,7 +266,7 @@ export default function BlogsPage() {
                     </span>
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         )}
