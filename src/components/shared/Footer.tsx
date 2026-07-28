@@ -1,78 +1,61 @@
-import { Separator } from "@/components/ui/separator";
-import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
-const Footer = () => {
-  const date = new Date().getFullYear();
+import { Globe } from "lucide-react";
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="w-[90%] mx-auto  text-white">
-      <div className="flex items-center justify-center py-8 gap-4">
-        <Link
-          className="w-8 h-8 rounded-full flex items-center justify-center bg-[#1c1c1c] transition duration-1 hover:bg-[#3c3c3c]"
-          href="https://github.com/dev-sweet"
-          target="_blank"
-        >
-          <Github size={24} strokeWidth={2} />
-        </Link>
-        <Link
-          href="https://www.linkedin.com/in/sweet-ali/"
-          target="_blank"
-          className="w-8 h-8 rounded-full flex items-center justify-center bg-[#1c1c1c] transition duration-1 hover:bg-[#3c3c3c]"
-        >
-          <Linkedin size={24} strokeWidth={2} />
-        </Link>
-        <Link
-          href="https://www.instagram.com/sweet_4420"
-          target="_blank"
-          className="w-8 h-8 rounded-full flex items-center justify-center bg-[#1c1c1c] transition duration-1 hover:bg-[#3c3c3c]"
-        >
-          <Instagram size={24} strokeWidth={2} />
-        </Link>
-        <Link
-          href="https://x.com/dev_sweet007"
-          target="_blank"
-          className="w-8 h-8 rounded-full flex items-center justify-center bg-[#1c1c1c] transition duration-1 hover:bg-[#3c3c3c]"
-        >
-          <Twitter size={24} strokeWidth={2} />
-        </Link>
-      </div>
-      <Separator className="my-2 bg-gray-500" />
-      <div className="flex items-center justify-between py-5">
-        <div className="text-sm">
-          ©{date}{" "}
-          <Link
-            className="text-blue-500"
-            target="_blank"
-            href="https://github.com/dev-sweet"
-          >
-            dev sweet
+    <footer className="w-full bg-[#05050a] border-t border-[#1a1a2e]/60 py-8 lg:px-24 md:px-12 sm:px-8 px-6 text-zinc-500 relative z-10 select-none">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        {/* Left Side: Logo & System Copyright */}
+        <div className="flex flex-col items-center md:items-start gap-1 text-center md:text-left">
+          <Link href="/" className="cursor-hover text-lg font-black text-cyan-400 font-mono tracking-wider">
+            Sweet Ali
           </Link>
-          . All rights reserved.
+          <span className="font-mono text-[10px] sm:text-xs text-zinc-600 tracking-wider">
+            © {currentYear} Sweet Ali. Built with Passion & Modern Tech.
+          </span>
         </div>
-        <ul className="flex gap-6 text-sm">
-          <li>
-            <Link href="/" className="hover:text-white">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="/projects" className="hover:text-white">
-              Projects
-            </Link>
-          </li>
-          <li>
-            <Link href="/blogs" className="hover:text-white">
-              Blogs
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact" className="hover:text-white">
-              Contact
-            </Link>
-          </li>
-        </ul>
+
+        {/* Center: Social text links */}
+        <div className="flex items-center gap-6 font-mono text-[10px] sm:text-xs font-bold tracking-wider">
+          <a
+            href="https://github.com/dev-sweet"
+            target="_blank"
+            rel="noreferrer"
+            className="cursor-hover text-zinc-400 hover:text-cyan-400 transition-colors"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://linkedin.com/in/sweet-ali"
+            target="_blank"
+            rel="noreferrer"
+            className="cursor-hover text-zinc-400 hover:text-cyan-400 transition-colors"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://twitter.com/dev-sweet"
+            target="_blank"
+            rel="noreferrer"
+            className="cursor-hover text-zinc-400 hover:text-cyan-400 transition-colors"
+          >
+            Twitter
+          </a>
+        </div>
+
+        {/* Far Right: Availability badge */}
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-950/80 border border-zinc-900 font-mono text-[10px] sm:text-xs text-zinc-400 select-none">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+          </span>
+          Available for new opportunities
+        </div>
+
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

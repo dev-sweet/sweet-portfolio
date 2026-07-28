@@ -27,8 +27,12 @@ export default function RootLayout({
           size={40}
         />
         <Navbar />
-        {children}
-        <Footer />
+        <div className="pt-[70px] md:pt-0 md:pl-[80px] flex flex-col min-h-screen">
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </div>
         <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>

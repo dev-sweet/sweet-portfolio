@@ -1,3 +1,5 @@
+import React from "react";
+
 const GlassInput = ({
   label,
   type,
@@ -16,20 +18,20 @@ const GlassInput = ({
   error?: string;
 }) => (
   <div className="flex flex-col gap-2">
-    <label className="text-sm font-medium text-gray-400 ml-1">{label}</label>
+    <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest ml-1">{label}</label>
     <input
       name={name}
       type={type}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className={`w-full bg-white/5 border rounded-xl p-4 text-white placeholder:text-gray-600 focus:outline-none focus:ring-1 transition-all resize-none ${
+      className={`w-full bg-zinc-950/45 border rounded-xl p-4 text-white placeholder:text-zinc-600 focus:outline-none focus:ring-1 transition-all font-mono text-sm ${
         error
-          ? "border-red-400 focus:ring-red-400 focus:border-0"
-          : "border-white/10 focus:ring-white/20"
+          ? "border-red-500/50 focus:ring-red-500/30 focus:border-red-500"
+          : "border-zinc-800/80 focus:ring-purple-500/30 focus:border-[#7f77dd]"
       }`}
     />
-    {error ? <p className="m-0 p-0 text-xs text-red-400">{error}</p> : null}
+    {error && <p className="text-[10px] text-red-400 font-mono mt-0.5 ml-1">{error}</p>}
   </div>
 );
 

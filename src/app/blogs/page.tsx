@@ -1,7 +1,4 @@
-// Next.js App Router note: if you drop this into app/blogs/page.tsx,
-// add `"use client"` as the very first line (it uses useState),
-// and swap the <a> tags for next/link's <Link> where they should be internal routes.
-'use client'
+"use client";
 import { useState, useEffect } from "react";
 import {
   Search,
@@ -27,7 +24,15 @@ interface BlogPost {
   featured: boolean;
 }
 
-const TAGS = ["All", "Next.js", "Node.js", "MongoDB", "AI", "TypeScript", "React"];
+const TAGS = [
+  "All",
+  "Next.js",
+  "Node.js",
+  "MongoDB",
+  "AI",
+  "TypeScript",
+  "React",
+];
 
 export default function BlogsPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -62,12 +67,19 @@ export default function BlogsPage() {
             tag = "MongoDB";
           }
 
-          const dates = ["Jun 12, 2026", "Jun 08, 2026", "May 28, 2026", "May 15, 2026"];
+          const dates = [
+            "Jun 12, 2026",
+            "Jun 08, 2026",
+            "May 28, 2026",
+            "May 15, 2026",
+          ];
           const readTimes = ["12 min", "8 min", "10 min", "7 min"];
 
           return {
             ...post,
-            excerpt: post.shortDescription || post.longDescription?.substring(0, 150) + "...",
+            excerpt:
+              post.shortDescription ||
+              post.longDescription?.substring(0, 150) + "...",
             tag,
             date: dates[index % dates.length],
             readTime: readTimes[index % readTimes.length],
@@ -87,7 +99,8 @@ export default function BlogsPage() {
     const matchesTag = activeTag === "All" || post.tag === activeTag;
     const q = query.toLowerCase();
     const matchesQuery =
-      post.title.toLowerCase().includes(q) || post.excerpt.toLowerCase().includes(q);
+      post.title.toLowerCase().includes(q) ||
+      post.excerpt.toLowerCase().includes(q);
     return matchesTag && matchesQuery;
   });
 
@@ -105,7 +118,10 @@ export default function BlogsPage() {
         <section className="max-w-6xl mx-auto px-6 md:px-12 mb-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[1, 2, 3].map((n) => (
-              <div key={n} className="animate-pulse rounded-xl border border-zinc-905 bg-zinc-900/50 h-[380px] flex flex-col overflow-hidden">
+              <div
+                key={n}
+                className="animate-pulse rounded-xl border border-zinc-905 bg-zinc-900/50 h-[380px] flex flex-col overflow-hidden"
+              >
                 <div className="aspect-video bg-zinc-900 w-full"></div>
                 <div className="p-6 flex-1 flex flex-col gap-4">
                   <div className="h-3 w-16 bg-zinc-900 rounded"></div>
@@ -150,8 +166,9 @@ export default function BlogsPage() {
             Notes from the build log
           </h1>
           <p className="text-zinc-400 max-w-xl leading-relaxed">
-            Write-ups on the stack I actually ship with — Next.js, TypeScript, Node, and the
-            occasional AI feature that took three tries to get right.
+            Write-ups on the stack I actually ship with — Next.js, TypeScript,
+            Node, and the occasional AI feature that took three tries to get
+            right.
           </p>
         </div>
       </section>
@@ -175,10 +192,11 @@ export default function BlogsPage() {
               <button
                 key={tag}
                 onClick={() => setActiveTag(tag)}
-                className={`px-3 py-1.5 rounded-md text-xs font-mono border transition-colors ${activeTag === tag
-                  ? "accent-bg-soft accent-border-soft accent-text"
-                  : "border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
-                  }`}
+                className={`px-3 py-1.5 rounded-md text-xs font-mono border transition-colors ${
+                  activeTag === tag
+                    ? "accent-bg-soft accent-border-soft accent-text"
+                    : "border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
+                }`}
               >
                 {`--${tag.toLowerCase().replace(".", "")}`}
               </button>
@@ -196,11 +214,15 @@ export default function BlogsPage() {
           >
             <div className="grid md:grid-cols-2">
               <div className="p-8 flex flex-col justify-center order-2 md:order-1">
-                <span className="font-mono text-xs accent-text mb-3">// featured</span>
+                <span className="font-mono text-xs accent-text mb-3">
+                  // featured
+                </span>
                 <h2 className="text-2xl md:text-3xl font-bold mb-3 group-accent-text transition-colors">
                   {featuredPost.title}
                 </h2>
-                <p className="text-zinc-400 mb-6 leading-relaxed">{featuredPost.excerpt}</p>
+                <p className="text-zinc-400 mb-6 leading-relaxed">
+                  {featuredPost.excerpt}
+                </p>
                 <div className="flex items-center gap-4 text-xs font-mono text-zinc-500">
                   <span>{featuredPost.date}</span>
                   <span className="flex items-center gap-1">
@@ -287,15 +309,23 @@ export default function BlogsPage() {
               {posts.length}
               <span className="text-zinc-600">+</span>
             </p>
-            <p className="font-mono text-xs text-zinc-500 mt-1">// posts published</p>
+            <p className="font-mono text-xs text-zinc-500 mt-1">
+              // posts published
+            </p>
           </div>
           <div className="text-center py-6">
-            <p className="text-2xl md:text-3xl font-bold accent-text">{TAGS.length - 1}</p>
-            <p className="font-mono text-xs text-zinc-500 mt-1">// topics covered</p>
+            <p className="text-2xl md:text-3xl font-bold accent-text">
+              {TAGS.length - 1}
+            </p>
+            <p className="font-mono text-xs text-zinc-500 mt-1">
+              // topics covered
+            </p>
           </div>
           <div className="text-center py-6">
             <p className="text-2xl md:text-3xl font-bold accent-text">2026</p>
-            <p className="font-mono text-xs text-zinc-500 mt-1">// last updated</p>
+            <p className="font-mono text-xs text-zinc-500 mt-1">
+              // last updated
+            </p>
           </div>
         </div>
       </section>

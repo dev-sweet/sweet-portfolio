@@ -1,83 +1,77 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+
 import ProjectCard from "@/components/shared/ProjectCard";
-import Image from "next/image";
-import styles from "./projects.module.css";
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { AuroraText } from "../../aurora-text";
-// import Link from "next/link";
-const Projects = () => {
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
+export default function Projects() {
   const [projects, setProjects] = useState([]);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    containerRef.current.style.setProperty("--x", `${x}px`);
-    containerRef.current.style.setProperty("--y", `${y}px`);
-  };
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   useEffect(() => {
     fetch("/projects.json")
       .then((res) => res.json())
       .then((data) => setProjects(data));
   }, []);
+
   return (
-    <div
-      className="relative w-full h-auto"
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      style={
-        {
-          "--x": "50%",
-          "--y": "50%",
-        } as React.CSSProperties
-      }
+    <section
+      id="projects"
+      className="py-20 lg:px-32 md:px-16 sm:px-8 px-6 bg-transparent relative z-10"
+      ref={ref}
     >
-      <Image
-        src="/projectsbg.jpg"
-        alt="projects image color"
-        className={styles.bgWhite}
-        fill
-        priority
-      />
-      <Image
-        src="/projectsbg1.jpg"
-        alt="projects image black and white"
-        className={styles.bgColor}
-        fill
-        priority
-      />
+      {/* Glow highlight */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-[#3b82f6]/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="h-full">
-        <div className={styles.projectsContainer}>
-          <h1 className="text-4xl font-bold text-white">
-            Featured <AuroraText>Projects</AuroraText>
-          </h1>
-          <p className="mt-4 text-lg text-gray-100">
-            Here are some of my projects that I have worked on.
-          </p>
-          <div className="flex flex-wrap items-center justify-center mt-8 gap-8">
-            {projects.map((project: any, index: number) => (
-              <ProjectCard project={{ ...project, id: index + 1 }} key={project.title} />
-            ))}
-          </div>
-          {/* <div className="text-center">
-            <Link
-              href="/projects"
-              className="mt-12 inline-flex items-center justify-center px-6 py-3 bg-[#1e1e1e] text-white rounded-md hover:bg-[#1e1e1e] border border-gray-300 transition-all font-bold hover:border-[#018673]"
-            >
-              View All Projects
-            </Link>
-          </div> */}
+      <div className="container mx-auto">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight"
+          >
+            Engineering <AuroraText>Solutions</AuroraText>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-zinc-500 font-mono text-xs sm:text-sm mt-3 uppercase tracking-wider font-semibold"
+          >
+            Case studies in Full-stack architecture
+          </motion.p>
         </div>
-      </div>
-    </div>
-  );
-};
 
-export default Projects;
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center mt-12">
+          {projects.map((project: any, index: number) => (
+            <ProjectCard project={{ ...project, id: index + 1 }} key={project.title} />
+          ))}
+        </div>
+
+        {/* View All Projects CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="text-center mt-14"
+        >
+          <Link
+            href="/projects"
+            className="cursor-hover inline-flex items-center gap-2 bg-zinc-900/40 border border-zinc-800 hover:border-[#7f77dd] text-zinc-300 hover:text-white text-xs sm:text-sm font-semibold px-6 py-3.5 rounded-xl hover:bg-zinc-900/80 transition-all duration-300 backdrop-blur-sm shadow-md"
+          >
+            View All Projects
+            <ArrowRight size={14} />
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

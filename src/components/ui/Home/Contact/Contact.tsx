@@ -2,9 +2,10 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, ArrowRight, ShieldCheck } from "lucide-react";
 import GlassInput from "./GlassInput";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
+
 function Reveal({
   children,
   delay = 0,
@@ -20,9 +21,9 @@ function Reveal({
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   const offsets = {
-    up: { x: 0, y: 28 },
-    left: { x: -28, y: 0 },
-    right: { x: 28, y: 0 },
+    up: { x: 0, y: 24 },
+    left: { x: -24, y: 0 },
+    right: { x: 24, y: 0 },
     none: { x: 0, y: 0 },
   };
 
@@ -31,7 +32,7 @@ function Reveal({
       ref={ref}
       initial={{ opacity: 0, ...offsets[direction] }}
       animate={inView ? { opacity: 1, x: 0, y: 0 } : {}}
-      transition={{ duration: 0.55, ease: "easeOut", delay }}
+      transition={{ duration: 0.5, ease: "easeOut", delay }}
       className={className}
     >
       {children}
@@ -45,7 +46,7 @@ const ContactForm = ({ hideHeader = false }: { hideHeader?: boolean }) => {
   const [sent, setSent] = useState(false);
 
   const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -55,103 +56,139 @@ const ContactForm = ({ hideHeader = false }: { hideHeader?: boolean }) => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const nextErrors = {
-      name: formData.name.trim() ? "" : "Name is required",
-      email: formData.email.trim() ? "" : "Email is required",
-      message: formData.message.trim() ? "" : "Message is required",
+      name: formData.name.trim() ? "" : "Full Name is required",
+      email: formData.email.trim() ? "" : "Email Address is required",
+      message: formData.message.trim() ? "" : "Message content is required",
     };
     setErrors(nextErrors);
     if (Object.values(nextErrors).some(Boolean)) return;
-    console.log(formData);
-    const semdEmail = fetch('/api/contact', {
-      method: 'POST',
+
+    const sendEmailPromise = fetch("/api/contact", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
+    }).then(async (res) => {
+      if (!res.ok) throw new Error("Failed to send message");
+      return res.json();
+    });
 
-    toast.promise(semdEmail, {
+    toast.promise(sendEmailPromise, {
       loading: "Sending message...",
-      success: "Message sent successfully",
-      error: "Failed to send message"
-    })
-    setFormData({ name: "", email: "", message: "" });
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
+      success: "Message sent successfully!",
+      error: "Failed to send message.",
+    });
+
+    try {
+      await sendEmailPromise;
+      setFormData({ name: "", email: "", message: "" });
+      setSent(true);
+      setTimeout(() => setSent(false), 3000);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
-    <section id="contact" className="min-h-screen md:py-[80px] py-[40px] lg:px-32 md:px-16 sm:px-8 px-6 bg-[#080810] text-white relative overflow-hidden">
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-[#534AB7]/10 blur-[140px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#1D9E75]/8 blur-[100px] rounded-full pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        {!hideHeader && (
-          <>
+    <section
+      id="contact"
+      className="md:py-24 py-16 lg:px-24 md:px-12 sm:px-8 px-6 bg-transparent text-white relative overflow-hidden z-10"
+    >
+      <div className="max-w-5xl mx-auto relative">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
+          
+          {/* Left Column info */}
+          <div className="flex flex-col gap-6 text-left">
+            {/* Pulsing Badge */}
             <Reveal direction="up" delay={0}>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0f0f20] border border-[#2a2a4a] mb-6">
-                <div className="w-2 h-2 rounded-full bg-[#1d9e75] animate-pulse" />
-                <span className="text-[11px] font-mono text-[#afa9ec] uppercase tracking-widest">
-                  contact
+              <div className="inline-flex items-center gap-2 self-start">
+                <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse shadow-md shadow-purple-500/20" />
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest font-bold">
+                  CONNECT
                 </span>
               </div>
             </Reveal>
 
+            {/* Heading */}
             <Reveal direction="up" delay={0.08}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
-                Get in{" "}
-                <span className="text-[#7f77dd]">touch</span>
-              </h1>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1]">
+                Start a <br />
+                <span className="bg-gradient-to-r from-cyan-400 to-[#3b82f6] bg-clip-text text-transparent">
+                  Dialogue
+                </span>
+              </h2>
             </Reveal>
 
+            {/* Bio text */}
             <Reveal direction="up" delay={0.14}>
-              <p className="text-[#9a9a9a] text-base sm:text-lg mb-14 max-w-md">
-                Have questions or ready to transform your business with AI automation?
+              <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-light max-w-sm">
+                Currently inviting new high-impact projects and senior full-stack opportunities. Let&apos;s discuss your roadmap.
               </p>
             </Reveal>
-          </>
-        )}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
 
-          <div className="flex flex-col justify-center gap-4">
-            {[
-              { icon: <Mail size={18} />, title: "Email us", value: "hello@youragency.com", delay: 0.18 },
-              { icon: <Phone size={18} />, title: "Call us", value: "+1 (555) 000-0000", delay: 0.26 },
-              { icon: <MapPin size={18} />, title: "Our location", value: "Crosby Street, NY, US", delay: 0.34 },
-            ].map((card) => (
-              <Reveal key={card.title} direction="left" delay={card.delay}>
-                <ContactInfoCard
-                  icon={card.icon}
-                  title={card.title}
-                  value={card.value}
-                />
+            {/* Info Cards */}
+            <div className="flex flex-col gap-4 mt-4">
+              {/* Primary Email */}
+              <Reveal direction="left" delay={0.2}>
+                <a
+                  href="mailto:hello@sweetali.dev"
+                  className="cursor-hover flex items-center gap-4 p-4 rounded-2xl bg-zinc-950/45 border border-zinc-850 hover:border-cyan-400 transition-colors duration-300"
+                >
+                  <div className="p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-cyan-400">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider font-bold block">
+                      EMAIL_PRIMARY
+                    </span>
+                    <span className="text-sm font-semibold text-zinc-300 mt-1 block">
+                      hello@sweetali.dev
+                    </span>
+                  </div>
+                </a>
               </Reveal>
-            ))}
-            <Reveal direction="up" delay={0.42}>
-              <p className="font-mono text-[11px] text-[#5f5e5a] mt-4 tracking-widest">
-                response_time: &lt; 24hrs
-              </p>
-            </Reveal>
-          </div>
-          <Reveal direction="right" delay={0.2} className="h-full">
-            <div className="bg-[#0f0f20] border border-[#2a2a4a] rounded-3xl p-8 md:p-10 h-full">
 
+              {/* Secure Phone */}
+              <Reveal direction="left" delay={0.28}>
+                <a
+                  href="tel:+8801234567890"
+                  className="cursor-hover flex items-center gap-4 p-4 rounded-2xl bg-zinc-950/45 border border-zinc-850 hover:border-cyan-400 transition-colors duration-300"
+                >
+                  <div className="p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-purple-400">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider font-bold block">
+                      SECURE_CONNECT
+                    </span>
+                    <span className="text-sm font-semibold text-zinc-300 mt-1 block">
+                      +880 1234 567890
+                    </span>
+                  </div>
+                </a>
+              </Reveal>
+            </div>
+          </div>
+
+          {/* Right Column Form */}
+          <Reveal direction="right" delay={0.2} className="h-full">
+            <div className="bg-zinc-950/45 border border-zinc-850 rounded-[28px] p-6 md:p-8 backdrop-blur-md shadow-2xl">
+              
+              {/* Endpoint signature */}
               <Reveal direction="up" delay={0.28}>
-                <p className="font-mono text-[11px] text-[#5dcaa5] tracking-widest mb-6">
-                  send_message()
+                <p className="font-mono text-[10px] text-cyan-400 tracking-wider mb-6 select-none font-bold">
+                  // POST /api/contact
                 </p>
               </Reveal>
 
               <form className="space-y-5" onSubmit={handleSubmit}>
-
                 <Reveal direction="up" delay={0.32}>
                   <GlassInput
-                    label="Name"
+                    label="Full Name"
                     type="text"
                     name="name"
-                    placeholder="Your Name"
+                    placeholder="Full Name"
                     value={formData.name}
                     onChange={handleChange}
                     error={errors.name}
@@ -160,7 +197,7 @@ const ContactForm = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 
                 <Reveal direction="up" delay={0.38}>
                   <GlassInput
-                    label="Email"
+                    label="Email Address"
                     type="email"
                     name="email"
                     placeholder="Email Address"
@@ -172,82 +209,56 @@ const ContactForm = ({ hideHeader = false }: { hideHeader?: boolean }) => {
 
                 <Reveal direction="up" delay={0.44}>
                   <div className="flex flex-col gap-2">
-                    <label className="text-[11px] font-mono text-[#5f5e5a] ml-1 uppercase tracking-widest">
-                      Message
+                    <label className="text-[10px] font-mono text-zinc-500 ml-1 uppercase tracking-widest font-bold">
+                      How can I assist?
                     </label>
                     <textarea
                       name="message"
                       rows={4}
-                      placeholder="How can we help?"
+                      placeholder="How can I assist?"
                       value={formData.message}
                       onChange={handleChange}
-                      className={`w-full bg-[#080810] border rounded-xl p-4 text-white text-sm placeholder:text-[#3a3a4a] font-mono focus:outline-none focus:ring-1 transition-all resize-none ${errors.message
-                        ? "border-red-500/50 focus:ring-red-500/30"
-                        : "border-[#2a2a4a] focus:ring-[#534ab7]/40 focus:border-[#534ab7]"
-                        }`}
+                      className={`w-full bg-zinc-950/45 border rounded-xl p-4 text-white text-sm placeholder:text-zinc-600 font-mono focus:outline-none focus:ring-1 transition-all resize-none ${
+                        errors.message
+                          ? "border-red-500/50 focus:ring-red-500/30 focus:border-red-500"
+                          : "border-zinc-800/80 focus:ring-cyan-500/30 focus:border-cyan-400"
+                      }`}
                     />
                     {errors.message && (
-                      <p className="text-xs text-red-400 font-mono">{errors.message}</p>
+                      <p className="text-[10px] text-red-400 font-mono mt-0.5 ml-1">{errors.message}</p>
                     )}
                   </div>
                 </Reveal>
 
                 <Reveal direction="up" delay={0.5}>
                   <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
+                    whileHover={{ scale: 1.01, y: -0.5 }}
+                    whileTap={{ scale: 0.99 }}
                     type="submit"
-                    className={`w-full font-semibold py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 mt-2 text-sm ${sent
-                      ? "bg-[#1D9E75] text-white border border-[#1D9E75]"
-                      : "bg-[#534ab7] hover:bg-[#7f77dd] text-white border border-[#534ab7]"
-                      }`}
+                    className={`cursor-hover w-full font-bold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-2 text-xs font-mono uppercase tracking-widest text-[#05050a] ${
+                      sent
+                        ? "bg-emerald-400 shadow-lg shadow-emerald-400/20"
+                        : "bg-cyan-400 hover:bg-cyan-300 shadow-lg shadow-cyan-500/10"
+                    }`}
                   >
                     {sent ? (
-                      <>
-                        <span className="font-mono text-xs">message_sent ✓</span>
-                      </>
+                      <span>TRANSMISSION_COMPLETE ✓</span>
                     ) : (
                       <>
-                        Submit
-                        <ArrowUpRight size={15} />
+                        SEND TRANSMISSION
+                        <ArrowRight size={14} />
                       </>
                     )}
                   </motion.button>
                 </Reveal>
-
               </form>
             </div>
           </Reveal>
+
         </div>
       </div>
     </section>
   );
 };
-
-const ContactInfoCard = ({
-  icon,
-  title,
-  value,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  value: string;
-}) => (
-  <div className="group flex items-center justify-between p-5 rounded-2xl bg-[#0f0f20] border border-[#2a2a4a] hover:border-[#534ab7] transition-all duration-200 cursor-pointer">
-    <div className="flex items-center gap-4">
-      <div className="p-2.5 rounded-xl bg-[#080810] border border-[#2a2a4a] text-[#7f77dd] group-hover:border-[#534ab7] transition-colors">
-        {icon}
-      </div>
-      <div>
-        <p className="text-[10px] font-mono text-[#5f5e5a] uppercase tracking-widest">{title}</p>
-        <p className="text-sm text-[#e0e0e0] mt-0.5">{value}</p>
-      </div>
-    </div>
-    <ArrowUpRight
-      size={16}
-      className="text-[#3a3a4a] group-hover:text-[#7f77dd] transition-colors"
-    />
-  </div>
-);
 
 export default ContactForm;

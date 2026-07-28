@@ -1,20 +1,23 @@
 [
   {
-    "title": "HelloKhata - AI-Powered Business Management Platform",
-    "description": "An AI-powered business management platform that streamlines accounting, sales, purchases, inventory, customer management, and financial transactions. Built with React, Next.js, TypeScript, and modern full-stack technologies to deliver intelligent insights, automation, and a seamless user experience.",
+    "title": "HelloKhata AI",
+    "description": "Enterprise-grade AI accounting ecosystem. Real-time ledger synchronization and automated fiscal reporting.",
     "image": "/projects/hellokhata.png",
-    "liveLink": "https://hellokhata-fe.vercel.app/"
+    "liveLink": "https://hellokhata-fe.vercel.app/",
+    "github": "https://github.com/dev-sweet"
   },
   {
-    "title": "LavEnterprise - Modern eCommerce Platform",
-    "description": "A modern and responsive eCommerce platform built to deliver a seamless online shopping experience. Features include product catalog management, category-based browsing, secure checkout, shopping cart, order management, user authentication, and a clean, mobile-friendly interface optimized for performance and scalability.",
+    "title": "LavEnterprise",
+    "description": "High-performance e-commerce engine for premium retail, featuring sub-second page loads and custom headless CMS.",
     "image": "/projects/laventerprise.png",
-    "liveLink": "https://laventerprise.shop/"
+    "liveLink": "https://laventerprise.shop/",
+    "github": "https://github.com/dev-sweet"
   },
   {
-    "title": "Tech Gear-Full Stack E-commerce Dashboard",
-    "description": "Tech Gear is a modern e-commerce platform designed for selling the latest gadgets and accessories. Built with React.js, Node.js, Express, and MongoDB, it offers a fast, responsive, and secure shopping experience.",
+    "title": "Tech Gear",
+    "description": "Next-gen electronics marketplace with integrated Stripe payments and robust inventory management system.",
     "image": "/projects/1.png",
-    "liveLink": "https://tech-gear-client-side.vercel.app/"
+    "liveLink": "https://tech-gear-client-side.vercel.app/",
+    "github": "https://github.com/dev-sweet"
   }
 ]
