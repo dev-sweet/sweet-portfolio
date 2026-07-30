@@ -1,5 +1,5 @@
 import Navbar from "@/components/shared/Navbar";
-import Footer from "@/components/shared/Footer";
+import MainContainer from "@/components/shared/MainContainer";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCurso";
 import { Toaster } from "react-hot-toast";
@@ -20,19 +20,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="bg-[#000000] text-white">
+      <body className="bg-[#070a14] text-white">
         <CustomCursor
           defaultCursorImg="/cursor1.png"
           hoverCursorImg="/pointer.png"
           size={40}
         />
         <Navbar />
-        <div className="pt-[70px] md:pt-0 md:pl-[80px] flex flex-col min-h-screen">
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </div>
+        <MainContainer>{children}</MainContainer>
         <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>

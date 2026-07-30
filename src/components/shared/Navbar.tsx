@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -13,188 +14,237 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { AlignJustify, Home, Code, FileText, Mail, Settings, User } from "lucide-react";
+import { AlignJustify, Home, Code, FileText, Mail, Terminal, User } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
   const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
-  const navItems = [
-    { label: "Home", href: "#home", icon: <Home className="w-5 h-5" /> },
-    { label: "About", href: "#about", icon: <User className="w-5 h-5" /> },
-    { label: "Projects", href: "#projects", icon: <Code className="w-5 h-5" /> },
-    { label: "Blogs", href: "#blogs", icon: <FileText className="w-5 h-5" /> },
-    { label: "Contact", href: "#contact", icon: <Mail className="w-5 h-5" /> },
+  const topNavItems = [
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "Blogs", href: "/blogs" },
+    { label: "Contact", href: "/contact" },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (pathname !== "/") return;
-
-      const sections = ["home", "about", "projects", "blogs", "contact"];
-      const scrollPosition = window.scrollY + 120; // offset
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [pathname]);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
-    if (pathname === "/" && href.startsWith("#")) {
-      e.preventDefault();
-      const targetId = href.substring(1);
-      const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        window.scrollTo({
-          top: targetEl.offsetTop - (window.innerWidth >= 768 ? 0 : 80),
-          behavior: "smooth",
-        });
-        setActiveSection(targetId);
-      }
-    }
-  };
-
-  const getHref = (href: string) => {
-    if (pathname === "/") return href;
-    if (href === "#home") return "/";
-    if (href === "#about") return "/about";
-    if (href === "#projects") return "/projects";
-    if (href === "#blogs") return "/blogs";
-    return "/";
-  };
+  const sidebarNavItems = [
+    { label: "Home", href: "/", icon: <Home className="w-5 h-5" /> },
+    { label: "About", href: "/about", icon: <User className="w-5 h-5" /> },
+    { label: "Projects", href: "/projects", icon: <Code className="w-5 h-5" /> },
+    { label: "Blogs", href: "/blogs", icon: <FileText className="w-5 h-5" /> },
+    { label: "Contact", href: "/contact", icon: <Mail className="w-5 h-5" /> },
+  ];
 
   return (
     <>
-      {/* ── Desktop Left Sidebar ── */}
-      <aside className="hidden md:flex fixed left-0 top-0 bottom-0 w-[80px] bg-[#05050a] border-r border-[#1a1a2e] flex-col justify-between py-8 items-center z-50">
-        {/* Logo */}
-        <Link href="/" className="text-xl font-black text-cyan-400 font-mono tracking-wider cursor-hover">
-          SA
-        </Link>
+      {/* ── Top Header Navigation Bar (Hidden on Homepage, Visible on all other pages) ── */}
+      {!isHomePage && (
+        <header className="fixed top-0 left-0 right-0 h-[70px] bg-[#070a14]/85 backdrop-blur-xl border-b border-[#141b2e] z-50 flex items-center justify-between px-6 md:px-10 select-none">
+          {/* Left: Brand Logo */}
+          <Link href="/" className="flex items-center gap-2.5 group cursor-hover">
+            <div className="w-9 h-9 rounded-xl bg-[#00f2fe]/10 border border-[#00f2fe]/30 flex items-center justify-center text-[#00f2fe] group-hover:bg-[#00f2fe] group-hover:text-zinc-950 transition-all duration-300 shadow-md shadow-cyan-500/10">
+              <Terminal className="w-5 h-5" />
+            </div>
+            <span className="text-lg font-black tracking-tight text-white font-sans">
+              Sweet <span className="text-[#00f2fe]">Ali</span>
+            </span>
+          </Link>
 
-        {/* Navigation Icons */}
-        <div className="flex flex-col gap-6 w-full items-center">
-          {navItems.map((item) => {
-            const itemHref = getHref(item.href);
+          {/* Center: Main Navigation Links (Desktop) */}
+          <nav className="hidden md:flex items-center gap-8 font-medium text-sm">
+            {topNavItems.map((item) => {
+              const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`relative py-1 transition-colors cursor-hover ${
+                    isActive ? "text-[#00f2fe] font-semibold" : "text-slate-300 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="topNavActive"
+                      className="absolute left-0 right-0 bottom-0 h-[2px] bg-[#00f2fe] rounded-full shadow-[0_0_8px_#00f2fe]"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Right: CTA Buttons (Resume & Hire Me) */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="/resume-sweet.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-hover px-4 py-1.5 rounded-xl border border-purple-500/50 text-purple-300 text-xs font-semibold hover:bg-purple-500/15 hover:border-purple-400 hover:scale-105 active:scale-95 transition-all duration-300 shadow-sm"
+            >
+              Resume
+            </a>
+            <Link
+              href="/contact"
+              className="cursor-hover px-4 py-1.5 rounded-xl bg-[#00f2fe] text-zinc-950 text-xs font-bold hover:bg-cyan-300 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-cyan-500/20"
+            >
+              Hire Me
+            </Link>
+          </div>
+
+          {/* Mobile Hamburger Trigger */}
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                className="md:hidden text-slate-200 hover:text-white hover:bg-white/10 p-2 cursor-pointer"
+              >
+                <AlignJustify className="w-6 h-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="bg-[#070a14]/95 backdrop-blur-2xl border-l border-[#141b2e] text-white p-8"
+            >
+              <SheetHeader className="text-left">
+                <SheetTitle className="text-white font-black text-xl tracking-tight flex items-center gap-2">
+                  <Terminal className="w-5 h-5 text-[#00f2fe]" />
+                  Sweet <span className="text-[#00f2fe]">Ali</span>
+                </SheetTitle>
+                <SheetDescription className="text-slate-400 text-xs font-mono">
+                  // full-stack developer portfolio
+                </SheetDescription>
+              </SheetHeader>
+              
+              <div className="flex flex-col gap-5 mt-10">
+                {sidebarNavItems.map((item) => {
+                  const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+                  return (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={`text-base font-semibold transition-colors py-2 border-b border-white/5 ${
+                        isActive ? "text-[#00f2fe]" : "text-slate-300 hover:text-[#00f2fe]"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              <div className="flex flex-col gap-3 mt-8 pt-6 border-t border-white/10">
+                <a
+                  href="/resume-sweet.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center py-2.5 rounded-xl border border-purple-500/50 text-purple-300 text-sm font-semibold bg-purple-500/10"
+                >
+                  Resume
+                </a>
+                <Link
+                  href="/contact"
+                  onClick={() => setOpen(false)}
+                  className="w-full text-center py-2.5 rounded-xl bg-[#00f2fe] text-zinc-950 text-sm font-bold shadow-lg shadow-cyan-500/20"
+                >
+                  Hire Me
+                </Link>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </header>
+      )}
+
+      {/* ── Desktop Left Vertical Sidebar Floating Bar (Always Visible) ── */}
+      <aside className={`hidden md:flex fixed left-0 ${isHomePage ? "top-0" : "top-[70px]"} bottom-0 w-[70px] bg-[#070a14]/90 backdrop-blur-xl border-r border-[#141b2e] flex-col justify-between py-6 items-center z-40 select-none`}>
+        {/* Top Floating Navigation Icons */}
+        <div className="flex flex-col gap-4 w-full items-center">
+          {sidebarNavItems.map((item) => {
             const isActive =
-              pathname === "/"
-                ? activeSection === item.href.substring(1)
-                : item.href === "#about"
-                ? pathname.startsWith("/about")
-                : item.href === "#projects"
-                ? pathname.startsWith("/projects")
-                : item.href === "#blogs"
-                ? pathname.startsWith("/blogs")
-                : false;
+              item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href);
 
             return (
               <Link
                 key={item.label}
-                href={itemHref}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="relative w-12 h-12 flex items-center justify-center rounded-xl cursor-hover group"
+                href={item.href}
+                className="relative group cursor-hover"
+                title={item.label}
               >
-                {/* Active Background Pill */}
-                {isActive && (
-                  <motion.div
-                    layoutId="sidebarActiveBg"
-                    className="absolute inset-0 bg-[#06b6d4] rounded-xl shadow-lg shadow-cyan-500/20"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-                {/* Icon */}
-                <span
-                  className={`relative z-10 transition-colors duration-200 ${
-                    isActive ? "text-[#05050a]" : "text-zinc-500 group-hover:text-zinc-200"
+                <div
+                  className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                    isActive
+                      ? "bg-[#00f2fe] text-zinc-950 shadow-lg shadow-cyan-500/30 scale-105"
+                      : "text-slate-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
                   {item.icon}
-                </span>
+                </div>
               </Link>
             );
           })}
         </div>
 
-        {/* Bottom Gear/Settings Icon */}
-        <div className="text-zinc-600 hover:text-zinc-400 cursor-hover transition-colors">
-          <Settings className="w-5 h-5" />
-        </div>
+        {/* Bottom Profile Avatar */}
+        <Link href="/about" className="relative group cursor-hover" title="Sweet Ali Profile">
+          <div className="w-10 h-10 rounded-full border-2 border-[#00f2fe]/60 overflow-hidden group-hover:border-[#00f2fe] transition-all duration-300 shadow-md shadow-cyan-500/20 group-hover:scale-110">
+            <Image
+              src="/hero.jpg"
+              alt="Sweet Ali Avatar"
+              width={40}
+              height={40}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[#070a14]" />
+        </Link>
       </aside>
 
-      {/* ── Mobile Top Navbar ── */}
-      <nav className="flex md:hidden fixed top-0 left-0 right-0 h-[70px] bg-[#05050a]/90 backdrop-blur-md border-b border-[#1a1a2e]/50 items-center justify-between px-6 z-50">
-        <Link href="/" className="text-xl font-black text-cyan-400 font-mono tracking-wider">
-          SA
-        </Link>
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild>
-            <Button
-              variant="ghost"
-              className="cursor-pointer text-zinc-300 hover:text-white hover:bg-[#2a2a4a]/40 p-2"
+      {/* Mobile Top Bar when on Homepage */}
+      {isHomePage && (
+        <nav className="flex md:hidden fixed top-0 left-0 right-0 h-[60px] bg-[#070a14]/90 backdrop-blur-md border-b border-[#141b2e]/50 items-center justify-between px-6 z-50">
+          <Link href="/" className="text-lg font-black text-[#00f2fe] font-mono tracking-wider">
+            SA
+          </Link>
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                className="text-slate-200 hover:text-white hover:bg-white/10 p-2 cursor-pointer"
+              >
+                <AlignJustify className="w-6 h-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="bg-[#070a14]/95 backdrop-blur-2xl border-l border-[#141b2e] text-white p-8"
             >
-              <AlignJustify className="w-6 h-6" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent
-            side="right"
-            className="bg-[#05050a]/95 backdrop-blur-lg border-l border-[#1a1a2e]/60 text-white p-8"
-          >
-            <SheetHeader className="text-left">
-              <SheetTitle className="text-cyan-400 font-black text-xl tracking-wider font-mono">
-                SA
-              </SheetTitle>
-              <SheetDescription className="text-zinc-500 text-xs font-mono">
-                // navigation menu
-              </SheetDescription>
-            </SheetHeader>
-            <div className="flex flex-col gap-6 mt-12 pl-2">
-              {navItems.map((item) => {
-                const itemHref = getHref(item.href);
-                const isActive =
-                  pathname === "/"
-                    ? activeSection === item.href.substring(1)
-                    : item.href === "#about"
-                    ? pathname.startsWith("/about")
-                    : item.href === "#projects"
-                    ? pathname.startsWith("/projects")
-                    : item.href === "#blogs"
-                    ? pathname.startsWith("/blogs")
-                    : false;
-
-                return (
+              <SheetHeader className="text-left">
+                <SheetTitle className="text-white font-black text-xl tracking-tight flex items-center gap-2">
+                  <Terminal className="w-5 h-5 text-[#00f2fe]" />
+                  Sweet <span className="text-[#00f2fe]">Ali</span>
+                </SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col gap-5 mt-10">
+                {sidebarNavItems.map((item) => (
                   <Link
                     key={item.label}
-                    onClick={(e) => {
-                      setOpen(false);
-                      handleNavClick(e, item.href);
-                    }}
-                    className={`text-lg transition-colors font-semibold ${
-                      isActive ? "text-cyan-400" : "text-zinc-300 hover:text-cyan-400"
-                    }`}
-                    href={itemHref}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="text-base font-semibold text-slate-300 hover:text-[#00f2fe] py-2 border-b border-white/5"
                   >
                     {item.label}
                   </Link>
-                );
-              })}
-            </div>
-          </SheetContent>
-        </Sheet>
-      </nav>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
+        </nav>
+      )}
     </>
   );
 }

@@ -1,90 +1,94 @@
 "use client";
 
-import { motion, MotionValue, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { Blog } from "./Blogs";
+import { User } from "lucide-react";
+
+export interface Blog {
+  id: number;
+  title: string;
+  image: string;
+  category?: string;
+  date?: string;
+  readTime?: string;
+  author?: string;
+  shortDescription: string;
+  longDescription?: string;
+}
 
 interface BlogCardProps {
   blog: Blog;
   index: number;
-  scrollYProgress: MotionValue<number>;
 }
 
-const BlogCard = ({ blog, index, scrollYProgress }: BlogCardProps) => {
-  // Each card gets its own scroll segment
-  const start = index * 0.15;
-  const end = start + 0.2;
-
-  // 🎯 Zoom-out + fade-in
-  const scale = useTransform(scrollYProgress, [start, end], [1.08, 1]);
+const BlogCard = ({ blog, index }: BlogCardProps) => {
+  const category = blog.category || "FRONTEND";
+  const date = blog.date || "Jan 2024";
+  const readTime = blog.readTime || "6 min read";
+  const author = blog.author || "Sweet Ali";
 
   return (
     <motion.div
-      style={{
-        scale,
-        willChange: "transform, opacity",
-        transformOrigin: "center top",
+      initial={{ opacity: 0, y: 40, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.15,
+        ease: [0.21, 0.47, 0.32, 0.98],
       }}
-      className="
-        sticky top-28 mx-auto mb-16
-        w-[95%] md:w-[85%] lg:w-[75%]
-        rounded-3xl
-        bg-zinc-900/25 border border-zinc-800/40
-        backdrop-blur-md
-        p-6 md:p-8
-        shadow-2xl shadow-black/30
-        hover:border-purple-500/25 hover:bg-zinc-900/35
-        transition-all duration-300
-        flex flex-col md:flex-row gap-6 md:gap-8
-      "
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="group w-full rounded-2xl bg-[#0a0c16]/90 border border-zinc-800/80 p-5 md:p-6 shadow-xl shadow-black/40 hover:border-indigo-500/30 hover:bg-[#0c0e1a] transition-all duration-300"
     >
-      {/* Image container */}
-      <div className="w-full md:w-[35%] h-52 md:h-auto min-h-[220px] md:min-h-0 relative overflow-hidden rounded-2xl border border-zinc-800/40">
-        <Image
-          src={blog.image}
-          alt={blog.title}
-          fill
-          sizes="(max-width: 768px) 100vw, 30vw"
-          className="object-cover transition-transform duration-700 hover:scale-105"
-          priority={index === 0}
-        />
-      </div>
+      <Link href={`/blogs/${blog.id}`} className="flex flex-col md:flex-row gap-6 md:gap-7 items-stretch">
+        {/* Left Thumbnail Image */}
+        <div className="w-full md:w-[300px] lg:w-[340px] h-48 sm:h-52 md:h-auto min-h-[180px] shrink-0 rounded-xl overflow-hidden relative border border-zinc-800/60 bg-zinc-950">
+          <Image
+            src={blog.image}
+            alt={blog.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 340px, 340px"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            priority={index === 0}
+          />
+        </div>
 
-      {/* Content */}
-      <div className="w-full md:w-[65%] text-gray-300 flex flex-col justify-between">
-        <div>
-          {/* Metadata pill row */}
-          <div className="flex items-center gap-4 text-[10px] font-mono text-zinc-500 mb-3.5 uppercase tracking-wider">
-            <span className="px-2.5 py-1 rounded-full bg-zinc-950/80 border border-zinc-800/60 font-semibold text-zinc-400">
-              Full Stack
-            </span>
-            <span>Jan 2026</span>
-            <span>• 6 min read</span>
+        {/* Right Details Content */}
+        <div className="flex flex-col justify-between flex-1 min-w-0">
+          <div>
+            {/* Category Tag + Date + Read Time */}
+            <div className="flex flex-wrap items-center gap-3 mb-3">
+              <span className="px-2.5 py-0.5 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950/40 border border-cyan-800/40 rounded-md">
+                {category}
+              </span>
+              <span className="font-mono text-xs text-zinc-400 font-medium tracking-tight">
+                {date} &bull; {readTime}
+              </span>
+            </div>
+
+            {/* Blog Title */}
+            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug group-hover:text-cyan-300 transition-colors line-clamp-2 mb-2.5">
+              {blog.title}
+            </h3>
+
+            {/* Short Description */}
+            <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-normal line-clamp-2 sm:line-clamp-3">
+              {blog.shortDescription}
+            </p>
           </div>
 
-          <h3 className="text-xl md:text-2xl font-extrabold text-white tracking-tight leading-tight">
-            {blog.title}
-          </h3>
-          <p className="mt-3.5 leading-relaxed text-xs sm:text-sm text-zinc-400 font-light">
-            {blog.shortDescription}
-          </p>
+          {/* Author Badge */}
+          <div className="flex items-center gap-2.5 mt-5 pt-2">
+            <div className="w-7 h-7 rounded-full border border-indigo-500/60 bg-indigo-950/50 flex items-center justify-center text-indigo-400 shrink-0">
+              <User size={14} className="text-indigo-300" />
+            </div>
+            <span className="text-sm font-semibold text-zinc-300">
+              {author}
+            </span>
+          </div>
         </div>
-
-        <div className="flex items-center justify-between mt-6 border-t border-zinc-900/60 pt-4">
-          <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
-            By Sweet Ali
-          </span>
-
-          <Link
-            href={`/blogs/${blog.id}`}
-            className="cursor-hover inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-200 hover:text-[#7f77dd] transition-colors"
-          >
-            Read More <ArrowUpRight size={14} />
-          </Link>
-        </div>
-      </div>
+      </Link>
     </motion.div>
   );
 };
