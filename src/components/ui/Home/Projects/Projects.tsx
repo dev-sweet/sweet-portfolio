@@ -21,7 +21,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-20 lg:px-32 md:px-16 sm:px-8 px-6 bg-transparent relative z-10"
+      className="py-20 lg:px-24 md:px-12 sm:px-8 px-6 bg-transparent relative z-10"
       ref={ref}
     >
       {/* Glow highlight */}

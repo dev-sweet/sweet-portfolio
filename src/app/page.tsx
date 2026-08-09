@@ -1,9 +1,9 @@
 import AnimatedBackground from "@/components/shared/AnimatedBackground";
 import HeroSection from "@/components/ui/Home/Hero/HeroSection";
-import Experience from "@/components/ui/Home/Experience/Experience";
 import Projects from "@/components/ui/Home/Projects/Projects";
 import Blogs from "@/components/ui/Home/Blogs/Blogs";
 import ContactForm from "@/components/ui/Home/Contact/Contact";
+import AboutMe from "@/components/ui/Home/About/About";
 
 export default function HomePage() {
   return (
@@ -14,7 +14,7 @@ export default function HomePage() {
       {/* Sections */}
       <div className="relative z-10">
         <HeroSection />
-        <Experience />
+        <AboutMe />
         <Projects />
         <Blogs />
         <ContactForm />

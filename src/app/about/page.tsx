@@ -151,15 +151,20 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="relative min-h-screen text-white bg-[#070a14] pt-6 pb-16 px-4 sm:px-8 lg:px-16 overflow-hidden select-none">
+    <div className="relative min-h-screen text-white bg-[#070a14] overflow-hidden select-none">
       <AnimatedBackground />
 
-      <div className="relative z-10 max-w-6xl mx-auto flex flex-col gap-10 sm:gap-12 pt-0">
-        
-        {/* ── Page Header: About Me ── */}
-        <section className="flex flex-col items-center text-center gap-3">
+      {/* ── Page Header: About Me ── */}
+      <section className="relative container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-12 overflow-hidden">
+        <span className="absolute -top-6 left-0 text-[6rem] md:text-[11rem] font-bold text-zinc-900/90 select-none leading-none tracking-tight font-mono pointer-events-none whitespace-nowrap">
+          ABOUT
+        </span>
+        <div className="relative z-10">
           <AnimatedSection delay={0} yOffset={25}>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white">
+            <p className="font-mono text-sm text-[#00f2fe] mb-3">
+              {`// about.init() — developer profile`}
+            </p>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
               About{" "}
               <span className="bg-gradient-to-r from-[#00f2fe] via-[#818cf8] to-[#a855f7] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(0,242,254,0.35)]">
                 Me
@@ -168,13 +173,16 @@ export default function AboutPage() {
           </AnimatedSection>
           
           <AnimatedSection delay={0.1} yOffset={20}>
-            <p className="max-w-2xl mx-auto text-slate-300 leading-relaxed text-sm sm:text-base font-light text-center">
-              I'm a Full-Stack Developer building scalable web applications with modern JavaScript. 
+            <p className="text-zinc-400 max-w-xl leading-relaxed">
+              I&apos;m a Full-Stack Developer building scalable web applications with modern JavaScript. 
               I specialize in clean frontend architectures and robust backend systems that deliver reliable, 
               type-safe solutions.
             </p>
           </AnimatedSection>
-        </section>
+        </div>
+      </section>
+
+      <section className="relative z-10 container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pb-16 flex flex-col gap-10 sm:gap-12">
 
         {/* ── First Grid (Row 1): Code Window + Technical Abilities ── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
@@ -255,7 +263,7 @@ export default function AboutPage() {
                   <div className="h-[1px] flex-grow bg-gradient-to-r from-[#00f2fe]/20 to-transparent" />
                 </div>
 
-                <div className="grid grid-cols-5 gap-2.5 sm:gap-3">
+                <div className="grid grid-cols-3 sm:grid-cols-5 gap-2.5 sm:gap-3">
                   {frontendSkills.map((skill, index) => (
                     <motion.div
                       key={skill.name}
@@ -282,7 +290,7 @@ export default function AboutPage() {
                   <div className="h-[1px] flex-grow bg-gradient-to-r from-[#00f2fe]/20 to-transparent" />
                 </div>
 
-                <div className="grid grid-cols-5 gap-2.5 sm:gap-3">
+                <div className="grid grid-cols-3 sm:grid-cols-5 gap-2.5 sm:gap-3">
                   {backendSkills.map((skill, index) => (
                     <motion.div
                       key={skill.name}
@@ -470,7 +478,7 @@ export default function AboutPage() {
           </div>
         </AnimatedSection>
 
-      </div>
+      </section>
     </div>
   );
 }

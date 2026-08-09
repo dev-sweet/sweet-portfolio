@@ -1,16 +1,16 @@
 [
   {
+    "title": "Personal Portfolio",
+    "description": "Modern full-stack developer portfolio showcasing professional experience, technical skills, and real-world projects, with a responsive interface, smooth animations, and a clean, recruiter-focused user experience.",
+    "image": "/projects/portfolio.png",
+    "liveLink": "https://sweet-portfolio1.vercel.app/",
+    "github": "https://github.com/dev-sweet"
+  },
+  {
     "title": "HelloKhata AI",
     "description": "Enterprise-grade AI accounting ecosystem. Real-time ledger synchronization and automated fiscal reporting.",
     "image": "/projects/hellokhata.png",
     "liveLink": "https://hellokhata-fe.vercel.app/",
-    "github": "https://github.com/dev-sweet"
-  },
-  {
-    "title": "LavEnterprise",
-    "description": "High-performance e-commerce engine for premium retail, featuring sub-second page loads and custom headless CMS.",
-    "image": "/projects/laventerprise.png",
-    "liveLink": "https://laventerprise.shop/",
     "github": "https://github.com/dev-sweet"
   },
   {

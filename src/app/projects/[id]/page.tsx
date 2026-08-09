@@ -113,8 +113,11 @@ export default function ProjectDetailPage() {
   useEffect(() => {
     const onScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0);
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(
+        docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0,
+      );
     };
     window.addEventListener("scroll", onScroll);
     onScroll();
@@ -129,12 +132,21 @@ export default function ProjectDetailPage() {
         const mapped = data.map((p, index) => {
           const text = `${p.title} ${p.description}`.toLowerCase();
           const tags: string[] = [];
-          if (text.includes("next.js") || text.includes("nextjs")) tags.push("Next.js");
+          if (text.includes("next.js") || text.includes("nextjs"))
+            tags.push("Next.js");
           if (text.includes("react")) tags.push("React");
-          if (text.includes("node") || text.includes("express")) tags.push("Node.js");
-          if (text.includes("typescript") || text.includes("ts")) tags.push("TypeScript");
-          if (text.includes("mongodb") || text.includes("mongo")) tags.push("MongoDB");
-          if (text.includes("ai") || text.includes("openai") || text.includes("chatbot")) tags.push("AI");
+          if (text.includes("node") || text.includes("express"))
+            tags.push("Node.js");
+          if (text.includes("typescript") || text.includes("ts"))
+            tags.push("TypeScript");
+          if (text.includes("mongodb") || text.includes("mongo"))
+            tags.push("MongoDB");
+          if (
+            text.includes("ai") ||
+            text.includes("openai") ||
+            text.includes("chatbot")
+          )
+            tags.push("AI");
           if (tags.length === 0) tags.push("React");
 
           const years = ["2026", "2025", "2025"];
@@ -169,12 +181,12 @@ export default function ProjectDetailPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased mt-20">
-        <section className="relative max-w-6xl mx-auto px-6 md:px-12 pt-16 pb-12 overflow-hidden animate-pulse">
+        <section className="relative container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-12 overflow-hidden animate-pulse">
           <div className="h-6 w-32 bg-zinc-900 rounded mb-4"></div>
           <div className="h-10 w-96 bg-zinc-900 rounded mb-4"></div>
           <div className="h-4 w-5/6 bg-zinc-900 rounded"></div>
         </section>
-        <section className="max-w-5xl mx-auto px-6 mb-12">
+        <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-12">
           <div className="aspect-[2/1] w-full bg-zinc-900 rounded-xl animate-pulse"></div>
         </section>
       </div>
@@ -184,9 +196,16 @@ export default function ProjectDetailPage() {
   if (!project) {
     return (
       <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased mt-20 flex flex-col items-center justify-center p-6">
-        <h1 className="text-3xl font-bold mb-4 font-mono text-zinc-300">404 — Project Not Found</h1>
-        <p className="text-zinc-500 mb-8 font-mono">The project code database could not locate this index.</p>
-        <Link href="/projects" className="px-5 py-2.5 rounded-md bg-[#5dcaa5] text-zinc-950 font-bold hover:bg-[#4cb291] transition-colors">
+        <h1 className="text-3xl font-bold mb-4 font-mono text-zinc-300">
+          404 — Project Not Found
+        </h1>
+        <p className="text-zinc-500 mb-8 font-mono">
+          The project code database could not locate this index.
+        </p>
+        <Link
+          href="/projects"
+          className="px-5 py-2.5 rounded-md bg-[#5dcaa5] text-zinc-950 font-bold hover:bg-[#4cb291] transition-colors"
+        >
           Return to projects.list()
         </Link>
       </div>
@@ -205,11 +224,13 @@ export default function ProjectDetailPage() {
       "Responsive interfaces styled using utility utility tools.",
       "Custom interaction triggers.",
     ],
-    lessons: ["Incremental validation reduces form exceptions and maintains database state integrity."],
+    lessons: [
+      "Incremental validation reduces form exceptions and maintains database state integrity.",
+    ],
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased">
+    <div className="min-h-screen  text-zinc-100 font-sans antialiased">
       <style>{`
         html { scroll-behavior: smooth; }
         .accent-text { color: #5dcaa5; }
@@ -230,7 +251,7 @@ export default function ProjectDetailPage() {
       </div>
 
       {/* Header & Back Link */}
-      <header className="max-w-4xl mx-auto px-6 pt-24 pb-6">
+      <header className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-6">
         <Link
           href="/projects"
           className="inline-flex items-center gap-2 font-mono text-xs text-zinc-500 hover:text-zinc-200 transition-colors mb-8"
@@ -268,7 +289,7 @@ export default function ProjectDetailPage() {
       </header>
 
       {/* Project Image banner */}
-      <div className="max-w-5xl mx-auto px-6 mb-12">
+      <div className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-12">
         <div className="rounded-xl overflow-hidden border border-zinc-800 relative group">
           <img
             src={project.image}
@@ -279,7 +300,7 @@ export default function ProjectDetailPage() {
       </div>
 
       {/* Main content grid */}
-      <div className="max-w-5xl mx-auto px-6 grid lg:grid-cols-[1fr_280px] gap-12 lg:gap-16">
+      <div className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 grid lg:grid-cols-[1fr_280px] gap-12 lg:gap-16">
         {/* Left Column: Case Study */}
         <article className="max-w-2xl text-zinc-300 leading-relaxed space-y-10">
           <div>
@@ -293,7 +314,8 @@ export default function ProjectDetailPage() {
 
           <div>
             <h2 className="text-2xl font-bold text-zinc-100 mb-4 flex items-center gap-2">
-              <span className="accent-text font-mono text-lg">#</span> Technical Challenges
+              <span className="accent-text font-mono text-lg">#</span> Technical
+              Challenges
             </h2>
             <ul className="space-y-4">
               {study.challenges.map((challenge, i) => (
@@ -307,7 +329,8 @@ export default function ProjectDetailPage() {
 
           <div>
             <h2 className="text-2xl font-bold text-zinc-100 mb-4 flex items-center gap-2">
-              <span className="accent-text font-mono text-lg">#</span> Key Features
+              <span className="accent-text font-mono text-lg">#</span> Key
+              Features
             </h2>
             <ul className="space-y-4">
               {study.features.map((feature, i) => (
@@ -321,7 +344,8 @@ export default function ProjectDetailPage() {
 
           <div>
             <h2 className="text-2xl font-bold text-zinc-100 mb-4 flex items-center gap-2">
-              <span className="accent-text font-mono text-lg">#</span> Engineering Lessons
+              <span className="accent-text font-mono text-lg">#</span>{" "}
+              Engineering Lessons
             </h2>
             <ul className="space-y-4">
               {study.lessons.map((lesson, i) => (
@@ -339,7 +363,9 @@ export default function ProjectDetailPage() {
           <div className="sticky top-24 space-y-6">
             {/* Quick Actions */}
             <div className="p-6 rounded-xl border border-zinc-800 bg-zinc-900/40 space-y-4">
-              <p className="font-mono text-xs text-zinc-500">// deploy.actions()</p>
+              <p className="font-mono text-xs text-zinc-500">
+                // deploy.actions()
+              </p>
               <a
                 href={project.liveLink || "#"}
                 target="_blank"
@@ -362,7 +388,9 @@ export default function ProjectDetailPage() {
 
             {/* Quick Details */}
             <div className="p-6 rounded-xl border border-zinc-800 bg-zinc-900/40 space-y-4">
-              <p className="font-mono text-xs text-zinc-500">// build.details()</p>
+              <p className="font-mono text-xs text-zinc-500">
+                // build.details()
+              </p>
               <div className="text-xs font-mono space-y-3">
                 <div className="flex justify-between py-1 border-b border-zinc-900">
                   <span className="text-zinc-500">Year</span>
@@ -394,8 +422,10 @@ export default function ProjectDetailPage() {
 
       {/* Related Projects grid */}
       {related.length > 0 && (
-        <section className="max-w-5xl mx-auto px-6 mt-20 mb-20">
-          <p className="font-mono text-xs text-zinc-500 mb-5">// explore other builds</p>
+        <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mt-20 mb-20">
+          <p className="font-mono text-xs text-zinc-500 mb-5">
+            // explore other builds
+          </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {related.map((p) => (
               <Link
@@ -404,7 +434,11 @@ export default function ProjectDetailPage() {
                 className="group flex flex-col rounded-xl border border-zinc-800 bg-zinc-900/50 hover-border-accent hover:-translate-y-1 transition-all overflow-hidden"
               >
                 <div className="aspect-video overflow-hidden">
-                  <img src={p.image} alt={p.title} className="cover-img w-full h-full object-cover" />
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="cover-img w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-5 flex flex-col flex-1">
                   <span className="font-mono text-xs text-zinc-500 mb-3">

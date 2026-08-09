@@ -22,10 +22,10 @@ function Reveal({
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   const offsets = {
-    up:    { x: 0,   y: 32 },
-    left:  { x: -32, y: 0  },
-    right: { x: 32,  y: 0  },
-    none:  { x: 0,   y: 0  },
+    up: { x: 0, y: 32 },
+    left: { x: -32, y: 0 },
+    right: { x: 32, y: 0 },
+    none: { x: 0, y: 0 },
   };
 
   return (
@@ -77,30 +77,29 @@ const AboutMe = () => {
   ];
 
   const backendSkills = [
-    { name: "Node.js",  image: "/about/node.png"    },
-    { name: "Express",  image: "/about/express.png" },
-    { name: "JWT",      image: "/about/jwt.png"     },
-    { name: "MongoDB",  image: "/about/mongodb.png" },
-    { name: "Git",      image: "/about/git.png"     },
-    { name: "GitHub",   image: "/about/github.png"  },
-    { name: "Vercel",   image: "/about/vercel.png"  },
-    { name: "VS Code",  image: "/about/vscode.png"  },
+    { name: "Node.js", image: "/about/node.png" },
+    { name: "Express", image: "/about/express.png" },
+    { name: "JWT", image: "/about/jwt.png" },
+    { name: "MongoDB", image: "/about/mongodb.png" },
+    { name: "Git", image: "/about/git.png" },
+    { name: "GitHub", image: "/about/github.png" },
+    { name: "Vercel", image: "/about/vercel.png" },
+    { name: "VS Code", image: "/about/vscode.png" },
   ];
 
   const frontendSkills = [
-    { name: "Next.js",    image: "/about/next.png"     },
-    { name: "React",      image: "/about/react.png"    },
-    { name: "TypeScript", image: "/about/ts.png"       },
-    { name: "JavaScript", image: "/about/js.png"       },
-    { name: "Redux",      image: "/about/Redux.png"    },
-    { name: "Tailwind",   image: "/about/tw.png"       },
-    { name: "Firebase",   image: "/about/firebase.png" },
+    { name: "Next.js", image: "/about/next.png" },
+    { name: "React", image: "/about/react.png" },
+    { name: "TypeScript", image: "/about/ts.png" },
+    { name: "JavaScript", image: "/about/js.png" },
+    { name: "Redux", image: "/about/Redux.png" },
+    { name: "Tailwind", image: "/about/tw.png" },
+    { name: "Firebase", image: "/about/firebase.png" },
   ];
 
   return (
-    <section className="md:py-[80px] py-[40px] lg:px-32 md:px-16 sm:px-8 px-6 bg-[#0a0a0a] text-white overflow-hidden">
-      <div className="container mx-auto">
-
+    <section className="md:py-[80px] py-[40px] lg:px-24 md:px-12 sm:px-8 px-6 text-white overflow-hidden">
+      <div className="container mx-auto relative z-10">
         {/* ── Heading ── */}
         <Reveal direction="up" delay={0}>
           <h1 className="text-4xl font-bold text-gray-200 text-center pb-3">
@@ -113,15 +112,14 @@ const AboutMe = () => {
           <p className="mx-auto lg:max-w-7/12 text-gray-400 leading-relaxed text-lg pb-6">
             I&apos;m a Full-Stack Developer building scalable web applications
             with modern JavaScript. I specialize in clean frontend architectures
-            and robust backend systems that deliver reliable, type-safe solutions.
+            and robust backend systems that deliver reliable, type-safe
+            solutions.
           </p>
         </Reveal>
 
         <div className="pt-5 flex flex-col lg:flex-row items-center gap-12">
-
           {/* ── Left column ── */}
           <Reveal direction="left" delay={0.15} className="w-full lg:w-1/2">
-
             {/* Code card */}
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000" />
@@ -152,8 +150,12 @@ const AboutMe = () => {
                       <div>
                         <p className="text-xs text-gray-400">{item.title}</p>
                         <p className="text-sm font-medium">{item.value}</p>
-                        <p className="text-sm font-medium text-gray-300">{item.organization}</p>
-                        <p className="text-xs font-medium text-gray-300">{item.duration}</p>
+                        <p className="text-sm font-medium text-gray-300">
+                          {item.organization}
+                        </p>
+                        <p className="text-xs font-medium text-gray-300">
+                          {item.duration}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -163,9 +165,12 @@ const AboutMe = () => {
           </Reveal>
 
           {/* ── Right column ── */}
-          <Reveal direction="right" delay={0.2} className="w-full lg:w-1/2 space-y-6">
+          <Reveal
+            direction="right"
+            delay={0.2}
+            className="w-full lg:w-1/2 space-y-6"
+          >
             <div className="p-5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
-
               <Reveal direction="up" delay={0.25}>
                 <h2 className="text-center text-xl font-bold text-white pb-4">
                   Technical Abilites
@@ -175,7 +180,9 @@ const AboutMe = () => {
               {/* Frontend label */}
               <Reveal direction="up" delay={0.3}>
                 <div className="flex items-center gap-4 mb-5">
-                  <span className="text-xs uppercase tracking-widest text-purple-400 font-bold">Frontend</span>
+                  <span className="text-xs uppercase tracking-widest text-purple-400 font-bold">
+                    Frontend
+                  </span>
                   <div className="h-[1px] flex-grow bg-gradient-to-r from-purple-400/50 to-transparent" />
                 </div>
               </Reveal>
@@ -187,8 +194,16 @@ const AboutMe = () => {
                     <div className="group w-18 h-18 relative p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
                       <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-30 blur rounded-xl transition" />
                       <div className="relative flex flex-col gap-y-2 items-center">
-                        <Image className="object-fill" src={item.image} alt={item.name} width={30} height={30} />
-                        <p className="text-xs text-gray-300 font-semibold">{item.name}</p>
+                        <Image
+                          className="object-fill"
+                          src={item.image}
+                          alt={item.name}
+                          width={30}
+                          height={30}
+                        />
+                        <p className="text-xs text-gray-300 font-semibold">
+                          {item.name}
+                        </p>
                       </div>
                     </div>
                   </Reveal>
@@ -198,7 +213,9 @@ const AboutMe = () => {
               {/* Backend label */}
               <Reveal direction="up" delay={0.4}>
                 <div className="flex items-center gap-4 my-5">
-                  <span className="text-xs uppercase tracking-widest text-blue-400 font-bold">Backends & Tools</span>
+                  <span className="text-xs uppercase tracking-widest text-blue-400 font-bold">
+                    Backends & Tools
+                  </span>
                   <div className="h-[1px] flex-grow bg-gradient-to-r from-blue-400/50 to-transparent" />
                 </div>
               </Reveal>
@@ -225,7 +242,6 @@ const AboutMe = () => {
                   </Reveal>
                 ))}
               </div>
-
             </div>
           </Reveal>
         </div>

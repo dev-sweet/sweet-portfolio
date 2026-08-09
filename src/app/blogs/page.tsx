@@ -110,12 +110,12 @@ export default function BlogsPage() {
   if (loading) {
     return (
       <div className="mt-20 min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased">
-        <section className="relative max-w-6xl mx-auto px-6 md:px-12 pt-16 pb-12 overflow-hidden animate-pulse">
+        <section className="relative container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-12 overflow-hidden animate-pulse">
           <div className="h-6 w-32 bg-zinc-900 rounded mb-4"></div>
           <div className="h-10 w-80 bg-zinc-900 rounded mb-4"></div>
           <div className="h-4 w-96 bg-zinc-900 rounded"></div>
         </section>
-        <section className="max-w-6xl mx-auto px-6 md:px-12 mb-16">
+        <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[1, 2, 3].map((n) => (
               <div
@@ -141,7 +141,7 @@ export default function BlogsPage() {
   }
 
   return (
-    <div className="mt-20 min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased">
+    <div className="min-h-screen text-zinc-100 font-sans antialiased">
       <style>{`
         .accent-text { color: #5dcaa5; }
         .accent-bg-soft { background-color: rgba(93, 202, 165, 0.1); }
@@ -154,7 +154,7 @@ export default function BlogsPage() {
       `}</style>
 
       {/* Hero */}
-      <section className="relative max-w-6xl mx-auto px-6 md:px-12 pt-16 pb-12 overflow-hidden">
+      <section className="relative container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-12 overflow-hidden">
         <span className="absolute -top-6 left-0 text-[6rem] md:text-[11rem] font-bold text-zinc-900/90 select-none leading-none tracking-tight font-mono pointer-events-none whitespace-nowrap">
           BLOG
         </span>
@@ -174,7 +174,7 @@ export default function BlogsPage() {
       </section>
 
       {/* Search + filters */}
-      <section className="max-w-6xl mx-auto px-6 md:px-12 mb-10">
+      <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-10">
         <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
           <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2.5 font-mono text-sm w-full md:max-w-sm focus-border-accent transition-colors">
             <span className="text-zinc-500">$</span>
@@ -207,7 +207,7 @@ export default function BlogsPage() {
 
       {/* Featured post */}
       {featuredPost && (
-        <section className="max-w-6xl mx-auto px-6 md:px-12 mb-8">
+        <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-8">
           <Link
             href={`/blogs/${featuredPost.id}`}
             className="group block rounded-xl border border-zinc-800 bg-zinc-900/50 hover-border-accent transition-all overflow-hidden"
@@ -251,7 +251,7 @@ export default function BlogsPage() {
       )}
 
       {/* Post grid */}
-      <section className="max-w-6xl mx-auto px-6 md:px-12 mb-16">
+      <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-16">
         {regularPosts.length > 0 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {regularPosts.map((post) => (
@@ -302,7 +302,7 @@ export default function BlogsPage() {
       </section>
 
       {/* Stats */}
-      <section className="max-w-6xl mx-auto px-6 md:px-12 mb-16">
+      <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-16">
         <div className="grid grid-cols-3 divide-x divide-zinc-800 border border-zinc-800 rounded-xl overflow-hidden">
           <div className="text-center py-6">
             <p className="text-2xl md:text-3xl font-bold accent-text">

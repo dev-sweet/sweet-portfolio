@@ -55,7 +55,7 @@ export default function Technologies() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="technologies" className="py-20 lg:px-32 md:px-16 sm:px-8 px-6 bg-transparent relative z-10">
+    <section id="technologies" className="py-20 lg:px-24 md:px-12 sm:px-8 px-6 bg-transparent relative z-10">
       <div className="container mx-auto">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">

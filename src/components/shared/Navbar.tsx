@@ -23,6 +23,7 @@ export default function Navbar() {
 
   const topNavItems = [
     { label: "Home", href: "/" },
+    { label: "About Me", href: "/about" },
     { label: "Projects", href: "/projects" },
     { label: "Blogs", href: "/blogs" },
     { label: "Contact", href: "/contact" },

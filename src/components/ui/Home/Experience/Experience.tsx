@@ -7,7 +7,7 @@ import { FaReact, FaNodeJs, FaAws } from "react-icons/fa";
 export default function Experience() {
   return (
     <section id="about" className="py-16 lg:px-24 md:px-12 sm:px-8 px-6 bg-transparent relative z-10">
-      <div className="container mx-auto max-w-5xl">
+      <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-8 items-stretch">
           
           {/* ── Left Card: Developer Profile ── */}

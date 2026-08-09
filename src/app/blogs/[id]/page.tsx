@@ -46,33 +46,36 @@ const BLOG_CONTENTS: Record<
 > = {
   1: {
     toc: [
-      { id: "architecture", label: "Three-tier architecture with Next.js & Node" },
+      {
+        id: "architecture",
+        label: "Three-tier architecture with Next.js & Node",
+      },
       { id: "database", label: "MongoDB structuring and indexing" },
       { id: "performance", label: "Caching and route handlers optimization" },
-      { id: "takeaways", label: "Key takeaways" }
+      { id: "takeaways", label: "Key takeaways" },
     ],
     sections: [
       {
         type: "paragraph",
-        text: "Building scalable full-stack applications is essential for modern web development. When your app needs to handle growing traffic and complex data, a decoupled or structured API layout is crucial. In this guide, we look at how to leverage Next.js, Node.js, and MongoDB to build performant web services."
+        text: "Building scalable full-stack applications is essential for modern web development. When your app needs to handle growing traffic and complex data, a decoupled or structured API layout is crucial. In this guide, we look at how to leverage Next.js, Node.js, and MongoDB to build performant web services.",
       },
       {
         type: "heading",
         id: "architecture",
-        title: "Three-tier architecture with Next.js & Node"
+        title: "Three-tier architecture with Next.js & Node",
       },
       {
         type: "paragraph",
-        text: "Using Next.js as the front-end router alongside Node.js for backend services creates a clean separation of concerns. Next.js handles server-side rendering (SSR) and static site generation (SSG) seamlessly, while Node handles database querying and long-running services."
+        text: "Using Next.js as the front-end router alongside Node.js for backend services creates a clean separation of concerns. Next.js handles server-side rendering (SSR) and static site generation (SSG) seamlessly, while Node handles database querying and long-running services.",
       },
       {
         type: "heading",
         id: "database",
-        title: "MongoDB structuring and indexing"
+        title: "MongoDB structuring and indexing",
       },
       {
         type: "paragraph",
-        text: "MongoDB provides a flexible, schema-less store, but defining robust models is critical for data integrity. Here is how we configure database connections and index collections for high-speed searches."
+        text: "MongoDB provides a flexible, schema-less store, but defining robust models is critical for data integrity. Here is how we configure database connections and index collections for high-speed searches.",
       },
       {
         type: "code",
@@ -87,52 +90,52 @@ export async function dbConnect() {
   return mongoose.connect(MONGODB_URI!, {
     autoIndex: true, // Auto-build database indexes
   });
-}`
+}`,
       },
       {
         type: "heading",
         id: "performance",
-        title: "Caching and route handlers optimization"
+        title: "Caching and route handlers optimization",
       },
       {
         type: "paragraph",
-        text: "Next.js dynamic fetching features can put heavy load on databases if not cached correctly. We recommend setting up Next.js revalidation intervals on data queries and utilizing Redis for session stores."
+        text: "Next.js dynamic fetching features can put heavy load on databases if not cached correctly. We recommend setting up Next.js revalidation intervals on data queries and utilizing Redis for session stores.",
       },
       {
         type: "heading",
         id: "takeaways",
-        title: "Key takeaways"
+        title: "Key takeaways",
       },
       {
         type: "list",
         items: [
           "Decouple front-end display logic from compute-heavy backend processing.",
           "Index your query fields (e.g. email, status) in MongoDB to accelerate queries.",
-          "Implement validation middleware to sanitise all input payloads before writing."
-        ]
-      }
-    ]
+          "Implement validation middleware to sanitise all input payloads before writing.",
+        ],
+      },
+    ],
   },
   2: {
     toc: [
       { id: "code-splitting", label: "Code-splitting and React Suspense" },
       { id: "image-opt", label: "Modern image loading and layouts" },
       { id: "state-opt", label: "Reducing component re-renders" },
-      { id: "takeaways", label: "Key takeaways" }
+      { id: "takeaways", label: "Key takeaways" },
     ],
     sections: [
       {
         type: "paragraph",
-        text: "Frontend performance directly affects conversion rates and SEO rankings. If your bundle size is bloated, user interaction feels sluggish. Here are practical strategies to optimize load times and rendering performance."
+        text: "Frontend performance directly affects conversion rates and SEO rankings. If your bundle size is bloated, user interaction feels sluggish. Here are practical strategies to optimize load times and rendering performance.",
       },
       {
         type: "heading",
         id: "code-splitting",
-        title: "Code-splitting and React Suspense"
+        title: "Code-splitting and React Suspense",
       },
       {
         type: "paragraph",
-        text: "Large libraries should not load on the initial bundle if they are only used in specific modals or user paths. By using lazy loading, we load resources only when they are needed."
+        text: "Large libraries should not load on the initial bundle if they are only used in specific modals or user paths. By using lazy loading, we load resources only when they are needed.",
       },
       {
         type: "code",
@@ -151,70 +154,73 @@ export default function AnalyticsDashboard() {
       <HeavyChart />
     </Suspense>
   );
-}`
+}`,
       },
       {
         type: "heading",
         id: "image-opt",
-        title: "Modern image loading and layouts"
+        title: "Modern image loading and layouts",
       },
       {
         type: "paragraph",
-        text: "Unoptimized images are the leading cause of layout shifts and high bandwidth usage. Utilize Next.js Image component with pre-defined aspect ratios and blur placeholders."
+        text: "Unoptimized images are the leading cause of layout shifts and high bandwidth usage. Utilize Next.js Image component with pre-defined aspect ratios and blur placeholders.",
       },
       {
         type: "heading",
         id: "state-opt",
-        title: "Reducing component re-renders"
+        title: "Reducing component re-renders",
       },
       {
         type: "paragraph",
-        text: "Avoid hosting global states in high-level components unless absolutely necessary. Keep states localized to context layers or leaf nodes to prevent unnecessary visual tree updates."
+        text: "Avoid hosting global states in high-level components unless absolutely necessary. Keep states localized to context layers or leaf nodes to prevent unnecessary visual tree updates.",
       },
       {
         type: "heading",
         id: "takeaways",
-        title: "Key takeaways"
+        title: "Key takeaways",
       },
       {
         type: "list",
         items: [
           "Lazy load heavy modules using Next.js dynamic imports.",
           "Use AVIF or WebP formats to shrink image weight by up to 70%.",
-          "Profile re-renders using React Developer Tools to find bottlenecks."
-        ]
-      }
-    ]
+          "Profile re-renders using React Developer Tools to find bottlenecks.",
+        ],
+      },
+    ],
   },
   3: {
     toc: [
       { id: "openai-api", label: "Interfacing with the OpenAI API" },
-      { id: "stream-response", label: "Streaming chat responses to the client" },
+      {
+        id: "stream-response",
+        label: "Streaming chat responses to the client",
+      },
       { id: "session-persist", label: "Session memory and database sync" },
-      { id: "takeaways", label: "Key takeaways" }
+      { id: "takeaways", label: "Key takeaways" },
     ],
     sections: [
       {
         type: "paragraph",
-        text: "AI chatbot integrations have become standard for modern user engagement. In this guide, we walk through constructing a real-time smart assistant using OpenAI API and streaming responses."
+        text: "AI chatbot integrations have become standard for modern user engagement. In this guide, we walk through constructing a real-time smart assistant using OpenAI API and streaming responses.",
       },
       {
         type: "heading",
         id: "openai-api",
-        title: "Interfacing with the OpenAI API"
+        title: "Interfacing with the OpenAI API",
       },
       {
         type: "paragraph",
-        text: "Connecting to OpenAI requires configuring api keys securely. Avoid exposing access tokens in front-end client variables; always route requests through back-end proxy routes."
+        text: "Connecting to OpenAI requires configuring api keys securely. Avoid exposing access tokens in front-end client variables; always route requests through back-end proxy routes.",
       },
       {
         type: "heading",
         id: "stream-response",
-        title: "Streaming chat responses to the client"
+        title: "Streaming chat responses to the client",
       },
       {
         type: "paragraph",
-        text: "Waiting for a full chatbot paragraph response takes seconds. Streaming outputs word-by-word makes your chatbot feel instant and responsive."
+        text: "Waiting for a full chatbot paragraph response takes seconds. Streaming outputs word-by-word makes your chatbot feel instant and responsive.",
       },
       {
         type: "code",
@@ -234,31 +240,31 @@ export async function POST(req: Request) {
   
   const stream = OpenAIStream(response);
   return new StreamingTextResponse(stream);
-}`
+}`,
       },
       {
         type: "heading",
         id: "session-persist",
-        title: "Session memory and database sync"
+        title: "Session memory and database sync",
       },
       {
         type: "paragraph",
-        text: "To give your AI context, pass past conversation logs along with new inputs, and persist historical message arrays in database tables."
+        text: "To give your AI context, pass past conversation logs along with new inputs, and persist historical message arrays in database tables.",
       },
       {
         type: "heading",
         id: "takeaways",
-        title: "Key takeaways"
+        title: "Key takeaways",
       },
       {
         type: "list",
         items: [
           "Secure sensitive credentials in server-side environment variables.",
           "Utilize streaming APIs to improve user perceived response speed.",
-          "Trim conversation history to avoid context window size inflation."
-        ]
-      }
-    ]
+          "Trim conversation history to avoid context window size inflation.",
+        ],
+      },
+    ],
   },
   4: {
     toc: [
@@ -266,30 +272,30 @@ export async function POST(req: Request) {
       { id: "shared-schema", label: "Defining a shared Zod schema" },
       { id: "server-action", label: "Using the schema in a server action" },
       { id: "client-form", label: "Wiring it up to the client form" },
-      { id: "takeaways", label: "Key takeaways" }
+      { id: "takeaways", label: "Key takeaways" },
     ],
     sections: [
       {
         type: "paragraph",
-        text: "Every form in an app used to have its validation logic written twice — once on the client for instant feedback, and again on the server because you should never trust the client. Keeping the two in sync was tedious. Here is how we collapse both using Server Actions and Zod."
+        text: "Every form in an app used to have its validation logic written twice — once on the client for instant feedback, and again on the server because you should never trust the client. Keeping the two in sync was tedious. Here is how we collapse both using Server Actions and Zod.",
       },
       {
         type: "heading",
         id: "the-problem",
-        title: "The problem with duplicated validation"
+        title: "The problem with duplicated validation",
       },
       {
         type: "paragraph",
-        text: "When validation rules are duplicated, client and server schemas can drift. A constraint updated on the server but missed on the client leads to unexpected submission errors. Defining a shared schema fixes this drift."
+        text: "When validation rules are duplicated, client and server schemas can drift. A constraint updated on the server but missed on the client leads to unexpected submission errors. Defining a shared schema fixes this drift.",
       },
       {
         type: "heading",
         id: "shared-schema",
-        title: "Defining a shared Zod schema"
+        title: "Defining a shared Zod schema",
       },
       {
         type: "paragraph",
-        text: "Write validation rules in a shared folder importable by both layers. This ensures single-source-of-truth types."
+        text: "Write validation rules in a shared folder importable by both layers. This ensures single-source-of-truth types.",
       },
       {
         type: "code",
@@ -302,50 +308,42 @@ export const postSchema = z.object({
   content: z.string().min(20, "Content is too short"),
 });
 
-export type PostInput = z.infer<typeof postSchema>;`
+export type PostInput = z.infer<typeof postSchema>;`,
       },
       {
         type: "heading",
         id: "server-action",
-        title: "Using the schema in a server action"
+        title: "Using the schema in a server action",
       },
       {
         type: "paragraph",
-        text: "With Next.js Server Actions, validating input on submit is simple. Use safeParse to capture validation errors instead of throwing try/catch errors."
+        text: "With Next.js Server Actions, validating input on submit is simple. Use safeParse to capture validation errors instead of throwing try/catch errors.",
       },
       {
         type: "heading",
         id: "client-form",
-        title: "Wiring it up to the client form"
+        title: "Wiring it up to the client form",
       },
       {
         type: "paragraph",
-        text: "Pass errors directly back from the Server Action to state handlers, letting the UI display field-specific alerts instantly."
+        text: "Pass errors directly back from the Server Action to state handlers, letting the UI display field-specific alerts instantly.",
       },
       {
         type: "heading",
         id: "takeaways",
-        title: "Key takeaways"
+        title: "Key takeaways",
       },
       {
         type: "list",
         items: [
           "Zod schemas serve both client and server validation requirements.",
           "Use safeParse to cleanly catch validator errors as return states.",
-          "Next.js Server Actions remove the need to write separate endpoint routes."
-        ]
-      }
-    ]
-  }
+          "Next.js Server Actions remove the need to write separate endpoint routes.",
+        ],
+      },
+    ],
+  },
 };
-
-function InlineCode({ children }: { children: React.ReactNode }) {
-  return (
-    <code className="px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 font-mono text-[0.85em] accent-text">
-      {children}
-    </code>
-  );
-}
 
 function CodeBlock({ filename, code }: { filename: string; code: string }) {
   const [copied, setCopied] = useState(false);
@@ -368,7 +366,11 @@ function CodeBlock({ filename, code }: { filename: string; code: string }) {
           onClick={handleCopy}
           className="font-mono text-xs text-zinc-500 hover:text-zinc-200 transition-colors flex items-center gap-1.5 cursor-pointer"
         >
-          {copied ? <Check className="w-3.5 h-3.5 accent-text" /> : <Copy className="w-3.5 h-3.5" />}
+          {copied ? (
+            <Check className="w-3.5 h-3.5 accent-text" />
+          ) : (
+            <Copy className="w-3.5 h-3.5" />
+          )}
           {copied ? "copied" : "copy"}
         </button>
       </div>
@@ -389,8 +391,11 @@ export default function BlogPostPage() {
   useEffect(() => {
     const onScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0);
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(
+        docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0,
+      );
     };
     window.addEventListener("scroll", onScroll);
     onScroll();
@@ -425,12 +430,19 @@ export default function BlogPostPage() {
             tag = "MongoDB";
           }
 
-          const dates = ["Jun 12, 2026", "Jun 08, 2026", "May 28, 2026", "May 15, 2026"];
+          const dates = [
+            "Jun 12, 2026",
+            "Jun 08, 2026",
+            "May 28, 2026",
+            "May 15, 2026",
+          ];
           const readTimes = ["12 min", "8 min", "10 min", "7 min"];
 
           return {
             ...blog,
-            excerpt: blog.shortDescription || blog.longDescription?.substring(0, 150) + "...",
+            excerpt:
+              blog.shortDescription ||
+              blog.longDescription?.substring(0, 150) + "...",
             tag,
             date: dates[index % dates.length],
             readTime: readTimes[index % readTimes.length],
@@ -454,13 +466,13 @@ export default function BlogPostPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased mt-20">
-        <section className="relative max-w-6xl mx-auto px-6 md:px-12 pt-16 pb-12 overflow-hidden animate-pulse">
+      <div className="min-h-screen text-zinc-100 font-sans antialiased mt-20">
+        <section className="relative container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-12 overflow-hidden animate-pulse">
           <div className="h-6 w-32 bg-zinc-900 rounded mb-4"></div>
           <div className="h-10 w-96 bg-zinc-900 rounded mb-4"></div>
           <div className="h-4 w-5/6 bg-zinc-900 rounded"></div>
         </section>
-        <section className="max-w-5xl mx-auto px-6 mb-12">
+        <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-12">
           <div className="aspect-[2/1] w-full bg-zinc-900 rounded-xl animate-pulse"></div>
         </section>
       </div>
@@ -470,9 +482,16 @@ export default function BlogPostPage() {
   if (!post) {
     return (
       <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased mt-20 flex flex-col items-center justify-center p-6">
-        <h1 className="text-3xl font-bold mb-4 font-mono text-zinc-300">404 — Post Not Found</h1>
-        <p className="text-zinc-500 mb-8 font-mono">The blog post database could not locate this article index.</p>
-        <Link href="/blogs" className="px-5 py-2.5 rounded-md bg-[#5dcaa5] text-zinc-950 font-bold hover:bg-[#4cb291] transition-colors">
+        <h1 className="text-3xl font-bold mb-4 font-mono text-zinc-300">
+          404 — Post Not Found
+        </h1>
+        <p className="text-zinc-500 mb-8 font-mono">
+          The blog post database could not locate this article index.
+        </p>
+        <Link
+          href="/blogs"
+          className="px-5 py-2.5 rounded-md bg-[#5dcaa5] text-zinc-950 font-bold hover:bg-[#4cb291] transition-colors"
+        >
           Return to blog.list()
         </Link>
       </div>
@@ -490,7 +509,7 @@ export default function BlogPostPage() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased">
+    <div className="min-h-screen text-zinc-100 font-sans antialiased">
       <style>{`
         html { scroll-behavior: smooth; }
         .accent-text { color: #5dcaa5; }
@@ -510,37 +529,8 @@ export default function BlogPostPage() {
         />
       </div>
 
-      {/* Nav */}
-      <nav className="flex items-center justify-between px-6 md:px-12 py-6 border-b border-zinc-800/60 max-w-6xl mx-auto">
-        <Link href="/" className="font-mono text-lg font-semibold tracking-tight">
-          <span className="accent-text">{"</"}</span>Sweet
-          <span className="accent-text">{">"}</span>
-        </Link>
-        <div className="hidden md:flex items-center gap-8 text-sm font-mono text-zinc-400">
-          <Link href="/" className="hover:text-zinc-100 transition-colors">
-            home
-          </Link>
-          <Link href="/projects" className="hover:text-zinc-100 transition-colors">
-            projects
-          </Link>
-          <Link href="/blogs" className="accent-text">
-            blogs
-          </Link>
-          <Link href="/contact" className="hover:text-zinc-100 transition-colors">
-            contact
-          </Link>
-        </div>
-        <div className="hidden md:flex items-center gap-2 text-xs font-mono text-zinc-400">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-          </span>
-          open to work
-        </div>
-      </nav>
-
       {/* Back link + header */}
-      <header className="max-w-3xl mx-auto px-6 pt-10 pb-6">
+      <header className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-6">
         <Link
           href="/blogs"
           className="inline-flex items-center gap-2 font-mono text-xs text-zinc-500 hover:text-zinc-200 transition-colors mb-8"
@@ -573,14 +563,18 @@ export default function BlogPostPage() {
       </header>
 
       {/* Cover image */}
-      <div className="max-w-5xl mx-auto px-6 mb-12">
+      <div className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-12">
         <div className="rounded-xl overflow-hidden border border-zinc-800">
-          <img src={post.image} alt={post.title} className="w-full aspect-[2/1] object-cover" />
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full aspect-[2/1] object-cover"
+          />
         </div>
       </div>
 
       {/* Content + TOC */}
-      <div className="max-w-5xl mx-auto px-6 grid lg:grid-cols-[1fr_240px] gap-12 lg:gap-16">
+      <div className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 grid lg:grid-cols-[1fr_240px] gap-12 lg:gap-16">
         <article className="max-w-2xl text-zinc-300 leading-relaxed space-y-6">
           {richContent.sections.map((section, idx) => {
             if (section.type === "paragraph") {
@@ -616,7 +610,9 @@ export default function BlogPostPage() {
                 <ul key={idx} className="space-y-4 my-6">
                   {section.items?.map((item, i) => (
                     <li key={i} className="flex gap-3 items-start">
-                      <span className="accent-text font-mono mt-1 shrink-0">→</span>
+                      <span className="accent-text font-mono mt-1 shrink-0">
+                        →
+                      </span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -630,7 +626,9 @@ export default function BlogPostPage() {
         {/* Table of contents */}
         <aside className="hidden lg:block">
           <div className="sticky top-24">
-            <p className="font-mono text-xs text-zinc-500 mb-4">// on this page</p>
+            <p className="font-mono text-xs text-zinc-500 mb-4">
+              // on this page
+            </p>
             <nav className="space-y-3 text-sm">
               {richContent.toc.map((item) => (
                 <a
@@ -647,16 +645,19 @@ export default function BlogPostPage() {
       </div>
 
       {/* Author card */}
-      <div className="max-w-3xl mx-auto px-6 mt-10">
+      <div className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mt-10">
         <div className="flex items-start gap-4 p-6 rounded-xl border border-zinc-800 bg-zinc-900/50">
           <div className="w-12 h-12 rounded-full accent-bg-soft flex items-center justify-center font-mono font-bold text-lg accent-text shrink-0">
             S
           </div>
           <div>
-            <p className="font-semibold text-zinc-100 mb-1">Written by dev sweet</p>
+            <p className="font-semibold text-zinc-100 mb-1">
+              Written by dev sweet
+            </p>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              Full-stack developer working mostly in the Next.js / Node / MongoDB stack. Writes
-              about the stuff that took longer to figure out than it should have.
+              Full-stack developer working mostly in the Next.js / Node /
+              MongoDB stack. Writes about the stuff that took longer to figure
+              out than it should have.
             </p>
           </div>
         </div>
@@ -664,8 +665,10 @@ export default function BlogPostPage() {
 
       {/* Related posts */}
       {related.length > 0 && (
-        <section className="max-w-5xl mx-auto px-6 mt-16 mb-16">
-          <p className="font-mono text-xs text-zinc-500 mb-5">// related posts</p>
+        <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mt-16 mb-16">
+          <p className="font-mono text-xs text-zinc-500 mb-5">
+            // related posts
+          </p>
           <div className="grid md:grid-cols-3 gap-5">
             {related.map((p) => (
               <Link
@@ -674,7 +677,11 @@ export default function BlogPostPage() {
                 className="group flex flex-col rounded-xl border border-zinc-800 bg-zinc-900/50 hover-border-accent hover:-translate-y-1 transition-all overflow-hidden"
               >
                 <div className="aspect-video overflow-hidden">
-                  <img src={p.image} alt={p.title} className="cover-img w-full h-full object-cover" />
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="cover-img w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-5 flex flex-col flex-1">
                   <span className="font-mono text-xs text-zinc-500 mb-3">{`[${p.tag.toLowerCase()}]`}</span>
@@ -694,41 +701,6 @@ export default function BlogPostPage() {
           </div>
         </section>
       )}
-
-      {/* Footer */}
-      <footer className="border-t border-zinc-800/60 mt-12">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4 text-zinc-500">
-            <a href="https://github.com/dev-sweet" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors">
-              <Github className="w-4 h-4" />
-            </a>
-            <a href="#" className="hover:text-zinc-200 transition-colors">
-              <Linkedin className="w-4 h-4" />
-            </a>
-            <a href="#" className="hover:text-zinc-200 transition-colors">
-              <Instagram className="w-4 h-4" />
-            </a>
-            <a href="#" className="hover:text-zinc-200 transition-colors">
-              <Twitter className="w-4 h-4" />
-            </a>
-          </div>
-          <div className="flex items-center gap-6 text-sm font-mono text-zinc-400">
-            <Link href="/" className="hover:text-zinc-100 transition-colors">
-              home
-            </Link>
-            <Link href="/projects" className="hover:text-zinc-100 transition-colors">
-              projects
-            </Link>
-            <Link href="/blogs" className="accent-text">
-              blogs
-            </Link>
-            <Link href="/contact" className="hover:text-zinc-100 transition-colors">
-              contact
-            </Link>
-          </div>
-          <p className="text-xs text-zinc-600 font-mono">© 2026 dev sweet. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 }
