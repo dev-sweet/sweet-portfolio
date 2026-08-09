@@ -239,7 +239,7 @@ export default function BlogsPage() {
                 <img
                   src={featuredPost.image}
                   alt={featuredPost.title}
-                  className="cover-img w-full h-full object-cover"
+                  className="cover-img w-full max-h-[500px] object-cover transition-transform duration-500"
                 />
                 <span className="absolute top-4 left-4 px-2 py-1 rounded bg-zinc-950/80 border border-zinc-800 font-mono text-xs text-zinc-300">
                   {featuredPost.tag}
