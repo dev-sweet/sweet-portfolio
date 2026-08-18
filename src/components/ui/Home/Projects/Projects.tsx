@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { AuroraText } from "../../aurora-text";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Code2 } from "lucide-react";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
@@ -21,15 +21,25 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-20 lg:px-24 md:px-12 sm:px-8 px-6 bg-transparent relative z-10"
+      className="py-0 bg-transparent relative z-10 w-full"
       ref={ref}
     >
-      {/* Glow highlight */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-[#3b82f6]/5 blur-[120px] rounded-full pointer-events-none" />
+      {/* Background ambient glow highlight */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/5 blur-[140px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+      <div className="w-full">
+        {/* Section Header */}
+        <div className="text-left max-w-2xl mb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-950/60 border border-zinc-800 text-cyan-400 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold mb-4 shadow-sm"
+          >
+            <Code2 size={13} />
+            CASE STUDIES & FEATURED WORK
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -43,16 +53,20 @@ export default function Projects() {
             initial={{ opacity: 0, y: 15 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-zinc-500 font-mono text-xs sm:text-sm mt-3 uppercase tracking-wider font-semibold"
+            className="text-zinc-400 font-light text-xs sm:text-sm mt-3 leading-relaxed"
           >
-            Case studies in Full-stack architecture
+            Production-ready web applications, microservices, and AI ecosystems built with clean architecture and scalable cloud infrastructure.
           </motion.p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center mt-12">
+        {/* Projects Column Container: Exactly 1 Card Per Row */}
+        <div className="flex flex-col gap-6 sm:gap-8 w-full mt-6">
           {projects.map((project: any, index: number) => (
-            <ProjectCard project={{ ...project, id: index + 1 }} key={project.title} />
+            <ProjectCard
+              project={{ ...project, id: index + 1 }}
+              key={project.title || index}
+              index={index}
+            />
           ))}
         </div>
 
@@ -61,11 +75,11 @@ export default function Projects() {
           initial={{ opacity: 0, y: 15 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.35 }}
-          className="text-center mt-14"
+          className="text-center mt-12"
         >
           <Link
             href="/projects"
-            className="cursor-hover inline-flex items-center gap-2 bg-zinc-900/40 border border-zinc-800 hover:border-[#7f77dd] text-zinc-300 hover:text-white text-xs sm:text-sm font-semibold px-6 py-3.5 rounded-xl hover:bg-zinc-900/80 transition-all duration-300 backdrop-blur-sm shadow-md"
+            className="cursor-hover inline-flex items-center gap-2 bg-zinc-950/60 border border-zinc-800 hover:border-cyan-400 text-zinc-300 hover:text-white text-xs sm:text-sm font-semibold px-6 py-3.5 rounded-xl hover:bg-zinc-950 transition-all duration-300 backdrop-blur-md shadow-lg shadow-black/20"
           >
             View All Projects
             <ArrowRight size={14} />

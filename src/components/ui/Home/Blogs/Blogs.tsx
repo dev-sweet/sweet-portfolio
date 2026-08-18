@@ -31,11 +31,11 @@ const Blogs = () => {
   }, []);
 
   return (
-    <section id="blogs" className="py-20 lg:px-24 md:px-12 sm:px-8 px-6 bg-transparent relative z-10">
+    <section id="blogs" className="py-0 bg-transparent relative z-10 w-full">
       {/* Background glow effect */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto">
+      <div className="w-full">
         {/* Header Section */}
         <div
           ref={headerRef}

@@ -6,10 +6,12 @@ import { FaReact, FaNodeJs, FaAws } from "react-icons/fa";
 
 export default function Experience() {
   return (
-    <section id="about" className="py-16 lg:px-24 md:px-12 sm:px-8 px-6 bg-transparent relative z-10">
+    <section
+      id="about"
+      className="py-16 lg:px-24 md:px-12 sm:px-8 px-6 bg-transparent relative z-10"
+    >
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-8 items-stretch">
-          
           {/* ── Left Card: Developer Profile ── */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -35,14 +37,32 @@ export default function Experience() {
 
               {/* Code */}
               <pre className="font-mono text-xs sm:text-sm text-zinc-300 leading-relaxed bg-[#020205] border border-zinc-900 rounded-xl p-5 text-left select-none overflow-x-auto">
-                <span className="text-[#7c3aed]">const</span> <span className="text-blue-450 font-semibold">profile</span> = &#123;
-                  <br />
-                  &nbsp;&nbsp;<span className="text-cyan-400">mission</span>: <span className="text-green-400">&quot;Engineering high availability cloud solutions&quot;</span>,
-                  <br />
-                  &nbsp;&nbsp;<span className="text-cyan-400">philosophy</span>: <span className="text-green-400">&quot;Clean code is just the starting point&quot;</span>,
-                  <br />
-                  &nbsp;&nbsp;<span className="text-cyan-400">expertise</span>: [<span className="text-green-400">&quot;Full-Stack&quot;</span>, <span className="text-green-400">&quot;DevOps&quot;</span>, <span className="text-green-400">&quot;AI Integration&quot;</span>],
-                  <br />
+                <span className="text-[#7c3aed]">const</span>{" "}
+                <span className="text-blue-450 font-semibold">profile</span> =
+                &#123;
+                <br />
+                &nbsp;&nbsp;<span className="text-cyan-400">mission</span>:{" "}
+                <span className="text-green-400">
+                  &quot;Engineering high availability cloud solutions&quot;
+                </span>
+                ,
+                <br />
+                &nbsp;&nbsp;<span className="text-cyan-400">
+                  philosophy
+                </span>:{" "}
+                <span className="text-green-400">
+                  &quot;Clean code is just the starting point&quot;
+                </span>
+                ,
+                <br />
+                &nbsp;&nbsp;<span className="text-cyan-400">expertise</span>: [
+                <span className="text-green-400">&quot;Full-Stack&quot;</span>,{" "}
+                <span className="text-green-400">&quot;DevOps&quot;</span>,{" "}
+                <span className="text-green-400">
+                  &quot;AI Integration&quot;
+                </span>
+                ],
+                <br />
                 &#125;;
               </pre>
             </div>
@@ -56,7 +76,7 @@ export default function Experience() {
                 </div>
                 <div>
                   <h4 className="text-xs sm:text-sm font-bold text-white tracking-tight">
-                    Senior Full-Stack Dev
+                    Full-Stack Developer
                   </h4>
                   <p className="text-[11px] text-zinc-500 mt-1 leading-normal font-light">
                     Maple Service Solutions Ltd. — 2025 - Present
@@ -125,7 +145,6 @@ export default function Experience() {
               SYSTEMS READY
             </span>
           </motion.div>
-
         </div>
       </div>
     </section>

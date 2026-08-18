@@ -1,5 +1,6 @@
 "use client";
-import ContactForm from "@/components/ui/Home/Contact/Contact";
+
+import ContactPageForm from "@/components/ui/Contact/ContactPageForm";
 
 export default function ContactPage() {
   return (
@@ -8,7 +9,7 @@ export default function ContactPage() {
         .accent-text { color: #5dcaa5; }
       `}</style>
 
-      {/* Hero */}
+      {/* Hero Header (Untouched Section Title) */}
       <section className="relative container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-12 overflow-hidden">
         <span className="absolute -top-6 left-0 text-[6rem] md:text-[11rem] font-bold text-zinc-900/90 select-none leading-none tracking-tight font-mono pointer-events-none whitespace-nowrap">
           CONTACT
@@ -28,8 +29,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Form component with header hidden */}
-      <ContactForm hideHeader={true} />
+      {/* Standalone Contact Page Form (Matching User Provided Code & Design) */}
+      <ContactPageForm />
     </div>
   );
 }

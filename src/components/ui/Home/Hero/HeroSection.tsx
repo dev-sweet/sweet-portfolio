@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from "react-icons/fa";
+import { FaDownload, FaGithub, FaLinkedin, FaEnvelope, } from "react-icons/fa";
 import { Code } from "lucide-react";
+import ProfileCard from "@/components/shared/ProfileCard";
+import { AuroraText } from "../../aurora-text";
 
 const STATS = [
   { target: 3, suffix: "+", label: "// YEARS EXP" },
@@ -60,11 +61,10 @@ function StatCell({
       initial={{ opacity: 0, y: 15 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, ease: "easeOut", delay }}
-      className={`flex flex-col items-center justify-center text-center py-4 ${
-        hasBorderRight ? "border-r border-zinc-850" : ""
-      }`}
+      className={`flex flex-col items-center justify-center text-center py-4 ${hasBorderRight ? "border-r border-zinc-850" : ""
+        }`}
     >
-      <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-cyan-450 to-blue-500 bg-clip-text text-transparent leading-none tabular-nums tracking-tight">
+      <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent leading-none tabular-nums tracking-tight">
         {count}
         {suffix}
       </span>
@@ -90,54 +90,72 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen flex flex-col justify-between pt-24 md:pt-28 pb-16 lg:px-24 md:px-12 sm:px-8 px-6 bg-transparent overflow-hidden"
+      className="relative w-full flex flex-col justify-between py-18 bg-transparent overflow-hidden"
     >
       {/* Dynamic ambient lights */}
-      <div className="absolute top-[-10%] left-[-15%] w-[450px] h-[450px] bg-cyan-500/5 blur-[130px] rounded-full pointer-events-none -z-10" />
+      {/* <div className="absolute top-[-10%] left-[-15%] w-[450px] h-[450px]  rounded-full pointer-events-none -z-10" /> */}
 
       {/* ── Top grid ── */}
-      <div className="w-full container mx-auto grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-16 items-center py-8 relative z-10">
-        
-        {/* ── Left column ── */}
+      <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-12 items-center justify-center py-4 relative z-10">
+
+        {/* ── Mobile-only Profile Card ── */}
+        <div className="lg:hidden w-full flex justify-center mb-6">
+          <ProfileCard />
+        </div>
+
+        {/* ── Left / Main intro column ── */}
         <div className="flex flex-col w-full text-left">
           {/* Availability Badge */}
           <div className="inline-flex items-center gap-2 self-start bg-zinc-950/65 border border-zinc-850 rounded-full px-3 py-1.5 mb-6 shadow-md shadow-black/20">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0 shadow-lg shadow-emerald-400/20" />
             <span className="text-[10px] sm:text-[11px] text-zinc-400 uppercase font-mono tracking-widest font-bold">
-              OPEN FOR SENIOR ROLES
+              OPEN TO FULL-TIME ROLES
             </span>
           </div>
-
-          {/* Subtitle */}
-          <p className="text-xs sm:text-sm text-[#7c3aed] font-mono tracking-wider mb-3">
-            {"//"} init_profile(&quot;Sweet Ali&quot;)
-          </p>
-
           {/* Main Heading */}
           <h1
-            className="font-extrabold text-white leading-[1.1] mb-6 tracking-tight"
-            style={{ fontSize: "clamp(2.5rem, 6.5vw, 4.5rem)" }}
+            className="font-extrabold text-zinc-250 leading-[1.1] mb-6 tracking-tight"
+            style={{ fontSize: "clamp(2.2rem, 5.5vw, 4.2rem)" }}
           >
-            Architecting <br />
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Digital Excellence
-            </span>
+            Building <AuroraText>Real-World</AuroraText>
+            <br />
+            <AuroraText>Digital</AuroraText> Products
           </h1>
 
           {/* Intro Paragraph */}
-          <p className="text-sm sm:text-base text-zinc-450 leading-relaxed max-w-xl mb-8 font-light">
-            Senior Full Stack Engineer crafting <span className="text-[#7c3aed] font-normal">production-grade ecosystems</span> with React, Node, and Scalable Cloud Architectures. Bridging the gap between complex engineering and human-centric design.
+          <p className="text-sm sm:text-base text-zinc-300 leading-relaxed  mb-4 font-light">
+            Full-Stack Engineer with 1+ year of professional experience turning business requirements into reliable software. I've worked on ERP, healthcare, e-commerce, and business management systems, covering everything from user interfaces and APIs to databases.
           </p>
 
-          {/* Key Pills */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {PILLS.map((p) => (
-              <span
-                key={p}
-                className="px-3 py-1.5 rounded-lg bg-zinc-950/50 border border-zinc-850 font-mono text-xs text-zinc-400 tracking-wide"
+          {/* Social Icons */}
+          <div className="flex justify-start gap-3 w-full justify-center mb-4">
+            {[
+              {
+                href: "https://github.com/dev-sweet",
+                icon: <FaGithub size={15} />,
+                label: "GitHub",
+              },
+              {
+                href: "https://linkedin.com/in/sweet-ali",
+                icon: <FaLinkedin size={15} />,
+                label: "LinkedIn",
+              },
+              {
+                href: "mailto:sweetali0520@gmail.com",
+                icon: <FaEnvelope size={15} />,
+                label: "Mail",
+              },
+            ].map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.label}
+                className="cursor-hover w-9 h-9 flex items-center justify-center rounded-xl bg-zinc-900/60 border border-zinc-800 text-zinc-400 hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-950/30 transition-all duration-200"
               >
-                {p}
-              </span>
+                {s.icon}
+              </a>
             ))}
           </div>
 
@@ -163,90 +181,10 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* ── Right column (Showcase Card) ── */}
-        <div className="flex items-center justify-center w-full relative">
-          {/* Card Container */}
-          <div className="relative w-full max-w-[300px] bg-zinc-950/45 border border-zinc-850 rounded-[24px] shadow-2xl backdrop-blur-md p-6 flex flex-col items-center">
-            {/* Circle profile picture with glowing border */}
-            <div className="relative w-24 h-24 rounded-full border-2 border-cyan-400/80 p-1 flex-shrink-0 flex items-center justify-center">
-              <div className="w-full h-full rounded-full bg-zinc-900 overflow-hidden relative">
-                <Image
-                  src="/bg.png"
-                  alt="Sweet Ali"
-                  fill
-                  sizes="100px"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              {/* Online Checkmark */}
-              <span className="absolute bottom-1 right-1 w-5.5 h-5.5 rounded-full bg-emerald-400 border-[3.5px] border-[#080812] flex items-center justify-center">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-              </span>
-            </div>
-
-            {/* Profile Info */}
-            <h2 className="text-lg font-extrabold text-white mt-4 tracking-tight leading-none">
-              Sweet Ali
-            </h2>
-            <p className="text-[10px] font-mono text-cyan-455 uppercase tracking-widest mt-2 font-bold">
-              Senior Full-Stack Engineer
-            </p>
-
-            {/* Social Icons */}
-            <div className="flex gap-3 mt-4 border-t border-zinc-900/60 w-full pt-4 justify-center">
-              {[
-                { href: "https://github.com/dev-sweet", icon: <FaGithub size={14} />, label: "GitHub" },
-                { href: "https://linkedin.com/in/sweet-ali", icon: <FaLinkedin size={14} />, label: "LinkedIn" },
-                { href: "mailto:sweetali0520@gmail.com", icon: <FaEnvelope size={14} />, label: "Mail" },
-              ].map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={s.label}
-                  className="cursor-hover w-8 h-8 flex items-center justify-center rounded-lg bg-zinc-900/40 border border-zinc-850 text-zinc-405 hover:border-cyan-400 hover:text-cyan-400 transition-all duration-200"
-                >
-                  {s.icon}
-                </a>
-              ))}
-            </div>
-
-            {/* Proficiency section */}
-            <div className="w-full mt-6 border-t border-zinc-900/60 pt-4 flex flex-col gap-3 select-none text-left">
-              <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest font-bold">
-                STACK CORE PROFICIENCY
-              </span>
-
-              {/* Skill 1 */}
-              <div className="flex flex-col gap-1.5">
-                <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400">
-                  <span>System Architecture</span>
-                  <span className="text-cyan-400">95%</span>
-                </div>
-                <div className="w-full h-1 bg-zinc-900 rounded-full overflow-hidden">
-                  <div className="h-full bg-cyan-400 rounded-full" style={{ width: "95%" }} />
-                </div>
-              </div>
-
-              {/* Skill 2 */}
-              <div className="flex flex-col gap-1.5">
-                <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400">
-                  <span>Backend Orchestration</span>
-                  <span className="text-[#7c3aed]">70%</span>
-                </div>
-                <div className="w-full h-1 bg-zinc-900 rounded-full overflow-hidden">
-                  <div className="h-full bg-[#7c3aed] rounded-full" style={{ width: "70%" }} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* ── Statistics Bar ── */}
-      <div className="w-full container mx-auto grid grid-cols-2 sm:grid-cols-4 border-t border-zinc-900/60 mt-12 sm:mt-16 pt-8 sm:pt-10 relative z-10">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-4 border-t border-zinc-900/60 mt-10 sm:mt-12 pt-8 sm:pt-10 relative z-10">
         {STATS.map((s, i) => (
           <StatCell
             key={s.label}

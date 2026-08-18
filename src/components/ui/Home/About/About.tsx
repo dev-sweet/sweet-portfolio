@@ -45,36 +45,36 @@ const AboutMe = () => {
   const codeRef = useRef<HTMLDivElement>(null);
   const codeInView = useInView(codeRef, { once: true, margin: "-60px" });
 
-  const info = [
-    {
-      title: "Experience",
-      organization: "Maple Service Solutions Ltd.",
-      value: "Full-Stack Developer",
-      duration: "May 2025 - Present",
-      icon: <Briefcase className="w-5 h-5" />,
-    },
-    {
-      title: "Education",
-      organization: "Islamic University, Bangladesh",
-      value: "BSS in Folklore Studies",
-      duration: "2020 - 2024",
-      icon: <GraduationCap className="w-5 h-5" />,
-    },
-    {
-      title: "Courses",
-      organization: "Programming Hero",
-      value: "Complete Web Development Course with Jhankar Mahbub",
-      duration: "2021",
-      icon: <Award className="w-5 h-5" />,
-    },
-    {
-      title: "Co-curricular",
-      organization: "Islamic University",
-      value: "President, Folklore Club (ICT Wing)",
-      duration: "2024",
-      icon: <Award className="w-5 h-5" />,
-    },
-  ];
+  // const info = [
+  //   {
+  //     title: "Experience",
+  //     organization: "Maple Service Solutions Ltd.",
+  //     value: "Full-Stack Developer",
+  //     duration: "May 2025 - Present",
+  //     icon: <Briefcase className="w-5 h-5" />,
+  //   },
+  //   {
+  //     title: "Education",
+  //     organization: "Islamic University, Bangladesh",
+  //     value: "BSS in Folklore Studies",
+  //     duration: "2020 - 2024",
+  //     icon: <GraduationCap className="w-5 h-5" />,
+  //   },
+  //   {
+  //     title: "Courses",
+  //     organization: "Programming Hero",
+  //     value: "Complete Web Development Course with Jhankar Mahbub",
+  //     duration: "2021",
+  //     icon: <Award className="w-5 h-5" />,
+  //   },
+  //   {
+  //     title: "Co-curricular",
+  //     organization: "Islamic University",
+  //     value: "President, Folklore Club (ICT Wing)",
+  //     duration: "2024",
+  //     icon: <Award className="w-5 h-5" />,
+  //   },
+  // ];
 
   const backendSkills = [
     { name: "Node.js", image: "/about/node.png" },
@@ -98,8 +98,8 @@ const AboutMe = () => {
   ];
 
   return (
-    <section className="md:py-[80px] py-[40px] lg:px-24 md:px-12 sm:px-8 px-6 text-white overflow-hidden">
-      <div className="container mx-auto relative z-10">
+    <section className="py-0 text-white overflow-hidden w-full">
+      <div className="w-full relative z-10">
         {/* ── Heading ── */}
         <Reveal direction="up" delay={0}>
           <h1 className="text-4xl font-bold text-gray-200 text-center pb-3">
@@ -109,7 +109,7 @@ const AboutMe = () => {
 
         {/* ── Subtitle ── */}
         <Reveal direction="up" delay={0.1}>
-          <p className="mx-auto lg:max-w-7/12 text-gray-400 leading-relaxed text-lg pb-6">
+          <p className="mx-auto text-gray-400 leading-relaxed text-lg pb-6">
             I&apos;m a Full-Stack Developer building scalable web applications
             with modern JavaScript. I specialize in clean frontend architectures
             and robust backend systems that deliver reliable, type-safe
@@ -117,9 +117,8 @@ const AboutMe = () => {
           </p>
         </Reveal>
 
-        <div className="pt-5 flex flex-col lg:flex-row items-center gap-12">
-          {/* ── Left column ── */}
-          <Reveal direction="left" delay={0.15} className="w-full lg:w-1/2">
+        <div className="pt-5">
+          <Reveal direction="left" delay={0.15} className="w-full">
             {/* Code card */}
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000" />
@@ -141,34 +140,33 @@ const AboutMe = () => {
             </div>
 
             {/* Info cards — staggered */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {info.map((item, i) => (
-                <Reveal key={item.title} direction="up" delay={0.2 + i * 0.08}>
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/40 transition h-full">
-                    <div className="flex items-center gap-3">
-                      <div className="text-purple-400">{item.icon}</div>
-                      <div>
-                        <p className="text-xs text-gray-400">{item.title}</p>
-                        <p className="text-sm font-medium">{item.value}</p>
-                        <p className="text-sm font-medium text-gray-300">
-                          {item.organization}
-                        </p>
-                        <p className="text-xs font-medium text-gray-300">
-                          {item.duration}
-                        </p>
+            {/* <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {info.map((item, i) => (
+                  <Reveal key={item.title} direction="up" delay={0.2 + i * 0.08}>
+                    <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/40 transition h-full">
+                      <div className="flex items-center gap-3">
+                        <div className="text-purple-400">{item.icon}</div>
+                        <div>
+                          <p className="text-xs text-gray-400">{item.title}</p>
+                          <p className="text-sm font-medium">{item.value}</p>
+                          <p className="text-sm font-medium text-gray-300">
+                            {item.organization}
+                          </p>
+                          <p className="text-xs font-medium text-gray-300">
+                            {item.duration}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+                  </Reveal>
+                ))}
+              </div> */}
           </Reveal>
-
-          {/* ── Right column ── */}
+          {/* skills */}
           <Reveal
             direction="right"
             delay={0.2}
-            className="w-full lg:w-1/2 space-y-6"
+            className="w-full space-y-6"
           >
             <div className="p-5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
               <Reveal direction="up" delay={0.25}>

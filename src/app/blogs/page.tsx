@@ -4,10 +4,6 @@ import {
   Search,
   ArrowUpRight,
   Clock,
-  Github,
-  Linkedin,
-  Instagram,
-  Twitter,
 } from "lucide-react";
 import Link from "next/link";
 
