@@ -57,14 +57,13 @@ export default function Navbar() {
             <Link
               key={item.label}
               href={item.href}
-              className={`relative flex items-center gap-2 text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-hover ${
-                isActive
-                  ? "text-[#F1F5F9] bg-[#3B82F6]/15 border border-[#3B82F6]/30"
-                  : "text-[#A1ACBA] hover:text-[#F1F5F9] hover:bg-white/5"
-              }`}
+              className={`relative flex items-center gap-2 text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-hover ${isActive
+                ? "text-[#F1F5F9] bg-[#3B82F6]/15 border border-[#3B82F6]/30"
+                : "text-[#A1ACBA] hover:text-[#F1F5F9] hover:bg-white/5"
+                }`}
             >
               {item.icon}
-              {/* <span>{item.label}</span> */}
+              <span>{item.label}</span>
               {isActive && (
                 <motion.div
                   layoutId="topNavPill"
@@ -98,14 +97,12 @@ export default function Navbar() {
             <Link
               key={item.label}
               href={item.href}
-              className={`flex flex-col items-center justify-center gap-0.5 py-1 px-3 rounded-xl transition-all duration-200 ${
-                isActive ? "text-[#F1F5F9]" : "text-[#A1ACBA] hover:text-[#F1F5F9]"
-              }`}
+              className={`flex flex-col items-center justify-center gap-0.5 py-1 px-3 rounded-xl transition-all duration-200 ${isActive ? "text-[#F1F5F9]" : "text-[#A1ACBA] hover:text-[#F1F5F9]"
+                }`}
             >
               <div
-                className={`p-1.5 rounded-lg transition-all ${
-                  isActive ? "bg-[#3B82F6]/15 border border-[#3B82F6]/30 shadow-[0_0_10px_rgba(59,130,246,0.25)]" : ""
-                }`}
+                className={`p-1.5 rounded-lg transition-all ${isActive ? "bg-[#3B82F6]/15 border border-[#3B82F6]/30 shadow-[0_0_10px_rgba(59,130,246,0.25)]" : ""
+                  }`}
               >
                 {item.icon}
               </div>

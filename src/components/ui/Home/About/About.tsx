@@ -1,11 +1,32 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import AutoCodeEditor from "./AutoCode";
-import { Award, Briefcase, GraduationCap } from "lucide-react";
 import { AuroraText } from "../../aurora-text";
-import Image from "next/image";
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiJavascript,
+  SiTailwindcss,
+  SiDaisyui,
+  SiReactquery,
+  SiNodedotjs,
+  SiExpress,
+  SiNestjs,
+  SiMongodb,
+  SiPostgresql,
+  SiMysql,
+  SiPrisma,
+  SiFirebase,
+  SiStripe,
+  SiGit,
+  SiDocker,
+  SiVercel,
+  SiNetlify,
+} from "react-icons/si";
+import { TbApi } from "react-icons/tb";
 
 function Reveal({
   children,
@@ -41,61 +62,95 @@ function Reveal({
   );
 }
 
+const ZustandIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    className={className}
+  >
+    <path
+      d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+      fill="#443E38"
+      stroke="#B87D4B"
+      strokeWidth="1.2"
+    />
+    <circle cx="6" cy="6.5" r="2.5" fill="#B87D4B" />
+    <circle cx="18" cy="6.5" r="2.5" fill="#B87D4B" />
+    <circle cx="9" cy="11.5" r="1.3" fill="#FFFFFF" />
+    <circle cx="15" cy="11.5" r="1.3" fill="#FFFFFF" />
+    <circle cx="9.3" cy="11.5" r="0.6" fill="#1C2633" />
+    <circle cx="14.7" cy="11.5" r="0.6" fill="#1C2633" />
+    <ellipse cx="12" cy="15" rx="3.2" ry="2.2" fill="#E8D7C3" />
+    <polygon points="12,14.2 10.8,15.4 13.2,15.4" fill="#443E38" />
+  </svg>
+);
+
+const TAB_GROUPS = ["All", "Frontend", "Backend", "Database & Tools"] as const;
+type TabGroup = (typeof TAB_GROUPS)[number];
+
+interface SkillItem {
+  name: string;
+  icon: React.ReactNode;
+  textColor?: string;
+}
+
+const SKILLS_DATA: Record<TabGroup, SkillItem[]> = {
+  All: [
+    { name: "Next.js", icon: <SiNextdotjs className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-white" },
+    { name: "React", icon: <SiReact className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#61DAFB]" },
+    { name: "TypeScript", icon: <SiTypescript className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#3178C6]" },
+    { name: "JavaScript", icon: <SiJavascript className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#F7DF1E]" },
+    { name: "Daisy UI", icon: <SiDaisyui className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#1AD1A5]" },
+    { name: "Tailwind CSS", icon: <SiTailwindcss className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#38BDF8]" },
+    { name: "Zustand", icon: <ZustandIcon className="w-8 h-8 sm:w-9 sm:h-9" /> },
+    { name: "TanStack Query", icon: <SiReactquery className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#FF4154]" },
+    { name: "Node.js", icon: <SiNodedotjs className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#5FA04E]" },
+    { name: "Express.js", icon: <SiExpress className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-zinc-200" },
+    { name: "NestJS", icon: <SiNestjs className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#E0234E]" },
+    { name: "MongoDB", icon: <SiMongodb className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#47A248]" },
+    { name: "PostgreSQL", icon: <SiPostgresql className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#4169E1]" },
+    { name: "Prisma", icon: <SiPrisma className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-white" },
+    { name: "Firebase", icon: <SiFirebase className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#FFCA28]" },
+    { name: "Stripe", icon: <SiStripe className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#635BFF]" },
+    { name: "Git", icon: <SiGit className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#F05032]" },
+    { name: "Docker", icon: <SiDocker className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#2496ED]" },
+    { name: "Vercel", icon: <SiVercel className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-white" },
+  ],
+  Frontend: [
+    { name: "Next.js", icon: <SiNextdotjs className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-white" },
+    { name: "React", icon: <SiReact className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#61DAFB]" },
+    { name: "TypeScript", icon: <SiTypescript className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#3178C6]" },
+    { name: "JavaScript", icon: <SiJavascript className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#F7DF1E]" },
+    { name: "Tailwind CSS", icon: <SiTailwindcss className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#38BDF8]" },
+    { name: "Zustand", icon: <ZustandIcon className="w-8 h-8 sm:w-9 sm:h-9" /> },
+    { name: "TanStack Query", icon: <SiReactquery className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#FF4154]" },
+    { name: "Daisy UI", icon: <SiDaisyui className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#1AD1A5]" },
+  ],
+  Backend: [
+    { name: "Node.js", icon: <SiNodedotjs className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#5FA04E]" },
+    { name: "Express.js", icon: <SiExpress className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-zinc-200" },
+    { name: "NestJS", icon: <SiNestjs className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#E0234E]" },
+    { name: "TypeScript", icon: <SiTypescript className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#3178C6]" },
+    { name: "REST APIs", icon: <TbApi className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#38BDF8]" },
+    { name: "Firebase", icon: <SiFirebase className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#FFCA28]" },
+  ],
+  "Database & Tools": [
+    { name: "PostgreSQL", icon: <SiPostgresql className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#4169E1]" },
+    { name: "MySQL", icon: <SiMysql className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#4479A1]" },
+    { name: "MongoDB", icon: <SiMongodb className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#47A248]" },
+    { name: "Prisma", icon: <SiPrisma className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-white" },
+    { name: "Git", icon: <SiGit className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#F05032]" },
+    { name: "Docker", icon: <SiDocker className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#2496ED]" },
+    { name: "Vercel", icon: <SiVercel className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-white" },
+    { name: "Netlify", icon: <SiNetlify className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#00C7B7]" },
+  ],
+};
+
 const AboutMe = () => {
   const codeRef = useRef<HTMLDivElement>(null);
   const codeInView = useInView(codeRef, { once: true, margin: "-60px" });
-
-  // const info = [
-  //   {
-  //     title: "Experience",
-  //     organization: "Maple Service Solutions Ltd.",
-  //     value: "Full-Stack Developer",
-  //     duration: "May 2025 - Present",
-  //     icon: <Briefcase className="w-5 h-5" />,
-  //   },
-  //   {
-  //     title: "Education",
-  //     organization: "Islamic University, Bangladesh",
-  //     value: "BSS in Folklore Studies",
-  //     duration: "2020 - 2024",
-  //     icon: <GraduationCap className="w-5 h-5" />,
-  //   },
-  //   {
-  //     title: "Courses",
-  //     organization: "Programming Hero",
-  //     value: "Complete Web Development Course with Jhankar Mahbub",
-  //     duration: "2021",
-  //     icon: <Award className="w-5 h-5" />,
-  //   },
-  //   {
-  //     title: "Co-curricular",
-  //     organization: "Islamic University",
-  //     value: "President, Folklore Club (ICT Wing)",
-  //     duration: "2024",
-  //     icon: <Award className="w-5 h-5" />,
-  //   },
-  // ];
-
-  const backendSkills = [
-    { name: "Node.js", image: "/about/node.png" },
-    { name: "Express", image: "/about/express.png" },
-    { name: "JWT", image: "/about/jwt.png" },
-    { name: "MongoDB", image: "/about/mongodb.png" },
-    { name: "Git", image: "/about/git.png" },
-    { name: "GitHub", image: "/about/github.png" },
-    { name: "Vercel", image: "/about/vercel.png" },
-    { name: "VS Code", image: "/about/vscode.png" },
-  ];
-
-  const frontendSkills = [
-    { name: "Next.js", image: "/about/next.png" },
-    { name: "React", image: "/about/react.png" },
-    { name: "TypeScript", image: "/about/ts.png" },
-    { name: "JavaScript", image: "/about/js.png" },
-    { name: "Redux", image: "/about/Redux.png" },
-    { name: "Tailwind", image: "/about/tw.png" },
-    { name: "Firebase", image: "/about/firebase.png" },
-  ];
+  const [activeTab, setActiveTab] = useState<TabGroup>("All");
 
   return (
     <section className="py-0 text-white overflow-hidden w-full">
@@ -139,84 +194,80 @@ const AboutMe = () => {
               </div>
             </div>
           </Reveal>
-          {/* skills */}
+
+          {/* Tabbed Skills Section */}
           <Reveal
-            direction="right"
+            direction="up"
             delay={0.2}
-            className="w-full space-y-6"
+            className="w-full pt-10"
           >
-            <div className="p-5 rounded-xl bg-[#0D1118] border border-[#1C2633] hover:border-[#29384A] transition-all duration-300 hover:-translate-y-1">
-              <Reveal direction="up" delay={0.25}>
-                <h2 className="text-center text-xl font-bold text-[#F1F5F9] pb-4">
-                  Technical Abilites
-                </h2>
-              </Reveal>
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#0D1118] border border-[#1C2633] hover:border-[#29384A] transition-all duration-300">
 
-              {/* Frontend label */}
-              <Reveal direction="up" delay={0.3}>
-                <div className="flex items-center gap-4 mb-5">
-                  <span className="text-xs uppercase tracking-widest text-[#8B5CF6] font-bold">
-                    Frontend
-                  </span>
-                  <div className="h-[1px] flex-grow bg-gradient-to-r from-[#8B5CF6]/50 to-transparent" />
-                </div>
-              </Reveal>
-
-              {/* Frontend skill icons — staggered */}
-              <div className="w-full flex flex-wrap gap-3 mt-3">
-                {frontendSkills.map((item, i) => (
-                  <Reveal key={i} direction="up" delay={0.32 + i * 0.05}>
-                    <div className="group w-18 h-18 relative p-2 rounded-lg bg-[#111722] border border-[#1C2633] hover:border-[#3B82F6] hover:bg-[#111722] transition-all duration-300 hover:-translate-y-1">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] opacity-0 group-hover:opacity-20 blur rounded-xl transition" />
-                      <div className="relative flex flex-col gap-y-2 items-center">
-                        <Image
-                          className="object-fill"
-                          src={item.image}
-                          alt={item.name}
-                          width={30}
-                          height={30}
-                        />
-                        <p className="text-xs text-[#A1ACBA] group-hover:text-[#F1F5F9] font-semibold transition-colors">
-                          {item.name}
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
+              {/* Header Label */}
+              <div className="flex items-center gap-2 mb-5">
+                <div className="w-2.5 h-2.5 rounded-full border-2 border-[#A855F7] animate-pulse shadow-[0_0_8px_#A855F7]" />
+                <span className="text-xs font-mono uppercase tracking-widest text-[#C084FC] font-bold">
+                  TECHNICAL SKILLS
+                </span>
               </div>
 
-              {/* Backend label */}
-              <Reveal direction="up" delay={0.4}>
-                <div className="flex items-center gap-4 my-5">
-                  <span className="text-xs uppercase tracking-widest text-[#3B82F6] font-bold">
-                    Backends & Tools
-                  </span>
-                  <div className="h-[1px] flex-grow bg-gradient-to-r from-[#3B82F6]/50 to-transparent" />
-                </div>
-              </Reveal>
-
-              {/* Backend skill icons — staggered */}
-              <div className="w-full flex flex-wrap gap-3 mt-3">
-                {backendSkills.map((item, i) => (
-                  <Reveal key={i} direction="up" delay={0.42 + i * 0.05}>
-                    <div className="group w-18 h-18 relative p-2 rounded-lg bg-[#111722] border border-[#1C2633] hover:border-[#3B82F6] hover:bg-[#111722] transition-all duration-300 hover:-translate-y-1">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] opacity-0 group-hover:opacity-20 blur rounded-xl transition" />
-                      <div className="relative flex flex-col gap-y-2 items-center">
-                        <Image
-                          className="grayscale group-hover:grayscale-0 transition-all duration-500"
-                          src={item.image}
-                          alt={item.name}
-                          width={35}
-                          height={35}
+              {/* Grouped Tab Buttons */}
+              <div className="flex flex-wrap items-center gap-2 pb-6 border-b border-[#1C2633]">
+                {TAB_GROUPS.map((tab) => {
+                  const isActive = activeTab === tab;
+                  return (
+                    <button
+                      key={tab}
+                      onClick={() => setActiveTab(tab)}
+                      className={`relative px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${isActive
+                        ? "text-white bg-[#111722] border border-[#1C2633] shadow-md shadow-[#38BDF8]/5"
+                        : "text-[#A1ACBA] hover:text-white hover:bg-[#111722]/50 border border-transparent"
+                        }`}
+                    >
+                      {tab}
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeTabGlowLine"
+                          className="absolute -bottom-[1px] left-3 right-3 h-[2px] bg-gradient-to-r from-[#38BDF8] to-[#818CF8] rounded-full shadow-[0_0_8px_#38BDF8]"
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
                         />
-                        <p className="relative text-[10px] md:text-xs text-[#A1ACBA] group-hover:text-[#F1F5F9] font-medium transition-colors">
-                          {item.name}
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
+                      )}
+                    </button>
+                  );
+                })}
               </div>
+
+              {/* Skills Grid */}
+              <motion.div
+                layout
+                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 pt-6"
+              >
+                <AnimatePresence mode="popLayout">
+                  {SKILLS_DATA[activeTab].map((skill, i) => (
+                    <motion.div
+                      key={`${activeTab}-${skill.name}`}
+                      layout
+                      initial={{ opacity: 0, scale: 0.9, y: 8 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.9, y: 8 }}
+                      transition={{ duration: 0.22, delay: i * 0.02 }}
+                      whileHover={{ y: -4, scale: 1.02 }}
+                      className="group relative flex flex-col items-center justify-center p-4 sm:p-5 rounded-2xl bg-[#080B10]/90 border border-[#1C2633] hover:border-[#3B82F6]/60 hover:bg-[#111722] transition-all duration-300 hover:shadow-[0_8px_25px_-5px_rgba(59,130,246,0.15)] cursor-pointer select-none"
+                    >
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] opacity-0 group-hover:opacity-20 blur-md rounded-2xl transition duration-300 pointer-events-none" />
+
+                      <div className={`relative mb-3 transition-transform duration-300 group-hover:scale-110 ${skill.textColor || ""}`}>
+                        {skill.icon}
+                      </div>
+
+                      <p className="relative text-xs sm:text-sm font-medium text-[#A1ACBA] group-hover:text-[#F1F5F9] transition-colors text-center truncate w-full">
+                        {skill.name}
+                      </p>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </motion.div>
+
             </div>
           </Reveal>
         </div>

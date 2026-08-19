@@ -121,21 +121,23 @@ export default function ProfileCard({
       className={`w-full bg-[#0D1118]/90 border border-[#1C2633] rounded-[24px] shadow-2xl backdrop-blur-xl p-6 flex flex-col items-center hover:border-[#29384A] transition-all duration-300 ${className}`}
     >
       {/* Circle profile picture with glowing border */}
-      <div className="w-40 h-50 rounded border-1 border-[#1C2633] p-1 flex-shrink-0 flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.15)]">
-        <div className="w-full h-full rounded bg-[#080B10] overflow-hidden relative">
+      {/* rounded-lg border-1 border-[#1C2633]   */}
+      {/* rounded bg-[#080B10] */}
+      <div className="w-50 h-50  p-1 flex-shrink-0 flex items-center justify-center">
+        <div className="w-full h-full  overflow-hidden relative">
           <Image
             src="/bg.png"
             alt="Sweet Ali"
             fill
-            sizes="100px"
-            className="object-cover"
+            sizes=""
+            className="w-full h-full"
             priority
           />
         </div>
-        {/* Online Status Checkmark */}
+        {/* Online Status Checkmark
         <span className="absolute bottom-1 right-1 w-5 h-5 rounded-full bg-[#22C55E] border-[3px] border-[#080B10] flex items-center justify-center shadow-md">
           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-        </span>
+        </span> */}
       </div>
 
       {/* Profile Info */}
