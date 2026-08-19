@@ -359,12 +359,12 @@ function CodeBlock({ filename, code }: { filename: string; code: string }) {
   };
 
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 overflow-hidden my-6">
-      <div className="flex items-center justify-between px-4 py-2 border-b border-zinc-800">
-        <span className="font-mono text-xs text-zinc-500">{filename}</span>
+    <div className="rounded-xl border border-[#1C2633] bg-[#080B10] overflow-hidden my-6">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-[#1C2633]">
+        <span className="font-mono text-xs text-[#667386]">{filename}</span>
         <button
           onClick={handleCopy}
-          className="font-mono text-xs text-zinc-500 hover:text-zinc-200 transition-colors flex items-center gap-1.5 cursor-pointer"
+          className="font-mono text-xs text-[#667386] hover:text-[#F1F5F9] transition-colors flex items-center gap-1.5 cursor-pointer"
         >
           {copied ? (
             <Check className="w-3.5 h-3.5 accent-text" />
@@ -374,7 +374,7 @@ function CodeBlock({ filename, code }: { filename: string; code: string }) {
           {copied ? "copied" : "copy"}
         </button>
       </div>
-      <pre className="p-4 overflow-x-auto text-[13px] font-mono leading-relaxed text-zinc-300">
+      <pre className="p-4 overflow-x-auto text-[13px] font-mono leading-relaxed text-[#A1ACBA]">
         <code>{code}</code>
       </pre>
     </div>
@@ -466,14 +466,14 @@ export default function BlogPostPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen text-zinc-100 font-sans antialiased mt-20">
+      <div className="min-h-screen text-[#F1F5F9] font-sans antialiased mt-20">
         <section className="relative container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-12 overflow-hidden animate-pulse">
-          <div className="h-6 w-32 bg-zinc-900 rounded mb-4"></div>
-          <div className="h-10 w-96 bg-zinc-900 rounded mb-4"></div>
-          <div className="h-4 w-5/6 bg-zinc-900 rounded"></div>
+          <div className="h-6 w-32 bg-[#0D1118] rounded mb-4"></div>
+          <div className="h-10 w-96 bg-[#0D1118] rounded mb-4"></div>
+          <div className="h-4 w-5/6 bg-[#0D1118] rounded"></div>
         </section>
         <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-12">
-          <div className="aspect-[2/1] w-full bg-zinc-900 rounded-xl animate-pulse"></div>
+          <div className="aspect-[2/1] w-full bg-[#0D1118] rounded-xl animate-pulse"></div>
         </section>
       </div>
     );
@@ -481,16 +481,16 @@ export default function BlogPostPage() {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased mt-20 flex flex-col items-center justify-center p-6">
-        <h1 className="text-3xl font-bold mb-4 font-mono text-zinc-300">
+      <div className="min-h-screen bg-[#050609] text-[#F1F5F9] font-sans antialiased mt-20 flex flex-col items-center justify-center p-6">
+        <h1 className="text-3xl font-bold mb-4 font-mono text-[#F1F5F9]">
           404 — Post Not Found
         </h1>
-        <p className="text-zinc-500 mb-8 font-mono">
+        <p className="text-[#667386] mb-8 font-mono">
           The blog post database could not locate this article index.
         </p>
         <Link
           href="/blogs"
-          className="px-5 py-2.5 rounded-md bg-[#5dcaa5] text-zinc-950 font-bold hover:bg-[#4cb291] transition-colors"
+          className="px-5 py-2.5 rounded-md bg-[#3B82F6] text-white font-bold hover:bg-[#60A5FA] transition-colors"
         >
           Return to blog.list()
         </Link>
@@ -509,23 +509,23 @@ export default function BlogPostPage() {
   };
 
   return (
-    <div className="min-h-screen text-zinc-100 font-sans antialiased">
+    <div className="min-h-screen text-[#F1F5F9] font-sans antialiased">
       <style>{`
         html { scroll-behavior: smooth; }
-        .accent-text { color: #5dcaa5; }
-        .accent-bg-soft { background-color: rgba(93, 202, 165, 0.1); }
-        .accent-border-soft { border-color: rgba(93, 202, 165, 0.4); }
-        .hover-border-accent:hover { border-color: rgba(93, 202, 165, 0.4); }
-        .group:hover .group-accent-text { color: #5dcaa5; }
+        .accent-text { color: #3B82F6; }
+        .accent-bg-soft { background-color: rgba(59, 130, 246, 0.1); }
+        .accent-border-soft { border-color: rgba(59, 130, 246, 0.3); }
+        .hover-border-accent:hover { border-color: #29384A; }
+        .group:hover .group-accent-text { color: #3B82F6; }
         .cover-img { filter: grayscale(0.5); transition: filter 0.5s ease, transform 0.5s ease; }
         .group:hover .cover-img { filter: grayscale(0); transform: scale(1.03); }
       `}</style>
 
       {/* Reading progress bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-zinc-900 z-50">
+      <div className="fixed top-0 left-0 right-0 h-1 bg-[#0D1118] z-50">
         <div
           className="h-full transition-[width] duration-150"
-          style={{ width: `${progress}%`, backgroundColor: "#5dcaa5" }}
+          style={{ width: `${progress}%`, backgroundColor: "#3B82F6" }}
         />
       </div>
 
@@ -533,25 +533,25 @@ export default function BlogPostPage() {
       <header className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-6">
         <Link
           href="/blogs"
-          className="inline-flex items-center gap-2 font-mono text-xs text-zinc-500 hover:text-zinc-200 transition-colors mb-8"
+          className="inline-flex items-center gap-2 font-mono text-xs text-[#667386] hover:text-[#F1F5F9] transition-colors mb-8"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           back to blog.list()
         </Link>
 
         <p className="font-mono text-sm accent-text mb-3">{`// post.read("${post.title.toLowerCase().replace(/[^a-z0-9]/g, "-")}")`}</p>
-        <span className="inline-block font-mono text-xs px-2.5 py-1 rounded-md border border-zinc-800 text-zinc-400 mb-4">
+        <span className="inline-block font-mono text-xs px-2.5 py-1 rounded-md border border-[#1C2633] text-[#A1ACBA] mb-4">
           {`[${post.tag.toLowerCase()}]`}
         </span>
-        <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
+        <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6 text-[#F1F5F9]">
           {post.title}
         </h1>
 
-        <div className="flex items-center gap-4 text-sm font-mono text-zinc-500">
+        <div className="flex items-center gap-4 text-sm font-mono text-[#667386]">
           <div className="w-8 h-8 rounded-full accent-bg-soft flex items-center justify-center font-bold accent-text text-xs">
             S
           </div>
-          <span className="text-zinc-300">dev sweet</span>
+          <span className="text-[#A1ACBA]">dev sweet</span>
           <span>·</span>
           <span>{post.date}</span>
           <span>·</span>
@@ -564,7 +564,7 @@ export default function BlogPostPage() {
 
       {/* Cover image */}
       <div className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-12">
-        <div className="rounded-xl overflow-hidden border border-zinc-800">
+        <div className="rounded-xl overflow-hidden border border-[#1C2633]">
           <img
             src={post.image}
             alt={post.title}
@@ -575,11 +575,11 @@ export default function BlogPostPage() {
 
       {/* Content + TOC */}
       <div className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 grid lg:grid-cols-[1fr_240px] gap-12 lg:gap-16">
-        <article className="max-w-2xl text-zinc-300 leading-relaxed space-y-6">
+        <article className="max-w-2xl text-[#A1ACBA] leading-relaxed space-y-6">
           {richContent.sections.map((section, idx) => {
             if (section.type === "paragraph") {
               return (
-                <p key={idx} className="text-lg leading-relaxed text-zinc-300">
+                <p key={idx} className="text-lg leading-relaxed text-[#A1ACBA]">
                   {section.text}
                 </p>
               );
@@ -589,7 +589,7 @@ export default function BlogPostPage() {
                 <h2
                   key={idx}
                   id={section.id}
-                  className="text-2xl md:text-3xl font-bold text-zinc-100 mt-12 mb-4 scroll-mt-24"
+                  className="text-2xl md:text-3xl font-bold text-[#F1F5F9] mt-12 mb-4 scroll-mt-24"
                 >
                   <span className="accent-text font-mono mr-2">##</span>
                   {section.title}
@@ -626,7 +626,7 @@ export default function BlogPostPage() {
         {/* Table of contents */}
         <aside className="hidden lg:block">
           <div className="sticky top-24">
-            <p className="font-mono text-xs text-zinc-500 mb-4">
+            <p className="font-mono text-xs text-[#667386] mb-4">
               // on this page
             </p>
             <nav className="space-y-3 text-sm">
@@ -634,7 +634,7 @@ export default function BlogPostPage() {
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className="block text-zinc-500 hover:text-zinc-100 transition-colors leading-snug"
+                  className="block text-[#667386] hover:text-[#F1F5F9] transition-colors leading-snug"
                 >
                   {item.label}
                 </a>
@@ -646,15 +646,15 @@ export default function BlogPostPage() {
 
       {/* Author card */}
       <div className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mt-10">
-        <div className="flex items-start gap-4 p-6 rounded-xl border border-zinc-800 bg-zinc-900/50">
+        <div className="flex items-start gap-4 p-6 rounded-xl border border-[#1C2633] bg-[#0D1118]">
           <div className="w-12 h-12 rounded-full accent-bg-soft flex items-center justify-center font-mono font-bold text-lg accent-text shrink-0">
             S
           </div>
           <div>
-            <p className="font-semibold text-zinc-100 mb-1">
+            <p className="font-semibold text-[#F1F5F9] mb-1">
               Written by dev sweet
             </p>
-            <p className="text-sm text-zinc-400 leading-relaxed">
+            <p className="text-sm text-[#A1ACBA] leading-relaxed">
               Full-stack developer working mostly in the Next.js / Node /
               MongoDB stack. Writes about the stuff that took longer to figure
               out than it should have.
@@ -666,7 +666,7 @@ export default function BlogPostPage() {
       {/* Related posts */}
       {related.length > 0 && (
         <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mt-16 mb-16">
-          <p className="font-mono text-xs text-zinc-500 mb-5">
+          <p className="font-mono text-xs text-[#667386] mb-5">
             // related posts
           </p>
           <div className="grid md:grid-cols-3 gap-5">
@@ -674,7 +674,7 @@ export default function BlogPostPage() {
               <Link
                 key={p.id}
                 href={`/blogs/${p.id}`}
-                className="group flex flex-col rounded-xl border border-zinc-800 bg-zinc-900/50 hover-border-accent hover:-translate-y-1 transition-all overflow-hidden"
+                className="group flex flex-col rounded-xl border border-[#1C2633] bg-[#0D1118] hover-border-accent hover:-translate-y-1 transition-all overflow-hidden"
               >
                 <div className="aspect-video overflow-hidden">
                   <img
@@ -684,16 +684,16 @@ export default function BlogPostPage() {
                   />
                 </div>
                 <div className="p-5 flex flex-col flex-1">
-                  <span className="font-mono text-xs text-zinc-500 mb-3">{`[${p.tag.toLowerCase()}]`}</span>
-                  <h3 className="text-sm font-semibold mb-3 leading-snug group-accent-text transition-colors">
+                  <span className="font-mono text-xs text-[#667386] mb-3">{`[${p.tag.toLowerCase()}]`}</span>
+                  <h3 className="text-sm font-semibold mb-3 leading-snug group-accent-text transition-colors text-[#F1F5F9]">
                     {p.title}
                   </h3>
-                  <div className="mt-auto flex items-center justify-between text-xs font-mono text-zinc-500">
+                  <div className="mt-auto flex items-center justify-between text-xs font-mono text-[#667386]">
                     <span className="flex items-center gap-1">
                       <Clock className="w-3.5 h-3.5" />
                       {p.readTime}
                     </span>
-                    <ArrowUpRight className="w-4 h-4 text-zinc-500 group-accent-text group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <ArrowUpRight className="w-4 h-4 text-[#667386] group-accent-text group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </div>
                 </div>
               </Link>

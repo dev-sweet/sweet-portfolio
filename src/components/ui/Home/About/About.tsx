@@ -102,14 +102,14 @@ const AboutMe = () => {
       <div className="w-full relative z-10">
         {/* ── Heading ── */}
         <Reveal direction="up" delay={0}>
-          <h1 className="text-4xl font-bold text-gray-200 text-center pb-3">
+          <h1 className="text-4xl font-bold text-[#F1F5F9] text-center pb-3">
             About <AuroraText>Me</AuroraText>
           </h1>
         </Reveal>
 
         {/* ── Subtitle ── */}
         <Reveal direction="up" delay={0.1}>
-          <p className="mx-auto text-gray-400 leading-relaxed text-lg pb-6">
+          <p className="mx-auto text-[#A1ACBA] leading-relaxed text-lg pb-6">
             I&apos;m a Full-Stack Developer building scalable web applications
             with modern JavaScript. I specialize in clean frontend architectures
             and robust backend systems that deliver reliable, type-safe
@@ -121,46 +121,23 @@ const AboutMe = () => {
           <Reveal direction="left" delay={0.15} className="w-full">
             {/* Code card */}
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] rounded-lg blur opacity-15 group-hover:opacity-30 transition duration-1000" />
               <div
                 ref={codeRef}
-                className="h-[214px] relative bg-[#111111] border border-white/10 p-6 rounded-lg shadow-2xl"
+                className="h-[214px] relative bg-[#080B10] border border-[#1C2633] p-6 rounded-lg shadow-2xl"
               >
                 <div className="flex gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-red-500" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                  <div className="w-3 h-3 rounded-full bg-[#F43F5E]" />
+                  <div className="w-3 h-3 rounded-full bg-[#F59E0B]" />
+                  <div className="w-3 h-3 rounded-full bg-[#22C55E]" />
                 </div>
-                <pre className="font-mono text-sm text-gray-400">
+                <pre className="font-mono text-sm text-[#A1ACBA]">
                   <code>
                     <AutoCodeEditor start={codeInView} />
                   </code>
                 </pre>
               </div>
             </div>
-
-            {/* Info cards — staggered */}
-            {/* <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {info.map((item, i) => (
-                  <Reveal key={item.title} direction="up" delay={0.2 + i * 0.08}>
-                    <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/40 transition h-full">
-                      <div className="flex items-center gap-3">
-                        <div className="text-purple-400">{item.icon}</div>
-                        <div>
-                          <p className="text-xs text-gray-400">{item.title}</p>
-                          <p className="text-sm font-medium">{item.value}</p>
-                          <p className="text-sm font-medium text-gray-300">
-                            {item.organization}
-                          </p>
-                          <p className="text-xs font-medium text-gray-300">
-                            {item.duration}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </div> */}
           </Reveal>
           {/* skills */}
           <Reveal
@@ -168,9 +145,9 @@ const AboutMe = () => {
             delay={0.2}
             className="w-full space-y-6"
           >
-            <div className="p-5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+            <div className="p-5 rounded-xl bg-[#0D1118] border border-[#1C2633] hover:border-[#29384A] transition-all duration-300 hover:-translate-y-1">
               <Reveal direction="up" delay={0.25}>
-                <h2 className="text-center text-xl font-bold text-white pb-4">
+                <h2 className="text-center text-xl font-bold text-[#F1F5F9] pb-4">
                   Technical Abilites
                 </h2>
               </Reveal>
@@ -178,10 +155,10 @@ const AboutMe = () => {
               {/* Frontend label */}
               <Reveal direction="up" delay={0.3}>
                 <div className="flex items-center gap-4 mb-5">
-                  <span className="text-xs uppercase tracking-widest text-purple-400 font-bold">
+                  <span className="text-xs uppercase tracking-widest text-[#8B5CF6] font-bold">
                     Frontend
                   </span>
-                  <div className="h-[1px] flex-grow bg-gradient-to-r from-purple-400/50 to-transparent" />
+                  <div className="h-[1px] flex-grow bg-gradient-to-r from-[#8B5CF6]/50 to-transparent" />
                 </div>
               </Reveal>
 
@@ -189,8 +166,8 @@ const AboutMe = () => {
               <div className="w-full flex flex-wrap gap-3 mt-3">
                 {frontendSkills.map((item, i) => (
                   <Reveal key={i} direction="up" delay={0.32 + i * 0.05}>
-                    <div className="group w-18 h-18 relative p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-30 blur rounded-xl transition" />
+                    <div className="group w-18 h-18 relative p-2 rounded-lg bg-[#111722] border border-[#1C2633] hover:border-[#3B82F6] hover:bg-[#111722] transition-all duration-300 hover:-translate-y-1">
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] opacity-0 group-hover:opacity-20 blur rounded-xl transition" />
                       <div className="relative flex flex-col gap-y-2 items-center">
                         <Image
                           className="object-fill"
@@ -199,7 +176,7 @@ const AboutMe = () => {
                           width={30}
                           height={30}
                         />
-                        <p className="text-xs text-gray-300 font-semibold">
+                        <p className="text-xs text-[#A1ACBA] group-hover:text-[#F1F5F9] font-semibold transition-colors">
                           {item.name}
                         </p>
                       </div>
@@ -211,10 +188,10 @@ const AboutMe = () => {
               {/* Backend label */}
               <Reveal direction="up" delay={0.4}>
                 <div className="flex items-center gap-4 my-5">
-                  <span className="text-xs uppercase tracking-widest text-blue-400 font-bold">
+                  <span className="text-xs uppercase tracking-widest text-[#3B82F6] font-bold">
                     Backends & Tools
                   </span>
-                  <div className="h-[1px] flex-grow bg-gradient-to-r from-blue-400/50 to-transparent" />
+                  <div className="h-[1px] flex-grow bg-gradient-to-r from-[#3B82F6]/50 to-transparent" />
                 </div>
               </Reveal>
 
@@ -222,8 +199,8 @@ const AboutMe = () => {
               <div className="w-full flex flex-wrap gap-3 mt-3">
                 {backendSkills.map((item, i) => (
                   <Reveal key={i} direction="up" delay={0.42 + i * 0.05}>
-                    <div className="group w-18 h-18 relative p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-30 blur rounded-xl transition" />
+                    <div className="group w-18 h-18 relative p-2 rounded-lg bg-[#111722] border border-[#1C2633] hover:border-[#3B82F6] hover:bg-[#111722] transition-all duration-300 hover:-translate-y-1">
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] opacity-0 group-hover:opacity-20 blur rounded-xl transition" />
                       <div className="relative flex flex-col gap-y-2 items-center">
                         <Image
                           className="grayscale group-hover:grayscale-0 transition-all duration-500"
@@ -232,7 +209,7 @@ const AboutMe = () => {
                           width={35}
                           height={35}
                         />
-                        <p className="relative text-[10px] md:text-xs text-gray-400 group-hover:text-white font-medium transition-colors">
+                        <p className="relative text-[10px] md:text-xs text-[#A1ACBA] group-hover:text-[#F1F5F9] font-medium transition-colors">
                           {item.name}
                         </p>
                       </div>

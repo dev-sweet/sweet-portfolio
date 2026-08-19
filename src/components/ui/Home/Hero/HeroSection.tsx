@@ -61,14 +61,14 @@ function StatCell({
       initial={{ opacity: 0, y: 15 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, ease: "easeOut", delay }}
-      className={`flex flex-col items-center justify-center text-center py-4 ${hasBorderRight ? "border-r border-zinc-850" : ""
+      className={`flex flex-col items-center justify-center text-center py-4 ${hasBorderRight ? "border-r border-[#1C2633]" : ""
         }`}
     >
-      <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent leading-none tabular-nums tracking-tight">
+      <span className="text-3xl sm:text-4xl lg:text-3xl font-extrabold bg-gradient-to-r from-[#3B82F6] to-[#60A5FA] bg-clip-text text-transparent leading-none tabular-nums tracking-tight">
         {count}
         {suffix}
       </span>
-      <span className="text-[10px] sm:text-xs text-zinc-500 font-mono mt-3 uppercase tracking-widest">
+      <span className="text-[10px] sm:text-xs text-[#667386] font-mono mt-2 uppercase tracking-widest">
         {label}
       </span>
     </motion.div>
@@ -92,9 +92,6 @@ export default function HeroSection() {
       id="home"
       className="relative w-full flex flex-col justify-between py-18 bg-transparent overflow-hidden"
     >
-      {/* Dynamic ambient lights */}
-      {/* <div className="absolute top-[-10%] left-[-15%] w-[450px] h-[450px]  rounded-full pointer-events-none -z-10" /> */}
-
       {/* ── Top grid ── */}
       <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-12 items-center justify-center py-4 relative z-10">
 
@@ -106,15 +103,15 @@ export default function HeroSection() {
         {/* ── Left / Main intro column ── */}
         <div className="flex flex-col w-full text-left">
           {/* Availability Badge */}
-          <div className="inline-flex items-center gap-2 self-start bg-zinc-950/65 border border-zinc-850 rounded-full px-3 py-1.5 mb-6 shadow-md shadow-black/20">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0 shadow-lg shadow-emerald-400/20" />
-            <span className="text-[10px] sm:text-[11px] text-zinc-400 uppercase font-mono tracking-widest font-bold">
+          <div className="inline-flex items-center gap-2 self-start bg-[#0D1118] border border-[#1C2633] rounded-full px-3 py-1.5 mb-6 shadow-md shadow-black/20">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#22C55E] animate-pulse flex-shrink-0 shadow-lg shadow-[#22C55E]/20" />
+            <span className="text-[10px] sm:text-[11px] text-[#A1ACBA] uppercase font-mono tracking-widest font-bold">
               OPEN TO FULL-TIME ROLES
             </span>
           </div>
           {/* Main Heading */}
           <h1
-            className="font-extrabold text-zinc-250 leading-[1.1] mb-6 tracking-tight"
+            className="font-extrabold text-[#F1F5F9] leading-[1.1] mb-6 tracking-tight"
             style={{ fontSize: "clamp(2.2rem, 5.5vw, 4.2rem)" }}
           >
             Building <AuroraText>Real-World</AuroraText>
@@ -123,41 +120,9 @@ export default function HeroSection() {
           </h1>
 
           {/* Intro Paragraph */}
-          <p className="text-sm sm:text-base text-zinc-300 leading-relaxed  mb-4 font-light">
+          <p className="text-sm sm:text-base text-[#A1ACBA] leading-relaxed mb-4 font-light">
             Full-Stack Engineer with 1+ year of professional experience turning business requirements into reliable software. I've worked on ERP, healthcare, e-commerce, and business management systems, covering everything from user interfaces and APIs to databases.
           </p>
-
-          {/* Social Icons */}
-          <div className="flex justify-start gap-3 w-full justify-center mb-4">
-            {[
-              {
-                href: "https://github.com/dev-sweet",
-                icon: <FaGithub size={15} />,
-                label: "GitHub",
-              },
-              {
-                href: "https://linkedin.com/in/sweet-ali",
-                icon: <FaLinkedin size={15} />,
-                label: "LinkedIn",
-              },
-              {
-                href: "mailto:sweetali0520@gmail.com",
-                icon: <FaEnvelope size={15} />,
-                label: "Mail",
-              },
-            ].map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={s.label}
-                className="cursor-hover w-9 h-9 flex items-center justify-center rounded-xl bg-zinc-900/60 border border-zinc-800 text-zinc-400 hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-950/30 transition-all duration-200"
-              >
-                {s.icon}
-              </a>
-            ))}
-          </div>
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-4 items-center mb-4">
@@ -165,7 +130,7 @@ export default function HeroSection() {
               href="/resume-sweet.pdf"
               target="_blank"
               download
-              className="cursor-hover inline-flex items-center gap-2 bg-[#7c3aed] hover:bg-[#8b5cf6] text-white text-xs sm:text-sm font-semibold px-6 py-3.5 rounded-xl shadow-lg shadow-[#7c3aed]/10 transition-all duration-300"
+              className="cursor-hover inline-flex items-center gap-2 bg-[#3B82F6] hover:bg-[#60A5FA] text-white text-xs sm:text-sm font-semibold px-6 py-3.5 rounded-xl shadow-lg shadow-[#3B82F6]/10 transition-all duration-300"
             >
               Download Resume
               <FaDownload size={12} />
@@ -173,10 +138,10 @@ export default function HeroSection() {
             <a
               href="#projects"
               onClick={(e) => handleScrollTo(e, "projects")}
-              className="cursor-hover inline-flex items-center gap-2 bg-zinc-950/50 border border-zinc-850 hover:border-cyan-400 text-zinc-300 hover:text-white text-xs sm:text-sm font-semibold px-6 py-3.5 rounded-xl hover:bg-zinc-950 transition-all duration-300 backdrop-blur-sm"
+              className="cursor-hover inline-flex items-center gap-2 bg-[#0D1118]/50 border border-[#29384A] hover:border-[#3B82F6] text-[#A1ACBA] hover:text-[#F1F5F9] text-xs sm:text-sm font-semibold px-6 py-3.5 rounded-xl hover:bg-[#0D1118] transition-all duration-300 backdrop-blur-sm"
             >
               GitHub Portfolio
-              <Code size={14} className="text-zinc-400" />
+              <Code size={14} className="text-[#667386]" />
             </a>
           </div>
         </div>
@@ -184,7 +149,7 @@ export default function HeroSection() {
       </div>
 
       {/* ── Statistics Bar ── */}
-      <div className="w-full grid grid-cols-2 sm:grid-cols-4 border-t border-zinc-900/60 mt-10 sm:mt-12 pt-8 sm:pt-10 relative z-10">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-4 border-t border-[#1C2633] mt-6 sm:mt-8 relative z-10">
         {STATS.map((s, i) => (
           <StatCell
             key={s.label}

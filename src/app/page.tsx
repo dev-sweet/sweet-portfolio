@@ -8,7 +8,7 @@ import AboutMe from "@/components/ui/Home/About/About";
 
 export default function HomePage() {
   return (
-    <div className="relative min-h-screen text-white overflow-x-hidden">
+    <div className="relative min-h-screen text-white overflow-x-clip">
       {/* Background layer */}
       <AnimatedBackground />
 
@@ -16,8 +16,8 @@ export default function HomePage() {
       <div className="relative z-10 max-w-[1140px] mx-auto px-4 sm:px-6 pb-16">
         <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-10 xl:gap-12 pt-8 lg:pt-12">
           
-          {/* ── Left Profile Card (Sticky positioning aligned below top navbar) ── */}
-          <aside className="hidden lg:block lg:w-[300px] xl:w-[310px] flex-shrink-0 lg:sticky lg:top-28 z-30">
+          {/* ── Left Profile Card (Sticky vertically centered with equal top-bottom gaps) ── */}
+          <aside className="hidden lg:block lg:w-[300px] xl:w-[310px] shrink-0 sticky top-1/2 -translate-y-1/2 self-start z-30">
             <ProfileCard />
           </aside>
 

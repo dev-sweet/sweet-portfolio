@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="bg-[#070a14] text-white">
+      <body className="bg-[#050609] text-[#F1F5F9]">
         <CustomCursor
           defaultCursorImg="/cursor1.png"
           hoverCursorImg="/pointer.png"

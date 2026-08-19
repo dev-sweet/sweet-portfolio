@@ -180,14 +180,14 @@ export default function ProjectDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased mt-20">
+      <div className="min-h-screen bg-[#050609] text-[#F1F5F9] font-sans antialiased mt-20">
         <section className="relative container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-12 overflow-hidden animate-pulse">
-          <div className="h-6 w-32 bg-zinc-900 rounded mb-4"></div>
-          <div className="h-10 w-96 bg-zinc-900 rounded mb-4"></div>
-          <div className="h-4 w-5/6 bg-zinc-900 rounded"></div>
+          <div className="h-6 w-32 bg-[#0D1118] rounded mb-4"></div>
+          <div className="h-10 w-96 bg-[#0D1118] rounded mb-4"></div>
+          <div className="h-4 w-5/6 bg-[#0D1118] rounded"></div>
         </section>
         <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-12">
-          <div className="aspect-[2/1] w-full bg-zinc-900 rounded-xl animate-pulse"></div>
+          <div className="aspect-[2/1] w-full bg-[#0D1118] rounded-xl animate-pulse"></div>
         </section>
       </div>
     );
@@ -195,16 +195,16 @@ export default function ProjectDetailPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased mt-20 flex flex-col items-center justify-center p-6">
-        <h1 className="text-3xl font-bold mb-4 font-mono text-zinc-300">
+      <div className="min-h-screen bg-[#050609] text-[#F1F5F9] font-sans antialiased mt-20 flex flex-col items-center justify-center p-6">
+        <h1 className="text-3xl font-bold mb-4 font-mono text-[#F1F5F9]">
           404 — Project Not Found
         </h1>
-        <p className="text-zinc-500 mb-8 font-mono">
+        <p className="text-[#667386] mb-8 font-mono">
           The project code database could not locate this index.
         </p>
         <Link
           href="/projects"
-          className="px-5 py-2.5 rounded-md bg-[#5dcaa5] text-zinc-950 font-bold hover:bg-[#4cb291] transition-colors"
+          className="px-5 py-2.5 rounded-md bg-[#3B82F6] text-white font-bold hover:bg-[#60A5FA] transition-colors"
         >
           Return to projects.list()
         </Link>
@@ -230,23 +230,23 @@ export default function ProjectDetailPage() {
   };
 
   return (
-    <div className="min-h-screen  text-zinc-100 font-sans antialiased">
+    <div className="min-h-screen text-[#F1F5F9] font-sans antialiased">
       <style>{`
         html { scroll-behavior: smooth; }
-        .accent-text { color: #5dcaa5; }
-        .accent-bg-soft { background-color: rgba(93, 202, 165, 0.1); }
-        .accent-border-soft { border-color: rgba(93, 202, 165, 0.4); }
-        .hover-border-accent:hover { border-color: rgba(93, 202, 165, 0.4); }
-        .group:hover .group-accent-text { color: #5dcaa5; }
+        .accent-text { color: #3B82F6; }
+        .accent-bg-soft { background-color: rgba(59, 130, 246, 0.1); }
+        .accent-border-soft { border-color: rgba(59, 130, 246, 0.3); }
+        .hover-border-accent:hover { border-color: #29384A; }
+        .group:hover .group-accent-text { color: #3B82F6; }
         .cover-img { filter: grayscale(0.5); transition: filter 0.5s ease, transform 0.5s ease; }
         .group:hover .cover-img { filter: grayscale(0); transform: scale(1.03); }
       `}</style>
 
       {/* Reading progress bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-zinc-900 z-50">
+      <div className="fixed top-0 left-0 right-0 h-1 bg-[#0D1118] z-50">
         <div
           className="h-full transition-[width] duration-150"
-          style={{ width: `${progress}%`, backgroundColor: "#5dcaa5" }}
+          style={{ width: `${progress}%`, backgroundColor: "#3B82F6" }}
         />
       </div>
 
@@ -254,7 +254,7 @@ export default function ProjectDetailPage() {
       <header className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-6">
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 font-mono text-xs text-zinc-500 hover:text-zinc-200 transition-colors mb-8"
+          className="inline-flex items-center gap-2 font-mono text-xs text-[#667386] hover:text-[#F1F5F9] transition-colors mb-8"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           back to projects.list()
@@ -265,32 +265,32 @@ export default function ProjectDetailPage() {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="inline-block font-mono text-xs px-2.5 py-0.5 rounded-md border border-zinc-800 text-zinc-400"
+              className="inline-block font-mono text-xs px-2.5 py-0.5 rounded-md border border-[#1C2633] text-[#A1ACBA]"
             >
               {tag}
             </span>
           ))}
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
+        <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6 text-[#F1F5F9]">
           {project.title}
         </h1>
 
-        <div className="flex flex-wrap items-center gap-6 text-sm font-mono text-zinc-500">
+        <div className="flex flex-wrap items-center gap-6 text-sm font-mono text-[#667386]">
           <div className="flex items-center gap-1.5">
-            <User className="w-3.5 h-3.5 text-[#5dcaa5]" />
-            <span className="text-zinc-300">{study.role}</span>
+            <User className="w-3.5 h-3.5 text-[#3B82F6]" />
+            <span className="text-[#F1F5F9]">{study.role}</span>
           </div>
           <span>·</span>
           <div className="flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5 text-[#5dcaa5]" />
-            <span>{study.timeline}</span>
+            <Calendar className="w-3.5 h-3.5 text-[#3B82F6]" />
+            <span className="text-[#A1ACBA]">{study.timeline}</span>
           </div>
         </div>
       </header>
 
       {/* Project Image banner */}
       <div className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-12">
-        <div className="rounded-xl overflow-hidden border border-zinc-800 relative group">
+        <div className="rounded-xl overflow-hidden border border-[#1C2633] relative group">
           <img
             src={project.image}
             alt={project.title}
@@ -302,56 +302,56 @@ export default function ProjectDetailPage() {
       {/* Main content grid */}
       <div className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 grid lg:grid-cols-[1fr_280px] gap-12 lg:gap-16">
         {/* Left Column: Case Study */}
-        <article className="max-w-2xl text-zinc-300 leading-relaxed space-y-10">
+        <article className="max-w-2xl text-[#A1ACBA] leading-relaxed space-y-10">
           <div>
-            <h2 className="text-2xl font-bold text-zinc-100 mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-[#F1F5F9] mb-4 flex items-center gap-2">
               <span className="accent-text font-mono text-lg">#</span> Overview
             </h2>
-            <p className="text-lg leading-relaxed text-zinc-300 bg-zinc-900/30 border border-zinc-900 rounded-xl p-5">
+            <p className="text-lg leading-relaxed text-[#A1ACBA] bg-[#080B10] border border-[#1C2633] rounded-xl p-5">
               {study.overview}
             </p>
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-zinc-100 mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-[#F1F5F9] mb-4 flex items-center gap-2">
               <span className="accent-text font-mono text-lg">#</span> Technical
               Challenges
             </h2>
             <ul className="space-y-4">
               {study.challenges.map((challenge, i) => (
                 <li key={i} className="flex gap-3 items-start">
-                  <ShieldCheck className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
-                  <span>{challenge}</span>
+                  <ShieldCheck className="w-5 h-5 text-[#F43F5E] shrink-0 mt-0.5" />
+                  <span className="text-[#A1ACBA]">{challenge}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-zinc-100 mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-[#F1F5F9] mb-4 flex items-center gap-2">
               <span className="accent-text font-mono text-lg">#</span> Key
               Features
             </h2>
             <ul className="space-y-4">
               {study.features.map((feature, i) => (
                 <li key={i} className="flex gap-3 items-start">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span>{feature}</span>
+                  <CheckCircle2 className="w-5 h-5 text-[#22C55E] shrink-0 mt-0.5" />
+                  <span className="text-[#A1ACBA]">{feature}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-zinc-100 mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-[#F1F5F9] mb-4 flex items-center gap-2">
               <span className="accent-text font-mono text-lg">#</span>{" "}
               Engineering Lessons
             </h2>
             <ul className="space-y-4">
               {study.lessons.map((lesson, i) => (
                 <li key={i} className="flex gap-3 items-start">
-                  <Code className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
-                  <span>{lesson}</span>
+                  <Code className="w-5 h-5 text-[#3B82F6] shrink-0 mt-0.5" />
+                  <span className="text-[#A1ACBA]">{lesson}</span>
                 </li>
               ))}
             </ul>
@@ -362,24 +362,24 @@ export default function ProjectDetailPage() {
         <aside className="space-y-6">
           <div className="sticky top-24 space-y-6">
             {/* Quick Actions */}
-            <div className="p-6 rounded-xl border border-zinc-800 bg-zinc-900/40 space-y-4">
-              <p className="font-mono text-xs text-zinc-500">
+            <div className="p-6 rounded-xl border border-[#1C2633] bg-[#0D1118] space-y-4">
+              <p className="font-mono text-xs text-[#667386]">
                 // deploy.actions()
               </p>
               <a
                 href={project.liveLink || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-[#5dcaa5] text-zinc-950 font-bold hover:bg-[#4cb291] transition-colors text-sm font-mono"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-[#3B82F6] text-white font-bold hover:bg-[#60A5FA] transition-colors text-sm font-mono shadow-md shadow-[#3B82F6]/20"
               >
                 <ExternalLink className="w-4 h-4" />
                 live demo
               </a>
               <a
-                href={project.github || "https://github.com/dev-sweet"}
+                href={project.github || "https://github.com/dev-sweet" }
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors text-sm font-mono"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-[#111722] border border-[#29384A] text-[#A1ACBA] hover:text-[#F1F5F9] hover:border-[#3B82F6] transition-colors text-sm font-mono"
               >
                 <Github className="w-4 h-4" />
                 source code
@@ -387,29 +387,29 @@ export default function ProjectDetailPage() {
             </div>
 
             {/* Quick Details */}
-            <div className="p-6 rounded-xl border border-zinc-800 bg-zinc-900/40 space-y-4">
-              <p className="font-mono text-xs text-zinc-500">
+            <div className="p-6 rounded-xl border border-[#1C2633] bg-[#0D1118] space-y-4">
+              <p className="font-mono text-xs text-[#667386]">
                 // build.details()
               </p>
               <div className="text-xs font-mono space-y-3">
-                <div className="flex justify-between py-1 border-b border-zinc-900">
-                  <span className="text-zinc-500">Year</span>
-                  <span className="text-zinc-300">{project.year}</span>
+                <div className="flex justify-between py-1 border-b border-[#1C2633]">
+                  <span className="text-[#667386]">Year</span>
+                  <span className="text-[#F1F5F9]">{project.year}</span>
                 </div>
-                <div className="flex justify-between py-1 border-b border-zinc-900">
-                  <span className="text-zinc-500">Platform</span>
-                  <span className="text-zinc-300">Web App</span>
+                <div className="flex justify-between py-1 border-b border-[#1C2633]">
+                  <span className="text-[#667386]">Platform</span>
+                  <span className="text-[#F1F5F9]">Web App</span>
                 </div>
-                <div className="flex justify-between py-1 border-b border-zinc-900">
-                  <span className="text-zinc-500">Scope</span>
-                  <span className="text-zinc-300">Full Stack</span>
+                <div className="flex justify-between py-1 border-b border-[#1C2633]">
+                  <span className="text-[#667386]">Scope</span>
+                  <span className="text-[#F1F5F9]">Full Stack</span>
                 </div>
                 <div className="flex justify-between py-1">
-                  <span className="text-zinc-500">Status</span>
-                  <span className="text-[#5dcaa5] flex items-center gap-1">
+                  <span className="text-[#667386]">Status</span>
+                  <span className="text-[#22C55E] flex items-center gap-1 font-semibold">
                     <span className="relative flex h-1.5 w-1.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400"></span>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22C55E] opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#22C55E]"></span>
                     </span>
                     live
                   </span>
@@ -423,7 +423,7 @@ export default function ProjectDetailPage() {
       {/* Related Projects grid */}
       {related.length > 0 && (
         <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mt-20 mb-20">
-          <p className="font-mono text-xs text-zinc-500 mb-5">
+          <p className="font-mono text-xs text-[#667386] mb-5">
             // explore other builds
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -431,7 +431,7 @@ export default function ProjectDetailPage() {
               <Link
                 key={p.id}
                 href={`/projects/${p.id}`}
-                className="group flex flex-col rounded-xl border border-zinc-800 bg-zinc-900/50 hover-border-accent hover:-translate-y-1 transition-all overflow-hidden"
+                className="group flex flex-col rounded-xl border border-[#1C2633] bg-[#0D1118] hover-border-accent hover:-translate-y-1 transition-all overflow-hidden"
               >
                 <div className="aspect-video overflow-hidden">
                   <img
@@ -441,15 +441,15 @@ export default function ProjectDetailPage() {
                   />
                 </div>
                 <div className="p-5 flex flex-col flex-1">
-                  <span className="font-mono text-xs text-zinc-500 mb-3">
+                  <span className="font-mono text-xs text-[#667386] mb-3">
                     {`[${p.tags[0].toLowerCase()}]`}
                   </span>
-                  <h3 className="text-sm font-semibold mb-3 leading-snug group-accent-text transition-colors">
+                  <h3 className="text-sm font-semibold mb-3 leading-snug group-accent-text transition-colors text-[#F1F5F9]">
                     {p.title}
                   </h3>
-                  <div className="mt-auto flex items-center justify-between text-xs font-mono text-zinc-500">
+                  <div className="mt-auto flex items-center justify-between text-xs font-mono text-[#667386]">
                     <span>{p.year}</span>
-                    <ArrowUpRight className="w-4 h-4 text-zinc-500 group-accent-text group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <ArrowUpRight className="w-4 h-4 text-[#667386] group-accent-text group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </div>
                 </div>
               </Link>

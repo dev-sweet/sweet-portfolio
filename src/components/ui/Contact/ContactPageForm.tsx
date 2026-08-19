@@ -103,8 +103,8 @@ export default function ContactPageForm() {
             {/* Pulsing Badge */}
             <Reveal direction="up" delay={0}>
               <div className="inline-flex items-center gap-2 self-start">
-                <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse shadow-md shadow-purple-500/20" />
-                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest font-bold">
+                <span className="w-2 h-2 rounded-full bg-[#8B5CF6] animate-pulse shadow-md shadow-[#8B5CF6]/20" />
+                <span className="text-[10px] font-mono text-[#667386] uppercase tracking-widest font-bold">
                   CONNECT
                 </span>
               </div>
@@ -112,9 +112,9 @@ export default function ContactPageForm() {
 
             {/* Heading */}
             <Reveal direction="up" delay={0.08}>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1]">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#F1F5F9] tracking-tight leading-[1.1]">
                 Start a <br />
-                <span className="bg-gradient-to-r from-cyan-400 to-[#3b82f6] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] bg-clip-text text-transparent">
                   Dialogue
                 </span>
               </h2>
@@ -122,7 +122,7 @@ export default function ContactPageForm() {
 
             {/* Bio text */}
             <Reveal direction="up" delay={0.14}>
-              <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-light max-w-sm">
+              <p className="text-[#A1ACBA] text-sm sm:text-base leading-relaxed font-light max-w-sm">
                 Currently inviting new high-impact projects and senior full-stack opportunities. Let&apos;s discuss your roadmap.
               </p>
             </Reveal>
@@ -133,16 +133,16 @@ export default function ContactPageForm() {
               <Reveal direction="left" delay={0.2}>
                 <a
                   href="mailto:sweetali0520@gmail.com"
-                  className="cursor-hover flex items-center gap-4 p-4 rounded-2xl bg-zinc-950/45 border border-zinc-850 hover:border-cyan-400 transition-colors duration-300"
+                  className="cursor-hover flex items-center gap-4 p-4 rounded-2xl bg-[#0D1118] border border-[#1C2633] hover:border-[#3B82F6] transition-colors duration-300"
                 >
-                  <div className="p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-cyan-400">
+                  <div className="p-3 rounded-xl bg-[#111722] border border-[#1C2633] text-[#3B82F6]">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider font-bold block">
+                    <span className="text-[9px] font-mono text-[#667386] uppercase tracking-wider font-bold block">
                       EMAIL_PRIMARY
                     </span>
-                    <span className="text-sm font-semibold text-zinc-300 mt-1 block font-mono">
+                    <span className="text-sm font-semibold text-[#F1F5F9] mt-1 block font-mono">
                       sweetali0520@gmail.com
                     </span>
                   </div>
@@ -153,16 +153,16 @@ export default function ContactPageForm() {
               <Reveal direction="left" delay={0.28}>
                 <a
                   href="tel:+8801727724844"
-                  className="cursor-hover flex items-center gap-4 p-4 rounded-2xl bg-zinc-950/45 border border-zinc-850 hover:border-cyan-400 transition-colors duration-300"
+                  className="cursor-hover flex items-center gap-4 p-4 rounded-2xl bg-[#0D1118] border border-[#1C2633] hover:border-[#8B5CF6] transition-colors duration-300"
                 >
-                  <div className="p-3 rounded-xl bg-zinc-900 border border-zinc-800 text-purple-400">
+                  <div className="p-3 rounded-xl bg-[#111722] border border-[#1C2633] text-[#8B5CF6]">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider font-bold block">
+                    <span className="text-[9px] font-mono text-[#667386] uppercase tracking-wider font-bold block">
                       SECURE_CONNECT
                     </span>
-                    <span className="text-sm font-semibold text-zinc-300 mt-1 block font-mono">
+                    <span className="text-sm font-semibold text-[#F1F5F9] mt-1 block font-mono">
                       +8801727724844
                     </span>
                   </div>
@@ -173,11 +173,11 @@ export default function ContactPageForm() {
 
           {/* Right Column Form */}
           <Reveal direction="right" delay={0.2} className="h-full">
-            <div className="bg-zinc-950/45 border border-zinc-850 rounded-[28px] p-6 md:p-8 backdrop-blur-md shadow-2xl">
+            <div className="bg-[#0D1118] border border-[#1C2633] rounded-[28px] p-6 md:p-8 backdrop-blur-md shadow-2xl">
 
               {/* Endpoint signature */}
               <Reveal direction="up" delay={0.28}>
-                <p className="font-mono text-[10px] text-cyan-400 tracking-wider mb-6 select-none font-bold">
+                <p className="font-mono text-[10px] text-[#3B82F6] tracking-wider mb-6 select-none font-bold">
                   // POST /api/contact
                 </p>
               </Reveal>
@@ -209,7 +209,7 @@ export default function ContactPageForm() {
 
                 <Reveal direction="up" delay={0.44}>
                   <div className="flex flex-col gap-2">
-                    <label className="text-[10px] font-mono text-zinc-500 ml-1 uppercase tracking-widest font-bold">
+                    <label className="text-[10px] font-mono text-[#667386] ml-1 uppercase tracking-widest font-bold">
                       How can I assist?
                     </label>
                     <textarea
@@ -218,14 +218,14 @@ export default function ContactPageForm() {
                       placeholder="How can I assist?"
                       value={formData.message}
                       onChange={handleChange}
-                      className={`w-full bg-zinc-950/45 border rounded-xl p-4 text-white text-sm placeholder:text-zinc-600 font-mono focus:outline-none focus:ring-1 transition-all resize-none ${
+                      className={`w-full bg-[#080B10] border rounded-xl p-4 text-[#F1F5F9] text-sm placeholder:text-[#667386] font-mono focus:outline-none focus:ring-1 transition-all resize-none ${
                         errors.message
-                          ? "border-red-500/50 focus:ring-red-500/30 focus:border-red-500"
-                          : "border-zinc-800/80 focus:ring-cyan-500/30 focus:border-cyan-400"
+                          ? "border-[#F43F5E]/50 focus:ring-[#F43F5E]/30 focus:border-[#F43F5E]"
+                          : "border-[#1C2633] focus:ring-[#3B82F6]/30 focus:border-[#3B82F6]"
                       }`}
                     />
                     {errors.message && (
-                      <p className="text-[10px] text-red-400 font-mono mt-0.5 ml-1">{errors.message}</p>
+                      <p className="text-[10px] text-[#F43F5E] font-mono mt-0.5 ml-1">{errors.message}</p>
                     )}
                   </div>
                 </Reveal>
@@ -235,10 +235,10 @@ export default function ContactPageForm() {
                     whileHover={{ scale: 1.01, y: -0.5 }}
                     whileTap={{ scale: 0.99 }}
                     type="submit"
-                    className={`cursor-hover w-full font-bold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-2 text-xs font-mono uppercase tracking-widest text-[#05050a] ${
+                    className={`cursor-hover w-full font-bold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-2 text-xs font-mono uppercase tracking-widest ${
                       sent
-                        ? "bg-emerald-400 shadow-lg shadow-emerald-400/20"
-                        : "bg-cyan-400 hover:bg-cyan-300 shadow-lg shadow-cyan-500/10"
+                        ? "bg-[#22C55E] text-zinc-950 shadow-lg shadow-[#22C55E]/20"
+                        : "bg-[#3B82F6] hover:bg-[#60A5FA] text-white shadow-lg shadow-[#3B82F6]/10"
                     }`}
                   >
                     {sent ? (

@@ -39,11 +39,11 @@ const BlogCard = ({ blog, index }: BlogCardProps) => {
         ease: [0.21, 0.47, 0.32, 0.98],
       }}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="group w-full rounded-2xl bg-[#0a0c16]/90 border border-zinc-800/80 p-5 md:p-6 shadow-xl shadow-black/40 hover:border-indigo-500/30 hover:bg-[#0c0e1a] transition-all duration-300"
+      className="group w-full rounded-2xl bg-[#0D1118] border border-[#1C2633] p-5 md:p-6 shadow-xl shadow-black/40 hover:border-[#29384A] hover:bg-[#111722] transition-all duration-300"
     >
       <Link href={`/blogs/${blog.id}`} className="flex flex-col md:flex-row gap-6 md:gap-7 items-stretch">
         {/* Left Thumbnail Image */}
-        <div className="w-full md:w-[300px] lg:w-[340px] h-48 sm:h-52 md:h-auto min-h-[180px] shrink-0 rounded-xl overflow-hidden relative border border-zinc-800/60 bg-zinc-950">
+        <div className="w-full md:w-[300px] lg:w-[340px] h-48 sm:h-52 md:h-auto min-h-[180px] shrink-0 rounded-xl overflow-hidden relative border border-[#1C2633] bg-[#080B10]">
           <Image
             src={blog.image}
             alt={blog.title}
@@ -59,31 +59,31 @@ const BlogCard = ({ blog, index }: BlogCardProps) => {
           <div>
             {/* Category Tag + Date + Read Time */}
             <div className="flex flex-wrap items-center gap-3 mb-3">
-              <span className="px-2.5 py-0.5 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-cyan-400 bg-cyan-950/40 border border-cyan-800/40 rounded-md">
+              <span className="px-2.5 py-0.5 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-[#3B82F6] bg-[#3B82F6]/10 border border-[#3B82F6]/30 rounded-md">
                 {category}
               </span>
-              <span className="font-mono text-xs text-zinc-400 font-medium tracking-tight">
+              <span className="font-mono text-xs text-[#667386] font-medium tracking-tight">
                 {date} &bull; {readTime}
               </span>
             </div>
 
             {/* Blog Title */}
-            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug group-hover:text-cyan-300 transition-colors line-clamp-2 mb-2.5">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#F1F5F9] tracking-tight leading-snug group-hover:text-[#3B82F6] transition-colors line-clamp-2 mb-2.5">
               {blog.title}
             </h3>
 
             {/* Short Description */}
-            <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-normal line-clamp-2 sm:line-clamp-3">
+            <p className="text-[#A1ACBA] text-sm sm:text-base leading-relaxed font-normal line-clamp-2 sm:line-clamp-3">
               {blog.shortDescription}
             </p>
           </div>
 
           {/* Author Badge */}
           <div className="flex items-center gap-2.5 mt-5 pt-2">
-            <div className="w-7 h-7 rounded-full border border-indigo-500/60 bg-indigo-950/50 flex items-center justify-center text-indigo-400 shrink-0">
-              <User size={14} className="text-indigo-300" />
+            <div className="w-7 h-7 rounded-full border border-[#1C2633] bg-[#111722] flex items-center justify-center text-[#3B82F6] shrink-0">
+              <User size={14} className="text-[#3B82F6]" />
             </div>
-            <span className="text-sm font-semibold text-zinc-300">
+            <span className="text-sm font-semibold text-[#A1ACBA]">
               {author}
             </span>
           </div>

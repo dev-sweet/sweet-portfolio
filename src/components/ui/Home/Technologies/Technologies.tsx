@@ -63,10 +63,10 @@ export default function Technologies() {
             initial={{ opacity: 0, y: 15 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-800/80 mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0D1118] border border-[#1C2633] mb-4"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
-            <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse" />
+            <span className="text-[10px] font-mono text-[#3B82F6] uppercase tracking-widest font-semibold">
               tech_stack
             </span>
           </motion.div>
@@ -76,7 +76,7 @@ export default function Technologies() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
             ref={ref}
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#F1F5F9] tracking-tight"
           >
             Core <AuroraText>Technologies</AuroraText>
           </motion.h2>
@@ -85,7 +85,7 @@ export default function Technologies() {
             initial={{ opacity: 0, y: 15 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-zinc-400 text-sm sm:text-base mt-4 leading-relaxed"
+            className="text-[#A1ACBA] text-sm sm:text-base mt-4 leading-relaxed"
           >
             A curated list of state-of-the-art frameworks, languages, databases, and DevOps solutions that I specialize in.
           </motion.p>
@@ -104,16 +104,16 @@ export default function Technologies() {
               variants={itemVariants}
               whileHover={{
                 y: -5,
-                boxShadow: `0 8px 30px ${tech.color}`,
-                borderColor: tech.color,
+                boxShadow: `0 8px 30px rgba(59, 130, 246, 0.15)`,
+                borderColor: "#3B82F6",
               }}
-              className="flex flex-col items-center justify-center p-5 rounded-2xl bg-zinc-900/25 border border-zinc-800/40 hover:bg-zinc-900/40 transition-all duration-300 backdrop-blur-xs select-none group cursor-pointer"
+              className="flex flex-col items-center justify-center p-5 rounded-2xl bg-[#0D1118] border border-[#1C2633] hover:bg-[#111722] transition-all duration-300 backdrop-blur-xs select-none group cursor-pointer"
             >
               {/* Icon Container with dynamic hover hover scale and color transitions */}
               <div className={`mb-3.5 transition-transform duration-300 group-hover:scale-110 ${tech.textColor}`}>
                 {tech.icon}
               </div>
-              <span className="text-xs sm:text-sm font-semibold text-zinc-300 font-mono group-hover:text-white transition-colors">
+              <span className="text-xs sm:text-sm font-semibold text-[#A1ACBA] font-mono group-hover:text-[#F1F5F9] transition-colors">
                 {tech.name}
               </span>
             </motion.div>

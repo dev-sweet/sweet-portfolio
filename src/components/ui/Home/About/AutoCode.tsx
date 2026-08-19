@@ -20,14 +20,14 @@ function tokenize(code: string): Token[] {
   let match;
   while ((match = regex.exec(code)) !== null) {
     if (match[1]) {
-      tokens.push({ value: match[1], className: "text-purple-400" });
+      tokens.push({ value: match[1], className: "text-[#8B5CF6] font-bold" });
     } else if (match[2]) {
-      tokens.push({ value: match[2], className: "text-green-400" });
+      tokens.push({ value: match[2], className: "text-[#38BDF8]" });
     } else if (match[3] && match[4]) {
-      tokens.push({ value: match[3], className: "text-cyan-400" });
-      tokens.push({ value: match[4], className: "text-gray-400" });
+      tokens.push({ value: match[3], className: "text-[#3B82F6]" });
+      tokens.push({ value: match[4], className: "text-[#A1ACBA]" });
     } else {
-      tokens.push({ value: match[0], className: "text-gray-400" });
+      tokens.push({ value: match[0], className: "text-[#A1ACBA]" });
     }
   }
   return tokens;
@@ -61,7 +61,7 @@ export default function AutoTypingCode({ start = false }: { start?: boolean }) {
       ))}
       {/* Hide cursor once fully typed */}
       {visibleCount < FULL_CODE.length && (
-        <span className="text-purple-400 animate-pulse">▌</span>
+        <span className="text-[#3B82F6] animate-pulse">▌</span>
       )}
     </pre>
   );

@@ -1,12 +1,30 @@
 "use client";
 
+import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
 import { Home, Code, FileText, Mail, User } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
+
+  // Detect scroll direction with threshold
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    const diff = latest - previous;
+
+    // Scroll down past 80px -> hide slowly
+    if (diff > 5 && latest > 80) {
+      setHidden(true);
+    }
+    // Scroll up -> show slowly
+    else if (diff < -5 || latest <= 50) {
+      setHidden(false);
+    }
+  });
 
   const navItems = [
     { label: "Home", href: "/", icon: <Home className="w-4 h-4" /> },
@@ -19,7 +37,16 @@ export default function Navbar() {
   return (
     <>
       {/* ── Top Floating Navigation Bar (Desktop) ── */}
-      <header className="hidden md:flex fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-[#070a14]/85 backdrop-blur-xl border border-[#141b2e] rounded-full px-6 py-2.5 items-center gap-4 sm:gap-6 shadow-2xl shadow-cyan-500/10 select-none">
+      <motion.header
+        variants={{
+          visible: { y: 0, x: "-50%", opacity: 1 },
+          hidden: { y: -80, x: "-50%", opacity: 0 },
+        }}
+        initial="visible"
+        animate={hidden ? "hidden" : "visible"}
+        transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
+        className="hidden md:flex fixed top-5 left-1/2 z-50 bg-[#080B10]/90 backdrop-blur-xl border border-[#1C2633] rounded-full px-6 py-2.5 items-center gap-4 sm:gap-6 shadow-2xl shadow-blue-500/10 select-none"
+      >
         {navItems.map((item) => {
           const isActive =
             item.href === "/"
@@ -32,26 +59,35 @@ export default function Navbar() {
               href={item.href}
               className={`relative flex items-center gap-2 text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-hover ${
                 isActive
-                  ? "text-[#00f2fe] bg-[#00f2fe]/10 border border-[#00f2fe]/30"
-                  : "text-slate-300 hover:text-white hover:bg-white/5"
+                  ? "text-[#F1F5F9] bg-[#3B82F6]/15 border border-[#3B82F6]/30"
+                  : "text-[#A1ACBA] hover:text-[#F1F5F9] hover:bg-white/5"
               }`}
             >
               {item.icon}
-              <span>{item.label}</span>
+              {/* <span>{item.label}</span> */}
               {isActive && (
                 <motion.div
                   layoutId="topNavPill"
-                  className="absolute inset-0 rounded-full border border-[#00f2fe]/40 -z-10 shadow-[0_0_12px_rgba(0,242,254,0.25)]"
+                  className="absolute inset-0 rounded-full border border-[#3B82F6]/40 -z-10 shadow-[0_0_12px_rgba(59,130,246,0.25)]"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
             </Link>
           );
         })}
-      </header>
+      </motion.header>
 
       {/* ── Mobile PWA Bottom Fixed Navigation Bar (Mobile) ── */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-[64px] bg-[#070a14]/95 backdrop-blur-2xl border-t border-[#141b2e] z-50 flex items-center justify-around px-2 select-none">
+      <motion.nav
+        variants={{
+          visible: { y: 0, opacity: 1 },
+          hidden: { y: 80, opacity: 0 },
+        }}
+        initial="visible"
+        animate={hidden ? "hidden" : "visible"}
+        transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
+        className="md:hidden fixed bottom-0 left-0 right-0 h-[64px] bg-[#080B10]/95 backdrop-blur-2xl border-t border-[#1C2633] z-50 flex items-center justify-around px-2 select-none"
+      >
         {navItems.map((item) => {
           const isActive =
             item.href === "/"
@@ -63,12 +99,12 @@ export default function Navbar() {
               key={item.label}
               href={item.href}
               className={`flex flex-col items-center justify-center gap-0.5 py-1 px-3 rounded-xl transition-all duration-200 ${
-                isActive ? "text-[#00f2fe]" : "text-slate-400 hover:text-slate-200"
+                isActive ? "text-[#F1F5F9]" : "text-[#A1ACBA] hover:text-[#F1F5F9]"
               }`}
             >
               <div
                 className={`p-1.5 rounded-lg transition-all ${
-                  isActive ? "bg-[#00f2fe]/15 border border-[#00f2fe]/30 shadow-[0_0_10px_rgba(0,242,254,0.25)]" : ""
+                  isActive ? "bg-[#3B82F6]/15 border border-[#3B82F6]/30 shadow-[0_0_10px_rgba(59,130,246,0.25)]" : ""
                 }`}
               >
                 {item.icon}
@@ -79,7 +115,8 @@ export default function Navbar() {
             </Link>
           );
         })}
-      </nav>
+      </motion.nav>
     </>
   );
 }
+

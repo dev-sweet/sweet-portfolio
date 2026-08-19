@@ -137,31 +137,31 @@ export default function BlogsPage() {
   }
 
   return (
-    <div className="min-h-screen text-zinc-100 font-sans antialiased">
+    <div className="min-h-screen text-[#F1F5F9] font-sans antialiased">
       <style>{`
-        .accent-text { color: #5dcaa5; }
-        .accent-bg-soft { background-color: rgba(93, 202, 165, 0.1); }
-        .accent-border-soft { border-color: rgba(93, 202, 165, 0.4); }
-        .hover-border-accent:hover { border-color: rgba(93, 202, 165, 0.4); }
-        .focus-border-accent:focus-within { border-color: rgba(93, 202, 165, 0.5); }
-        .group:hover .group-accent-text { color: #5dcaa5; }
+        .accent-text { color: #3B82F6; }
+        .accent-bg-soft { background-color: rgba(59, 130, 246, 0.1); }
+        .accent-border-soft { border-color: rgba(59, 130, 246, 0.3); }
+        .hover-border-accent:hover { border-color: #29384A; }
+        .focus-border-accent:focus-within { border-color: #3B82F6; }
+        .group:hover .group-accent-text { color: #3B82F6; }
         .cover-img { filter: grayscale(0.65); transition: filter 0.5s ease, transform 0.5s ease; }
         .group:hover .cover-img { filter: grayscale(0); transform: scale(1.04); }
       `}</style>
 
       {/* Hero */}
       <section className="relative container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-12 overflow-hidden">
-        <span className="absolute -top-6 left-0 text-[6rem] md:text-[11rem] font-bold text-zinc-900/90 select-none leading-none tracking-tight font-mono pointer-events-none whitespace-nowrap">
+        <span className="absolute -top-6 left-0 text-[6rem] md:text-[11rem] font-bold text-[#0D1118] select-none leading-none tracking-tight font-mono pointer-events-none whitespace-nowrap">
           BLOG
         </span>
         <div className="relative">
           <p className="font-mono text-sm accent-text mb-3">
             {`// blog.list() — ${posts.length} posts`}
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[#F1F5F9]">
             Notes from the build log
           </h1>
-          <p className="text-zinc-400 max-w-xl leading-relaxed">
+          <p className="text-[#A1ACBA] max-w-xl leading-relaxed">
             Write-ups on the stack I actually ship with — Next.js, TypeScript,
             Node, and the occasional AI feature that took three tries to get
             right.
@@ -172,16 +172,16 @@ export default function BlogsPage() {
       {/* Search + filters */}
       <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-10">
         <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
-          <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2.5 font-mono text-sm w-full md:max-w-sm focus-border-accent transition-colors">
-            <span className="text-zinc-500">$</span>
-            <span className="text-emerald-400">grep</span>
+          <div className="flex items-center gap-2 bg-[#080B10] border border-[#1C2633] rounded-lg px-4 py-2.5 font-mono text-sm w-full md:max-w-sm focus-border-accent transition-colors">
+            <span className="text-[#667386]">$</span>
+            <span className="text-[#22C55E]">grep</span>
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="search posts..."
-              className="bg-transparent outline-none flex-1 text-zinc-100 placeholder:text-zinc-500"
+              className="bg-transparent outline-none flex-1 text-[#F1F5F9] placeholder:text-[#667386]"
             />
-            <Search className="w-4 h-4 text-zinc-500" />
+            <Search className="w-4 h-4 text-[#667386]" />
           </div>
           <div className="flex flex-wrap gap-2">
             {TAGS.map((tag) => (
@@ -191,7 +191,7 @@ export default function BlogsPage() {
                 className={`px-3 py-1.5 rounded-md text-xs font-mono border transition-colors ${
                   activeTag === tag
                     ? "accent-bg-soft accent-border-soft accent-text"
-                    : "border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
+                    : "border-[#1C2633] text-[#A1ACBA] hover:border-[#29384A] hover:text-[#F1F5F9]"
                 }`}
               >
                 {`--${tag.toLowerCase().replace(".", "")}`}
@@ -206,26 +206,26 @@ export default function BlogsPage() {
         <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-8">
           <Link
             href={`/blogs/${featuredPost.id}`}
-            className="group block rounded-xl border border-zinc-800 bg-zinc-900/50 hover-border-accent transition-all overflow-hidden"
+            className="group block rounded-xl border border-[#1C2633] bg-[#0D1118] hover-border-accent transition-all overflow-hidden"
           >
             <div className="grid md:grid-cols-2">
               <div className="p-8 flex flex-col justify-center order-2 md:order-1">
                 <span className="font-mono text-xs accent-text mb-3">
                   // featured
                 </span>
-                <h2 className="text-2xl md:text-3xl font-bold mb-3 group-accent-text transition-colors">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 group-accent-text transition-colors text-[#F1F5F9]">
                   {featuredPost.title}
                 </h2>
-                <p className="text-zinc-400 mb-6 leading-relaxed">
+                <p className="text-[#A1ACBA] mb-6 leading-relaxed">
                   {featuredPost.excerpt}
                 </p>
-                <div className="flex items-center gap-4 text-xs font-mono text-zinc-500">
+                <div className="flex items-center gap-4 text-xs font-mono text-[#667386]">
                   <span>{featuredPost.date}</span>
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" />
                     {featuredPost.readTime}
                   </span>
-                  <span className="ml-auto flex items-center gap-1 text-zinc-300 group-accent-text transition-colors">
+                  <span className="ml-auto flex items-center gap-1 text-[#A1ACBA] group-accent-text transition-colors">
                     read
                     <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </span>
@@ -237,7 +237,7 @@ export default function BlogsPage() {
                   alt={featuredPost.title}
                   className="cover-img w-full max-h-[500px] object-cover transition-transform duration-500"
                 />
-                <span className="absolute top-4 left-4 px-2 py-1 rounded bg-zinc-950/80 border border-zinc-800 font-mono text-xs text-zinc-300">
+                <span className="absolute top-4 left-4 px-2 py-1 rounded bg-[#080B10]/80 border border-[#1C2633] font-mono text-xs text-[#A1ACBA]">
                   {featuredPost.tag}
                 </span>
               </div>
@@ -254,7 +254,7 @@ export default function BlogsPage() {
               <Link
                 key={post.id}
                 href={`/blogs/${post.id}`}
-                className="group flex flex-col rounded-xl border border-zinc-800 bg-zinc-900/50 hover-border-accent hover:-translate-y-1 transition-all overflow-hidden"
+                className="group flex flex-col rounded-xl border border-[#1C2633] bg-[#0D1118] hover-border-accent hover:-translate-y-1 transition-all overflow-hidden"
               >
                 <div className="aspect-video overflow-hidden">
                   <img
@@ -264,23 +264,23 @@ export default function BlogsPage() {
                   />
                 </div>
                 <div className="p-6 flex flex-col flex-1">
-                  <span className="font-mono text-xs text-zinc-500 mb-4">
+                  <span className="font-mono text-xs text-[#667386] mb-4">
                     {`[${post.tag.toLowerCase()}]`}
                   </span>
-                  <h3 className="text-lg font-semibold mb-2 leading-snug group-accent-text transition-colors">
+                  <h3 className="text-lg font-semibold mb-2 leading-snug group-accent-text transition-colors text-[#F1F5F9]">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-zinc-400 leading-relaxed mb-6 line-clamp-3">
+                  <p className="text-sm text-[#A1ACBA] leading-relaxed mb-6 line-clamp-3">
                     {post.excerpt}
                   </p>
-                  <div className="mt-auto flex items-center justify-between text-xs font-mono text-zinc-500">
+                  <div className="mt-auto flex items-center justify-between text-xs font-mono text-[#667386]">
                     <span>{post.date}</span>
                     <span className="flex items-center gap-3">
                       <span className="flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" />
                         {post.readTime}
                       </span>
-                      <ArrowUpRight className="w-4 h-4 text-zinc-500 group-accent-text group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                      <ArrowUpRight className="w-4 h-4 text-[#667386] group-accent-text group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                     </span>
                   </div>
                 </div>
@@ -290,7 +290,7 @@ export default function BlogsPage() {
         )}
 
         {filtered.length === 0 && (
-          <div className="text-center py-16 font-mono text-zinc-500">
+          <div className="text-center py-16 font-mono text-[#667386]">
             <p className="accent-text mb-2">$ grep: no matches found</p>
             <p className="text-sm">Try a different search term or category.</p>
           </div>
@@ -299,13 +299,13 @@ export default function BlogsPage() {
 
       {/* Stats */}
       <section className="container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 mb-16">
-        <div className="grid grid-cols-3 divide-x divide-zinc-800 border border-zinc-800 rounded-xl overflow-hidden">
+        <div className="grid grid-cols-3 divide-x divide-[#1C2633] border border-[#1C2633] rounded-xl overflow-hidden bg-[#0D1118]">
           <div className="text-center py-6">
             <p className="text-2xl md:text-3xl font-bold accent-text">
               {posts.length}
-              <span className="text-zinc-600">+</span>
+              <span className="text-[#667386]">+</span>
             </p>
-            <p className="font-mono text-xs text-zinc-500 mt-1">
+            <p className="font-mono text-xs text-[#667386] mt-1">
               // posts published
             </p>
           </div>
@@ -313,13 +313,13 @@ export default function BlogsPage() {
             <p className="text-2xl md:text-3xl font-bold accent-text">
               {TAGS.length - 1}
             </p>
-            <p className="font-mono text-xs text-zinc-500 mt-1">
+            <p className="font-mono text-xs text-[#667386] mt-1">
               // topics covered
             </p>
           </div>
           <div className="text-center py-6">
             <p className="text-2xl md:text-3xl font-bold accent-text">2026</p>
-            <p className="font-mono text-xs text-zinc-500 mt-1">
+            <p className="font-mono text-xs text-[#667386] mt-1">
               // last updated
             </p>
           </div>

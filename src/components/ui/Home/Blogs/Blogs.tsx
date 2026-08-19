@@ -33,7 +33,7 @@ const Blogs = () => {
   return (
     <section id="blogs" className="py-0 bg-transparent relative z-10 w-full">
       {/* Background glow effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-[#3B82F6]/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="w-full">
         {/* Header Section */}
@@ -46,10 +46,10 @@ const Blogs = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#F1F5F9] tracking-tight"
             >
               Latest{" "}
-              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#8B5CF6] bg-clip-text text-transparent">
                 Insights
               </span>
             </motion.h2>
@@ -58,7 +58,7 @@ const Blogs = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-zinc-400 text-sm sm:text-base mt-3 max-w-xl leading-relaxed"
+              className="text-[#A1ACBA] text-sm sm:text-base mt-3 max-w-xl leading-relaxed"
             >
               Deep dives into architecture, performance optimization, and the future of web technologies.
             </motion.p>
@@ -71,7 +71,7 @@ const Blogs = () => {
           >
             <Link
               href="/blogs"
-              className="inline-flex items-center gap-1.5 text-sm sm:text-base font-semibold text-indigo-400 hover:text-indigo-300 transition-colors group cursor-pointer"
+              className="inline-flex items-center gap-1.5 text-sm sm:text-base font-semibold text-[#3B82F6] hover:text-[#60A5FA] transition-colors group cursor-pointer"
             >
               <span>View All Articles</span>
               <ArrowRight

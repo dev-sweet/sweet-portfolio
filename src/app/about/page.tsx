@@ -156,24 +156,24 @@ export default function AboutPage() {
 
       {/* ── Page Header: About Me ── */}
       <section className="relative container mx-auto lg:px-24 md:px-12 sm:px-8 px-6 pt-16 pb-12 overflow-hidden">
-        <span className="absolute -top-6 left-0 text-[6rem] md:text-[11rem] font-bold text-zinc-900/90 select-none leading-none tracking-tight font-mono pointer-events-none whitespace-nowrap">
+        <span className="absolute -top-6 left-0 text-[6rem] md:text-[11rem] font-bold text-[#0D1118] select-none leading-none tracking-tight font-mono pointer-events-none whitespace-nowrap">
           ABOUT
         </span>
         <div className="relative z-10">
           <AnimatedSection delay={0} yOffset={25}>
-            <p className="font-mono text-sm text-[#00f2fe] mb-3">
+            <p className="font-mono text-sm text-[#3B82F6] mb-3">
               {`// about.init() — developer profile`}
             </p>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[#F1F5F9]">
               About{" "}
-              <span className="bg-gradient-to-r from-[#00f2fe] via-[#818cf8] to-[#a855f7] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(0,242,254,0.35)]">
+              <span className="bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#8B5CF6] bg-clip-text text-transparent">
                 Me
               </span>
             </h1>
           </AnimatedSection>
           
           <AnimatedSection delay={0.1} yOffset={20}>
-            <p className="text-zinc-400 max-w-xl leading-relaxed">
+            <p className="text-[#A1ACBA] max-w-xl leading-relaxed">
               I&apos;m a Full-Stack Developer building scalable web applications with modern JavaScript. 
               I specialize in clean frontend architectures and robust backend systems that deliver reliable, 
               type-safe solutions.
@@ -189,23 +189,23 @@ export default function AboutPage() {
           
           {/* Left Column: Code Window & Quick Stats */}
           <AnimatedSection delay={0.15}>
-            <div className="h-full bg-[#0b0f1d] border border-[#182036] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#00f2fe]/40 hover:shadow-[0_0_30px_rgba(0,242,254,0.12)] transition-all duration-500 group relative">
+            <div className="h-full bg-[#0D1118] border border-[#1C2633] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#29384A] transition-all duration-500 group relative">
               
               {/* Window Header Bar */}
-              <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#161d33]">
+              <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#1C2633]">
                 <div className="flex gap-2">
-                  <span className="w-3 h-3 rounded-full bg-[#ef4444]" />
-                  <span className="w-3 h-3 rounded-full bg-[#f59e0b]" />
-                  <span className="w-3 h-3 rounded-full bg-[#10b981]" />
+                  <span className="w-3 h-3 rounded-full bg-[#F43F5E]" />
+                  <span className="w-3 h-3 rounded-full bg-[#F59E0B]" />
+                  <span className="w-3 h-3 rounded-full bg-[#22C55E]" />
                 </div>
-                <span className="text-[11px] font-mono text-slate-400 font-medium">
+                <span className="text-[11px] font-mono text-[#667386] font-medium">
                   developer.ts
                 </span>
                 <div className="w-10" />
               </div>
 
               {/* Code Typing Box */}
-              <div className="bg-[#060913] border border-[#141b2e] rounded-xl p-5 min-h-[160px] flex items-center shadow-inner">
+              <div className="bg-[#080B10] border border-[#1C2633] rounded-xl p-5 min-h-[160px] flex items-center shadow-inner">
                 <TypingCodeEditor />
               </div>
 
@@ -213,24 +213,24 @@ export default function AboutPage() {
               <div className="grid grid-cols-2 gap-4 mt-6">
                 <motion.div 
                   whileHover={{ scale: 1.02 }}
-                  className="bg-[#070a14] border border-[#161d33] rounded-xl p-4 sm:p-5 flex flex-col justify-center hover:border-[#00f2fe]/40 transition-all duration-300"
+                  className="bg-[#080B10] border border-[#1C2633] rounded-xl p-4 sm:p-5 flex flex-col justify-center hover:border-[#29384A] transition-all duration-300"
                 >
-                  <span className="text-3xl sm:text-4xl font-extrabold text-[#00f2fe] font-mono tracking-tight drop-shadow-[0_0_12px_rgba(0,242,254,0.3)]">
+                  <span className="text-3xl sm:text-4xl font-extrabold text-[#3B82F6] font-mono tracking-tight">
                     3+
                   </span>
-                  <span className="text-xs text-slate-400 font-medium mt-1">
+                  <span className="text-xs text-[#667386] font-medium mt-1">
                     Yrs Exp
                   </span>
                 </motion.div>
 
                 <motion.div 
                   whileHover={{ scale: 1.02 }}
-                  className="bg-[#070a14] border border-[#161d33] rounded-xl p-4 sm:p-5 flex flex-col justify-center hover:border-purple-500/40 transition-all duration-300"
+                  className="bg-[#080B10] border border-[#1C2633] rounded-xl p-4 sm:p-5 flex flex-col justify-center hover:border-[#29384A] transition-all duration-300"
                 >
-                  <span className="text-3xl sm:text-4xl font-extrabold text-purple-400 font-mono tracking-tight drop-shadow-[0_0_12px_rgba(168,85,247,0.3)]">
+                  <span className="text-3xl sm:text-4xl font-extrabold text-[#8B5CF6] font-mono tracking-tight">
                     15+
                   </span>
-                  <span className="text-xs text-slate-400 font-medium mt-1">
+                  <span className="text-xs text-[#667386] font-medium mt-1">
                     Projects
                   </span>
                 </motion.div>
@@ -241,14 +241,14 @@ export default function AboutPage() {
 
           {/* Right Column: Technical Abilities */}
           <AnimatedSection delay={0.2}>
-            <div className="h-full bg-[#0b0f1d] border border-[#182036] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#00f2fe]/40 hover:shadow-[0_0_30px_rgba(0,242,254,0.12)] transition-all duration-500 group">
+            <div className="h-full bg-[#0D1118] border border-[#1C2633] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#29384A] transition-all duration-500 group">
               
               {/* Header Title */}
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-xl bg-[#00f2fe]/10 border border-[#00f2fe]/30 flex items-center justify-center text-[#00f2fe] shadow-md shadow-cyan-500/10">
+                <div className="w-9 h-9 rounded-xl bg-[#111722] border border-[#1C2633] flex items-center justify-center text-[#3B82F6]">
                   <Terminal className="w-5 h-5" />
                 </div>
-                <h3 className="text-xl font-bold text-white tracking-tight">
+                <h3 className="text-xl font-bold text-[#F1F5F9] tracking-tight">
                   Technical Abilities
                 </h3>
               </div>
@@ -256,11 +256,11 @@ export default function AboutPage() {
               {/* Frontend Skills Section */}
               <div className="flex flex-col gap-3 my-2">
                 <div className="flex items-center gap-3">
-                  <div className="h-[1px] w-6 bg-[#00f2fe]" />
-                  <span className="text-[11px] font-mono text-[#00f2fe] font-bold uppercase tracking-widest">
+                  <div className="h-[1px] w-6 bg-[#3B82F6]" />
+                  <span className="text-[11px] font-mono text-[#3B82F6] font-bold uppercase tracking-widest">
                     FRONTEND
                   </span>
-                  <div className="h-[1px] flex-grow bg-gradient-to-r from-[#00f2fe]/20 to-transparent" />
+                  <div className="h-[1px] flex-grow bg-gradient-to-r from-[#3B82F6]/20 to-transparent" />
                 </div>
 
                 <div className="grid grid-cols-3 sm:grid-cols-5 gap-2.5 sm:gap-3">
@@ -269,10 +269,10 @@ export default function AboutPage() {
                       key={skill.name}
                       whileHover={{ y: -4, scale: 1.04 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      className="bg-[#0f1426] border border-[#1a233d] hover:border-[#00f2fe]/50 hover:bg-[#141b34] rounded-xl p-3 flex flex-col items-center justify-center gap-2 text-center transition-all duration-300 cursor-pointer shadow-sm hover:shadow-cyan-500/10"
+                      className="bg-[#111722] border border-[#1C2633] hover:border-[#3B82F6] hover:bg-[#111722] rounded-xl p-3 flex flex-col items-center justify-center gap-2 text-center transition-all duration-300 cursor-pointer shadow-sm"
                     >
                       {skill.icon}
-                      <span className="text-[11px] font-mono font-medium text-slate-200 truncate w-full">
+                      <span className="text-[11px] font-mono font-medium text-[#A1ACBA] group-hover:text-[#F1F5F9] truncate w-full">
                         {skill.name}
                       </span>
                     </motion.div>
@@ -283,11 +283,11 @@ export default function AboutPage() {
               {/* Backends & Tools Section */}
               <div className="flex flex-col gap-3 my-2">
                 <div className="flex items-center gap-3">
-                  <div className="h-[1px] w-6 bg-[#00f2fe]" />
-                  <span className="text-[11px] font-mono text-[#00f2fe] font-bold uppercase tracking-widest">
+                  <div className="h-[1px] w-6 bg-[#3B82F6]" />
+                  <span className="text-[11px] font-mono text-[#3B82F6] font-bold uppercase tracking-widest">
                     BACKENDS & TOOLS
                   </span>
-                  <div className="h-[1px] flex-grow bg-gradient-to-r from-[#00f2fe]/20 to-transparent" />
+                  <div className="h-[1px] flex-grow bg-gradient-to-r from-[#3B82F6]/20 to-transparent" />
                 </div>
 
                 <div className="grid grid-cols-3 sm:grid-cols-5 gap-2.5 sm:gap-3">
@@ -296,10 +296,10 @@ export default function AboutPage() {
                       key={skill.name}
                       whileHover={{ y: -4, scale: 1.04 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      className="bg-[#0f1426] border border-[#1a233d] hover:border-[#00f2fe]/50 hover:bg-[#141b34] rounded-xl p-3 flex flex-col items-center justify-center gap-2 text-center transition-all duration-300 cursor-pointer shadow-sm hover:shadow-cyan-500/10"
+                      className="bg-[#111722] border border-[#1C2633] hover:border-[#3B82F6] hover:bg-[#111722] rounded-xl p-3 flex flex-col items-center justify-center gap-2 text-center transition-all duration-300 cursor-pointer shadow-sm"
                     >
                       {skill.icon}
-                      <span className="text-[11px] font-mono font-medium text-slate-200 truncate w-full">
+                      <span className="text-[11px] font-mono font-medium text-[#A1ACBA] group-hover:text-[#F1F5F9] truncate w-full">
                         {skill.name}
                       </span>
                     </motion.div>
@@ -317,13 +317,13 @@ export default function AboutPage() {
           
           {/* Left Column: Professional Journey */}
           <AnimatedSection delay={0.25}>
-            <div className="h-full bg-[#0b0f1d] border border-[#182036] rounded-2xl p-6 sm:p-7 hover:border-[#00f2fe]/40 hover:shadow-[0_0_30px_rgba(0,242,254,0.12)] transition-all duration-500 flex flex-col justify-between">
+            <div className="h-full bg-[#0D1118] border border-[#1C2633] rounded-2xl p-6 sm:p-7 hover:border-[#29384A] transition-all duration-500 flex flex-col justify-between">
               
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-9 h-9 rounded-xl bg-[#00f2fe]/10 border border-[#00f2fe]/30 flex items-center justify-center text-[#00f2fe] shadow-md shadow-cyan-500/10">
+                <div className="w-9 h-9 rounded-xl bg-[#111722] border border-[#1C2633] flex items-center justify-center text-[#3B82F6]">
                   <Briefcase className="w-5 h-5" />
                 </div>
-                <h3 className="text-xl font-bold text-white tracking-tight">
+                <h3 className="text-xl font-bold text-[#F1F5F9] tracking-tight">
                   Professional Journey
                 </h3>
               </div>
@@ -332,43 +332,43 @@ export default function AboutPage() {
                 
                 {/* Job Item 1 */}
                 <div className="flex flex-col gap-1.5 relative">
-                  <span className="text-xs font-mono font-bold text-[#00f2fe] tracking-wider uppercase">
+                  <span className="text-xs font-mono font-bold text-[#3B82F6] tracking-wider uppercase">
                     MAY 2023 – PRESENT
                   </span>
-                  <h4 className="text-lg font-bold text-white">
+                  <h4 className="text-lg font-bold text-[#F1F5F9]">
                     Full-Stack Developer
                   </h4>
-                  <span className="text-xs text-slate-400 font-medium mb-1">
+                  <span className="text-xs text-[#667386] font-medium mb-1">
                     Maple Service Solutions Ltd.
                   </span>
-                  <ul className="flex flex-col gap-1.5 text-xs text-slate-300 font-light">
+                  <ul className="flex flex-col gap-1.5 text-xs text-[#A1ACBA] font-light">
                     <li className="flex items-start gap-2">
-                      <span className="text-[#00f2fe] font-mono select-none">&gt;</span>
+                      <span className="text-[#3B82F6] font-mono select-none">&gt;</span>
                       Developing high-performance CRM systems.
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#00f2fe] font-mono select-none">&gt;</span>
+                      <span className="text-[#3B82F6] font-mono select-none">&gt;</span>
                       Optimized backend API latency by 40%.
                     </li>
                   </ul>
                 </div>
 
-                <div className="h-[1px] w-full bg-[#161d33]" />
+                <div className="h-[1px] w-full bg-[#1C2633]" />
 
                 {/* Job Item 2 */}
                 <div className="flex flex-col gap-1.5 relative">
-                  <span className="text-xs font-mono font-bold text-slate-400 tracking-wider uppercase">
+                  <span className="text-xs font-mono font-bold text-[#667386] tracking-wider uppercase">
                     JAN 2021 – DEC 2022
                   </span>
-                  <h4 className="text-lg font-bold text-white">
+                  <h4 className="text-lg font-bold text-[#F1F5F9]">
                     Junior Engineer
                   </h4>
-                  <span className="text-xs text-slate-400 font-medium mb-1">
+                  <span className="text-xs text-[#667386] font-medium mb-1">
                     TechInnovate Corp.
                   </span>
-                  <ul className="flex flex-col gap-1.5 text-xs text-slate-300 font-light">
+                  <ul className="flex flex-col gap-1.5 text-xs text-[#A1ACBA] font-light">
                     <li className="flex items-start gap-2">
-                      <span className="text-slate-400 font-mono select-none">&gt;</span>
+                      <span className="text-[#667386] font-mono select-none">&gt;</span>
                       Lead frontend migration to React 18.
                     </li>
                   </ul>
@@ -381,13 +381,13 @@ export default function AboutPage() {
 
           {/* Right Column: Education & Certs */}
           <AnimatedSection delay={0.3}>
-            <div className="h-full bg-[#0b0f1d] border border-[#182036] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-purple-500/40 hover:shadow-[0_0_30px_rgba(168,85,247,0.12)] transition-all duration-500 gap-6">
+            <div className="h-full bg-[#0D1118] border border-[#1C2633] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#29384A] transition-all duration-500 gap-6">
               
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shadow-md shadow-purple-500/10">
+                <div className="w-9 h-9 rounded-xl bg-[#111722] border border-[#1C2633] flex items-center justify-center text-[#8B5CF6]">
                   <GraduationCap className="w-5 h-5" />
                 </div>
-                <h3 className="text-xl font-bold text-white tracking-tight">
+                <h3 className="text-xl font-bold text-[#F1F5F9] tracking-tight">
                   Education & Certs
                 </h3>
               </div>
@@ -397,18 +397,18 @@ export default function AboutPage() {
                 {/* Degree Card */}
                 <motion.div 
                   whileHover={{ x: 3 }}
-                  className="bg-[#070a14] border border-[#161d33] rounded-xl p-5 hover:border-purple-500/40 transition-all duration-300"
+                  className="bg-[#080B10] border border-[#1C2633] rounded-xl p-5 hover:border-[#29384A] transition-all duration-300"
                 >
-                  <span className="text-xs font-mono font-bold text-purple-400 tracking-wider">
+                  <span className="text-xs font-mono font-bold text-[#8B5CF6] tracking-wider">
                     2020 – 2024
                   </span>
-                  <h4 className="text-base sm:text-lg font-bold text-white mt-1">
+                  <h4 className="text-base sm:text-lg font-bold text-[#F1F5F9] mt-1">
                     BSS in Folklore Studies
                   </h4>
-                  <p className="text-xs text-slate-400 font-medium mt-0.5">
+                  <p className="text-xs text-[#667386] font-medium mt-0.5">
                     Islamic University, Bangladesh
                   </p>
-                  <p className="text-xs italic text-slate-400 mt-2 font-light">
+                  <p className="text-xs italic text-[#667386] mt-2 font-light">
                     Minor In Digital Humanities & Data Analysis
                   </p>
                 </motion.div>
@@ -416,20 +416,20 @@ export default function AboutPage() {
                 {/* Certificate Card */}
                 <motion.div 
                   whileHover={{ x: 3 }}
-                  className="bg-[#070a14] border border-[#161d33] rounded-xl p-5 hover:border-purple-500/40 transition-all duration-300"
+                  className="bg-[#080B10] border border-[#1C2633] rounded-xl p-5 hover:border-[#29384A] transition-all duration-300"
                 >
-                  <span className="text-xs font-mono font-bold text-slate-400 tracking-wider">
+                  <span className="text-xs font-mono font-bold text-[#667386] tracking-wider">
                     2022
                   </span>
-                  <h4 className="text-base sm:text-lg font-bold text-white mt-1">
+                  <h4 className="text-base sm:text-lg font-bold text-[#F1F5F9] mt-1">
                     Complete Web Development
                   </h4>
-                  <p className="text-xs text-slate-400 font-medium mt-0.5">
+                  <p className="text-xs text-[#667386] font-medium mt-0.5">
                     Programming Hero (Jhankar Mahbub)
                   </p>
                   <div className="mt-3">
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 font-mono text-[10px] font-bold uppercase tracking-widest">
-                      <Award className="w-3 h-3 text-purple-400" />
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#8B5CF6]/15 border border-[#8B5CF6]/30 text-[#A78BFA] font-mono text-[10px] font-bold uppercase tracking-widest">
+                      <Award className="w-3 h-3 text-[#8B5CF6]" />
                       CERTIFIED
                     </span>
                   </div>
@@ -444,15 +444,15 @@ export default function AboutPage() {
 
         {/* ── Third Section (Row 3): Call To Action Box ── */}
         <AnimatedSection delay={0.35}>
-          <div className="relative rounded-2xl border border-cyan-500/30 bg-gradient-to-r from-[#0a0e1c] via-[#0d1326] to-[#130f28] p-8 sm:p-10 backdrop-blur-xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl hover:border-[#00f2fe]/50 transition-all duration-500 group">
+          <div className="relative rounded-2xl border border-[#1C2633] bg-gradient-to-r from-[#0D1118] via-[#111722] to-[#0D1118] p-8 sm:p-10 backdrop-blur-xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl hover:border-[#29384A] transition-all duration-500 group">
             
             {/* Background Ambient Radial Glow */}
-            <div className="absolute top-0 right-0 w-[280px] h-[280px] bg-[#00f2fe]/10 blur-[90px] rounded-full pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[280px] h-[280px] bg-[#3B82F6]/5 blur-[90px] rounded-full pointer-events-none" />
 
             <div className="flex flex-col gap-2 text-center md:text-left z-10">
-              <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-black text-[#F1F5F9] tracking-tight">
                 Ready to build something{" "}
-                <span className="bg-gradient-to-r from-[#00f2fe] via-[#818cf8] to-[#a855f7] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#8B5CF6] bg-clip-text text-transparent">
                   extraordinary?
                 </span>
               </h3>
@@ -461,7 +461,7 @@ export default function AboutPage() {
             <div className="flex flex-wrap items-center justify-center gap-4 z-10">
               <Link
                 href="/contact"
-                className="cursor-hover group/btn px-6 py-3 rounded-xl bg-[#00f2fe] hover:bg-cyan-300 text-zinc-950 font-bold text-sm transition-all duration-300 flex items-center gap-2 shadow-lg shadow-cyan-500/20 hover:scale-105 active:scale-95"
+                className="cursor-hover group/btn px-6 py-3 rounded-xl bg-[#3B82F6] hover:bg-[#60A5FA] text-white font-bold text-sm transition-all duration-300 flex items-center gap-2 shadow-lg shadow-[#3B82F6]/20 hover:scale-105 active:scale-95"
               >
                 Start a Project
                 <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -469,7 +469,7 @@ export default function AboutPage() {
 
               <Link
                 href="/projects"
-                className="cursor-hover px-6 py-3 rounded-xl bg-[#0c1122] hover:bg-[#151c35] border border-[#212b48] text-slate-200 hover:text-white font-semibold text-sm transition-all duration-300 hover:scale-105 active:scale-95"
+                className="cursor-hover px-6 py-3 rounded-xl bg-[#111722] hover:bg-[#111722] border border-[#29384A] text-[#A1ACBA] hover:text-[#F1F5F9] font-semibold text-sm transition-all duration-300 hover:scale-105 active:scale-95"
               >
                 View Portfolio
               </Link>
