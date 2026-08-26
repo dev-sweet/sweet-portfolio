@@ -1,12 +1,5 @@
 [
   {
-    "title": "Personal Portfolio",
-    "description": "Modern full-stack developer portfolio showcasing professional experience, technical skills, and real-world projects, with a responsive interface, smooth animations, and a clean, recruiter-focused user experience.",
-    "image": "/projects/portfolio.png",
-    "liveLink": "https://sweet-portfolio1.vercel.app/",
-    "github": "https://github.com/dev-sweet"
-  },
-  {
     "title": "HelloKhata AI",
     "description": "Enterprise-grade AI accounting ecosystem. Real-time ledger synchronization and automated fiscal reporting.",
     "image": "/projects/hellokhata.png",
@@ -18,6 +11,13 @@
     "description": "Next-gen electronics marketplace with integrated Stripe payments and robust inventory management system.",
     "image": "/projects/1.png",
     "liveLink": "https://tech-gear-client-side.vercel.app/",
+    "github": "https://github.com/dev-sweet"
+  },
+  {
+    "title": "Personal Portfolio",
+    "description": "Modern full-stack developer portfolio showcasing professional experience, technical skills, and real-world projects, with a responsive interface, smooth animations, and a clean, recruiter-focused user experience.",
+    "image": "/projects/portfolio.png",
+    "liveLink": "https://sweet-portfolio1.vercel.app/",
     "github": "https://github.com/dev-sweet"
   }
 ]
