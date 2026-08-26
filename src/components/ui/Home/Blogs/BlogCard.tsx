@@ -41,7 +41,7 @@ const BlogCard = ({ blog, index }: BlogCardProps) => {
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
       className="group w-full rounded-2xl bg-[#0D1118] border border-[#1C2633] p-5 md:p-6 shadow-xl shadow-black/40 hover:border-[#29384A] hover:bg-[#111722] transition-all duration-300"
     >
-      <Link href={`/blogs/${blog.id}`} className="flex flex-col md:flex-row gap-6 md:gap-7 items-stretch">
+      <Link href={`/blogs/${blog.id}`} className="cursor-hover flex flex-col md:flex-row gap-6 md:gap-7 items-stretch">
         {/* Left Thumbnail Image */}
         <div className="w-full md:w-[300px] lg:w-[340px] h-48 sm:h-52 md:h-auto min-h-[180px] shrink-0 rounded-xl overflow-hidden relative border border-[#1C2633] bg-[#080B10]">
           <Image

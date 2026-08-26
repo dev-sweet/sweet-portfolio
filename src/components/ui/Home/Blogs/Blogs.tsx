@@ -71,7 +71,7 @@ const Blogs = () => {
           >
             <Link
               href="/blogs"
-              className="inline-flex items-center gap-1.5 text-sm sm:text-base font-semibold text-[#3B82F6] hover:text-[#60A5FA] transition-colors group cursor-pointer"
+              className="cursor-hover inline-flex items-center gap-1.5 text-sm sm:text-base font-semibold text-[#3B82F6] hover:text-[#60A5FA] transition-colors group cursor-pointer"
             >
               <span>View All Articles</span>
               <ArrowRight

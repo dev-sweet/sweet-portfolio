@@ -54,7 +54,7 @@ const ProjectCard = ({
         {/* Left Column: Image Preview Viewport (Scrolls image on hover) */}
         <NextLink
           href={`/projects/${project.id}`}
-          className="relative w-full md:w-[44%] h-[220px] sm:h-[250px] rounded-2xl overflow-hidden border border-[#1C2633] bg-[#080B10] group-hover:border-[#3B82F6]/40 transition-all duration-500 flex-shrink-0 block"
+          className="cursor-hover relative w-full md:w-[44%] h-[220px] sm:h-[250px] rounded-2xl overflow-hidden border border-[#1C2633] bg-[#080B10] group-hover:border-[#3B82F6]/40 transition-all duration-500 flex-shrink-0 block"
         >
           {/* Scrollable Image Container */}
           <div className="w-full h-[650px] relative transition-transform duration-[3.5s] ease-in-out group-hover:-translate-y-[62%]">
@@ -101,7 +101,7 @@ const ProjectCard = ({
             </div>
 
             {/* Title */}
-            <NextLink href={`/projects/${project.id}`} className="group/title inline-block">
+            <NextLink href={`/projects/${project.id}`} className="cursor-hover group/title inline-block">
               <h3 className="text-xl sm:text-2xl font-extrabold text-[#F1F5F9] tracking-tight group-hover/title:text-[#3B82F6] transition-colors inline-flex items-center gap-2">
                 {project.title}
                 <ArrowUpRight className="w-5 h-5 text-[#667386] group-hover/title:text-[#3B82F6] group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 transition-all" />

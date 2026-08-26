@@ -107,7 +107,7 @@ export default function Technologies() {
                 boxShadow: `0 8px 30px rgba(59, 130, 246, 0.15)`,
                 borderColor: "#3B82F6",
               }}
-              className="flex flex-col items-center justify-center p-5 rounded-2xl bg-[#0D1118] border border-[#1C2633] hover:bg-[#111722] transition-all duration-300 backdrop-blur-xs select-none group cursor-pointer"
+              className="cursor-hover flex flex-col items-center justify-center p-5 rounded-2xl bg-[#0D1118] border border-[#1C2633] hover:bg-[#111722] transition-all duration-300 backdrop-blur-xs select-none group cursor-pointer"
             >
               {/* Icon Container with dynamic hover hover scale and color transitions */}
               <div className={`mb-3.5 transition-transform duration-300 group-hover:scale-110 ${tech.textColor}`}>

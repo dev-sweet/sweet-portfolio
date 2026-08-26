@@ -7,17 +7,24 @@ interface Props {
   size?: number;
 }
 
+const INTERACTIVE_SELECTOR =
+  ".cursor-hover, .cursor-pointer, a, button, input, textarea, select, [role='button'], [role='tab'], label";
+
 export default function CustomCursor({
   defaultCursorImg,
   hoverCursorImg,
-  size = 28,
+  size = 40,
 }: Props) {
   const cursorRef = useRef<HTMLDivElement>(null);
-  const mouse = useRef({ x: 0, y: 0 });
+  const mouse = useRef({ x: -100, y: -100 });
   const raf = useRef<number | null>(null);
 
-  // Cursor follow (FAST)
   useEffect(() => {
+    // Check if pointer is coarse (touch device)
+    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
+      return;
+    }
+
     const move = (e: MouseEvent) => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
@@ -36,41 +43,39 @@ export default function CustomCursor({
     raf.current = requestAnimationFrame(render);
     window.addEventListener("mousemove", move, { passive: true });
 
-    return () => {
-      window.removeEventListener("mousemove", move);
-      if (raf.current) cancelAnimationFrame(raf.current);
-    };
-  }, []);
-
-  // Hover logic via CLASS
-  useEffect(() => {
-    const over = (e: Event) => {
-      const el = e.target as HTMLElement;
-
-      if (el.closest(".cursor-hover") && cursorRef.current) {
+    // Hover logic via selector and class
+    const handleMouseOver = (e: MouseEvent) => {
+      const el = e.target as HTMLElement | null;
+      if (el?.closest?.(INTERACTIVE_SELECTOR) && cursorRef.current) {
         cursorRef.current.style.backgroundImage = `url(${hoverCursorImg})`;
       }
     };
 
-    const out = () => {
+    const handleMouseOut = (e: MouseEvent) => {
+      const related = e.relatedTarget as HTMLElement | null;
+      if (related?.closest?.(INTERACTIVE_SELECTOR)) {
+        return;
+      }
       if (cursorRef.current) {
         cursorRef.current.style.backgroundImage = `url(${defaultCursorImg})`;
       }
     };
 
-    document.addEventListener("mouseover", over);
-    document.addEventListener("mouseout", out);
+    document.addEventListener("mouseover", handleMouseOver);
+    document.addEventListener("mouseout", handleMouseOut);
 
     return () => {
-      document.removeEventListener("mouseover", over);
-      document.removeEventListener("mouseout", out);
+      window.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseout", handleMouseOut);
+      if (raf.current) cancelAnimationFrame(raf.current);
     };
   }, [defaultCursorImg, hoverCursorImg]);
 
   return (
     <div
       ref={cursorRef}
-      className="fixed pointer-events-none bg-no-repeat bg-center bg-contain"
+      className="hidden md:block fixed pointer-events-none bg-no-repeat bg-center bg-contain transition-[background-image] duration-75"
       style={{
         width: size,
         height: size,
@@ -82,3 +87,4 @@ export default function CustomCursor({
     />
   );
 }
+
