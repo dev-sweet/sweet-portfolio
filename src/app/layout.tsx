@@ -1,7 +1,7 @@
 import Navbar from "@/components/shared/Navbar";
 import MainContainer from "@/components/shared/MainContainer";
 import "./globals.css";
-import CustomCursor from "@/components/CustomCurso";
+import CustomCursor from "@/components/CustomCursor";
 import { Toaster } from "react-hot-toast";
 import type { Metadata } from "next";
 
@@ -24,7 +24,7 @@ export default function RootLayout({
         <CustomCursor
           defaultCursorImg="/cursor1.png"
           hoverCursorImg="/pointer.png"
-          size={40}
+          size={28}
         />
         <Navbar />
         <MainContainer>{children}</MainContainer>

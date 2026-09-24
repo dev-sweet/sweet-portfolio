@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
-import { Home, Code, FileText, Mail, User } from "lucide-react";
+import { Home, Code,  Mail, User } from "lucide-react";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/#home", sectionId: "home", icon: <Home className="w-4 h-4" /> },
   { label: "About", href: "/#about", sectionId: "about", icon: <User className="w-4 h-4" /> },
   { label: "Projects", href: "/#projects", sectionId: "projects", icon: <Code className="w-4 h-4" /> },
-  { label: "Blogs", href: "/#blogs", sectionId: "blogs", icon: <FileText className="w-4 h-4" /> },
+  // { label: "Blogs", href: "/#blogs", sectionId: "blogs", icon: <FileText className="w-4 h-4" /> },
   { label: "Contact", href: "/#contact", sectionId: "contact", icon: <Mail className="w-4 h-4" /> },
 ];
 

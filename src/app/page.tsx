@@ -2,9 +2,10 @@ import AnimatedBackground from "@/components/shared/AnimatedBackground";
 import ProfileCard from "@/components/shared/ProfileCard";
 import HeroSection from "@/components/ui/Home/Hero/HeroSection";
 import Projects from "@/components/ui/Home/Projects/Projects";
-import Blogs from "@/components/ui/Home/Blogs/Blogs";
+// import Blogs from "@/components/ui/Home/Blogs/Blogs";
 import ContactForm from "@/components/ui/Home/Contact/Contact";
 import AboutMe from "@/components/ui/Home/About/About";
+import GlareHover from "@/components/GlareHover";
 
 export default function HomePage() {
   return (
@@ -18,7 +19,9 @@ export default function HomePage() {
           
           {/* ── Left Profile Card (Sticky vertically centered with equal top-bottom gaps) ── */}
           <aside className="hidden lg:block lg:w-[300px] xl:w-[310px] shrink-0 sticky top-1/2 -translate-y-1/2 self-start z-30">
-            <ProfileCard />
+            <GlareHover borderRadius="24px" borderColor="transparent" className="w-full">
+              <ProfileCard />
+            </GlareHover>
           </aside>
 
           {/* ── Right Scrollable Content Column (Fits within 1140px container) ── */}
@@ -26,7 +29,7 @@ export default function HomePage() {
             <HeroSection />
             <AboutMe />
             <Projects />
-            <Blogs />
+            {/* <Blogs /> */}
             <ContactForm />
           </main>
 

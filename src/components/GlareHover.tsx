@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from "react";
 
 interface GlareHoverProps {
@@ -24,18 +26,18 @@ const GlareHover: React.FC<GlareHoverProps> = ({
   borderRadius = "15px",
   borderColor = "#333",
   children,
-  glareColor = "#ffffff",
-  glareOpacity = 0.5,
+  glareColor = "#19304f7d",
+  glareOpacity = 0.9,
   glareAngle = -45,
   glareSize = 250,
-  transitionDuration = 650,
+  transitionDuration = 1000,
   playOnce = false,
   className = "",
   style = {},
 }) => {
   const hex = glareColor.replace("#", "");
   let rgba = glareColor;
-  if (/^[\dA-Fa-f]{6}$/.test(hex)) {
+  if (/^[\dA-Fa-f]{6,8}$/.test(hex)) {
     const r = parseInt(hex.slice(0, 2), 16);
     const g = parseInt(hex.slice(2, 4), 16);
     const b = parseInt(hex.slice(4, 6), 16);
@@ -75,10 +77,11 @@ const GlareHover: React.FC<GlareHoverProps> = ({
   const overlayStyle: React.CSSProperties = {
     position: "absolute",
     inset: 0,
+    borderRadius: borderRadius,
     background: `linear-gradient(${glareAngle}deg,
-        hsla(0,0%,0%,0) 60%,
+        rgba(255, 255, 255, 0) 50%,
         ${rgba} 70%,
-        hsla(0,0%,0%,0) 100%)`,
+        rgba(255, 255, 255, 0) 90%)`,
     backgroundSize: `${glareSize}% ${glareSize}%, 100% 100%`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "-100% -100%, 0 0",
@@ -89,9 +92,6 @@ const GlareHover: React.FC<GlareHoverProps> = ({
     <div
       className={`relative grid place-items-center overflow-hidden border cursor-pointer ${className}`}
       style={{
-        // width,
-        // height,
-        // background,
         borderRadius,
         borderColor,
         ...style,
@@ -99,8 +99,8 @@ const GlareHover: React.FC<GlareHoverProps> = ({
       onMouseEnter={animateIn}
       onMouseLeave={animateOut}
     >
-      <div ref={overlayRef} style={overlayStyle} />
       {children}
+      <div ref={overlayRef} style={overlayStyle} className="pointer-events-none z-30" />
     </div>
   );
 };
