@@ -138,7 +138,7 @@ export default function HeroSection() {
           >
             <span className="w-2.5 h-2.5 rounded-full bg-[#22C55E] animate-pulse flex-shrink-0 shadow-lg shadow-[#22C55E]/20" />
             <span className="text-[10px] sm:text-[11px] text-[#A1ACBA] uppercase font-mono tracking-widest font-bold">
-              OPEN TO FULL-TIME ROLES
+              OPEN TO NEW OPPORTUNITIES
             </span>
           </motion.div>
 
@@ -148,9 +148,10 @@ export default function HeroSection() {
             className="font-extrabold text-[#F1F5F9] leading-[1.1] mb-6 tracking-tight"
             style={{ fontSize: "clamp(2.2rem, 5.5vw, 4.2rem)" }}
           >
-            Building <AuroraText>Real-World</AuroraText>
+            Full-Stack  <AuroraText>Developer</AuroraText>
             <br />
-            <AuroraText>Digital</AuroraText> Products
+            {/* <AuroraText>Reliable</AuroraText> Business Applications */}
+
           </motion.h1>
 
           {/* Intro Paragraph */}
@@ -158,7 +159,7 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-sm sm:text-base text-[#A1ACBA] leading-relaxed mb-4 font-light"
           >
-            Full-Stack Engineer with 1+ year of professional experience turning business requirements into reliable software. I've worked on ERP, healthcare, e-commerce, and business management systems, covering everything from user interfaces and APIs to databases.
+            I build production-ready web applications using React, Next.js, TypeScript, Node.js and PostgreSQL — from ERP and e-commerce platforms to AI-powered products.
           </motion.p>
 
           {/* CTAs */}
