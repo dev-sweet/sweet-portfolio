@@ -40,7 +40,7 @@ function Reveal({
   );
 }
 
-const ContactForm = ({ hideHeader = false }: { hideHeader?: boolean }) => {
+const ContactForm = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
@@ -113,17 +113,17 @@ const ContactForm = ({ hideHeader = false }: { hideHeader?: boolean }) => {
             {/* Heading */}
             <Reveal direction="up" delay={0.08}>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#F1F5F9] tracking-tight leading-[1.1]">
-                Start a
+                Get In
                 <span className="ml-3 bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] bg-clip-text text-transparent">
-                  Dialogue
+                  Touch
                 </span>
               </h2>
             </Reveal>
 
             {/* Bio text */}
             <Reveal direction="up" delay={0.14}>
-              <p className="text-[#A1ACBA] text-sm sm:text-base leading-relaxed font-light max-w-sm">
-                Currently inviting new high-impact projects and senior full-stack opportunities. Let&apos;s discuss your roadmap.
+              <p className="text-[#A1ACBA] text-sm sm:text-base leading-relaxed font-light max-w-md">
+                I&apos;m open to Full-Stack Developer opportunities, freelance projects and collaborations involving modern web applications.
               </p>
             </Reveal>
           </div>
@@ -135,7 +135,7 @@ const ContactForm = ({ hideHeader = false }: { hideHeader?: boolean }) => {
               {/* Endpoint signature */}
               <Reveal direction="up" delay={0.28}>
                 <p className="font-mono text-[10px] text-[#3B82F6] tracking-wider mb-6 select-none font-bold">
-                  // POST /api/contact
+                  {'//'} POST /api/contact
                 </p>
               </Reveal>
 

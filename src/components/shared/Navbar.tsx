@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { Home, Code,  Mail, User } from "lucide-react";
+import { Home, Code, Mail, User } from "lucide-react";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/#home", sectionId: "home", icon: <Home className="w-4 h-4" /> },
@@ -17,68 +17,92 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const { scrollY } = useScroll();
-  const [hidden, setHidden] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
 
-  // Detect scroll direction with threshold
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
-    const diff = latest - previous;
-
-    // Scroll down past 80px -> hide slowly
-    if (diff > 5 && latest > 80) {
-      setHidden(true);
-    }
-    // Scroll up -> show slowly
-    else if (diff < -5 || latest <= 50) {
-      setHidden(false);
-    }
-  });
-
-  // Track active section on scroll (homepage only)
+  // Synchronize active section based on route or scroll position
   useEffect(() => {
-    if (!isHomePage) return;
+    if (!isHomePage) {
+      const match = NAV_ITEMS.find(
+        (item) => item.sectionId !== "home" && pathname.startsWith(`/${item.sectionId}`)
+      );
+      if (match) {
+        setActiveSection(match.sectionId);
+      }
+      return;
+    }
 
     const handleScrollSpy = () => {
-      const sectionElements = NAV_ITEMS.map((item) => ({
-        id: item.sectionId,
-        el: document.getElementById(item.sectionId),
-      })).filter((item) => item.el !== null);
+      // 1. Bottom of page check (activates contact when scrolled to the end)
+      const isBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 60;
 
-      const scrollPosition = window.scrollY + 180;
+      if (isBottom) {
+        setActiveSection("contact");
+        return;
+      }
 
-      for (let i = sectionElements.length - 1; i >= 0; i--) {
-        const item = sectionElements[i];
-        if (item.el && item.el.offsetTop <= scrollPosition) {
-          setActiveSection(item.id);
-          return;
+      // 2. Viewport position check
+      const threshold = 220;
+      let current = "home";
+
+      for (const item of NAV_ITEMS) {
+        const el = document.getElementById(item.sectionId);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= threshold) {
+            current = item.sectionId;
+          }
         }
       }
 
-      setActiveSection("home");
+      setActiveSection(current);
     };
 
+    // On home page, check if loaded with a hash
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      const el = document.getElementById(hash);
+      if (el) {
+        setActiveSection(hash);
+        const timer = setTimeout(() => {
+          const rect = el.getBoundingClientRect();
+          const targetTop = hash === "home" ? 0 : rect.top + window.scrollY - 75;
+          window.scrollTo({
+            top: Math.max(0, targetTop),
+            behavior: "smooth",
+          });
+        }, 120);
+        return () => clearTimeout(timer);
+      }
+    }
+
     window.addEventListener("scroll", handleScrollSpy, { passive: true });
+    window.addEventListener("resize", handleScrollSpy, { passive: true });
     handleScrollSpy();
 
-    return () => window.removeEventListener("scroll", handleScrollSpy);
-  }, [isHomePage]);
+    return () => {
+      window.removeEventListener("scroll", handleScrollSpy);
+      window.removeEventListener("resize", handleScrollSpy);
+    };
+  }, [isHomePage, pathname]);
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     sectionId: string
   ) => {
+    setActiveSection(sectionId);
+
     if (isHomePage) {
       e.preventDefault();
       const el = document.getElementById(sectionId);
       if (el) {
-        const topOffset = sectionId === "home" ? 0 : el.offsetTop - 40;
+        const rect = el.getBoundingClientRect();
+        const targetTop = sectionId === "home" ? 0 : rect.top + window.scrollY - 75;
         window.scrollTo({
-          top: topOffset,
+          top: Math.max(0, targetTop),
           behavior: "smooth",
         });
-        setActiveSection(sectionId);
         window.history.pushState(null, "", `#${sectionId}`);
       }
     }
@@ -86,83 +110,69 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── Top Floating Navigation Bar (Desktop) ── */}
-      <motion.header
-        variants={{
-          visible: { y: 0, x: "-50%", opacity: 1 },
-          hidden: { y: -80, x: "-50%", opacity: 0 },
-        }}
-        initial="visible"
-        animate={hidden ? "hidden" : "visible"}
-        transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
-        className="hidden md:flex fixed top-5 left-1/2 z-50 bg-[#080B10]/90 backdrop-blur-xl border border-[#1C2633] rounded-full px-6 py-2.5 items-center gap-4 sm:gap-6 shadow-2xl shadow-blue-500/10 select-none"
-      >
+      {/* ── Top Fixed Navigation Bar (Desktop) ── */}
+      <header className="hidden md:flex fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-[#080B10]/90 backdrop-blur-xl border border-[#1C2633] rounded-full px-4 py-2 items-center gap-2 sm:gap-3 shadow-2xl shadow-blue-500/10 select-none">
         {NAV_ITEMS.map((item) => {
           const isActive = isHomePage
             ? activeSection === item.sectionId
-            : pathname.startsWith(`/${item.sectionId}`);
+            : pathname.startsWith(`/${item.sectionId}`) || (item.sectionId === "home" && pathname === "/");
 
           return (
             <Link
               key={item.label}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.sectionId)}
-              className={`relative flex items-center gap-2 text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-hover ${isActive
-                ? "text-[#F1F5F9] bg-[#3B82F6]/15 border border-[#3B82F6]/30"
-                : "text-[#A1ACBA] hover:text-[#F1F5F9] hover:bg-white/5"
-                }`}
+              className={`relative flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full transition-colors duration-200 cursor-hover z-10 ${
+                isActive ? "text-[#F1F5F9]" : "text-[#A1ACBA] hover:text-[#F1F5F9]"
+              }`}
             >
               {item.icon}
               <span>{item.label}</span>
               {isActive && (
                 <motion.div
                   layoutId="topNavPill"
-                  className="absolute inset-0 rounded-full border border-[#3B82F6]/40 -z-10 shadow-[0_0_12px_rgba(59,130,246,0.25)]"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  className="absolute inset-0 rounded-full bg-[#3B82F6]/15 border border-[#3B82F6]/40 shadow-[0_0_14px_rgba(59,130,246,0.25)] -z-10"
+                  transition={{ type: "spring", stiffness: 350, damping: 28 }}
                 />
               )}
             </Link>
           );
         })}
-      </motion.header>
+      </header>
 
-      {/* ── Mobile PWA Bottom Fixed Navigation Bar (Mobile) ── */}
-      <motion.nav
-        variants={{
-          visible: { y: 0, opacity: 1 },
-          hidden: { y: 80, opacity: 0 },
-        }}
-        initial="visible"
-        animate={hidden ? "hidden" : "visible"}
-        transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
-        className="md:hidden fixed bottom-0 left-0 right-0 h-[64px] bg-[#080B10]/95 backdrop-blur-2xl border-t border-[#1C2633] z-50 flex items-center justify-around px-2 select-none"
-      >
+      {/* ── Bottom Fixed Navigation Bar (Mobile) ── */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-[64px] bg-[#080B10]/95 backdrop-blur-2xl border-t border-[#1C2633] z-50 flex items-center justify-around px-2 select-none">
         {NAV_ITEMS.map((item) => {
           const isActive = isHomePage
             ? activeSection === item.sectionId
-            : pathname.startsWith(`/${item.sectionId}`);
+            : pathname.startsWith(`/${item.sectionId}`) || (item.sectionId === "home" && pathname === "/");
 
           return (
             <Link
               key={item.label}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.sectionId)}
-              className={`cursor-hover flex flex-col items-center justify-center gap-0.5 py-1 px-3 rounded-xl transition-all duration-200 ${isActive ? "text-[#F1F5F9]" : "text-[#A1ACBA] hover:text-[#F1F5F9]"
-                }`}
+              className={`relative cursor-hover flex flex-col items-center justify-center gap-0.5 py-1.5 px-3 rounded-xl transition-colors duration-200 z-10 ${
+                isActive ? "text-[#F1F5F9]" : "text-[#A1ACBA] hover:text-[#F1F5F9]"
+              }`}
             >
-              <div
-                className={`p-1.5 rounded-lg transition-all ${isActive ? "bg-[#3B82F6]/15 border border-[#3B82F6]/30 shadow-[0_0_10px_rgba(59,130,246,0.25)]" : ""
-                  }`}
-              >
+              <div className="p-1 rounded-lg">
                 {item.icon}
               </div>
               <span className="text-[10px] font-mono font-medium tracking-tight">
                 {item.label}
               </span>
+              {isActive && (
+                <motion.div
+                  layoutId="mobileNavPill"
+                  className="absolute inset-0 rounded-xl bg-[#3B82F6]/15 border border-[#3B82F6]/30 shadow-[0_0_10px_rgba(59,130,246,0.25)] -z-10"
+                  transition={{ type: "spring", stiffness: 350, damping: 28 }}
+                />
+              )}
             </Link>
           );
         })}
-      </motion.nav>
+      </nav>
     </>
   );
 }

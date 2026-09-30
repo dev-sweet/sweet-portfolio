@@ -9,10 +9,10 @@ import ProfileCard from "@/components/shared/ProfileCard";
 import { AuroraText } from "../../aurora-text";
 
 const STATS = [
-  { target: 3, suffix: "+", label: "// YEARS EXP" },
-  { target: 15, suffix: "+", label: "// SYSTEMS SHIPPED" },
-  { target: 5, suffix: "", label: "// TECH PUBS" },
-  { target: 100, suffix: "%", label: "// REMOTE VELOCITY" },
+  { target: 'Frontend', suffix: "", label: "// Next.js & React" },
+  { target: 'Backend', suffix: "", label: "// Node.js & Express" },
+  { target: "Database", suffix: "", label: "// PostgreSQL" },
+  { target: "Deployment", suffix: "", label: "// Docker & CI/CD" },
 ];
 
 // ── Counter-up hook ──
@@ -43,7 +43,7 @@ function StatCell({
   delay,
   hasBorderRight,
 }: {
-  target: number;
+  target: string | number;
   suffix: string;
   label: string;
   delay: number;
@@ -51,7 +51,7 @@ function StatCell({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-20px" });
-  const count = useCountUp(target, 1000, inView);
+  const count = typeof target === "number" ? useCountUp(target as number, 1000, inView) : target;
 
   return (
     <motion.div
@@ -157,10 +157,9 @@ export default function HeroSection() {
           {/* Intro Paragraph */}
           <motion.p
             variants={itemVariants}
-            className="text-sm sm:text-base text-[#A1ACBA] leading-relaxed mb-4 font-light"
+            className="mx-auto text-[#A1ACBA] leading-relaxed text-lg pb-6"
           >
-            I build production-ready web applications using React, Next.js, TypeScript, Node.js and PostgreSQL — from ERP and e-commerce platforms to AI-powered products.
-          </motion.p>
+  Full-Stack Developer with 1+ year of hands-on experience transforming business requirements into production-ready software using TypeScript, Next.js, Node.js, and PostgreSQL .Skilled across the full development lifecycle—building modern user interfaces, designing robust APIs, and structuring reliable databases</motion.p>
 
           {/* CTAs */}
           <motion.div

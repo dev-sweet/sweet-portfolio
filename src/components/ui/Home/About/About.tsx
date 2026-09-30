@@ -26,6 +26,7 @@ import {
   SiNetlify,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
+import {  Calendar, MapPin, Building2} from "lucide-react";
 
 function Reveal({
   children,
@@ -173,21 +174,85 @@ const AboutMe = () => {
           <Reveal direction="left" delay={0.15} className="w-full">
             {/* Code card */}
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] rounded-lg blur opacity-15 group-hover:opacity-30 transition duration-1000" />
-              <div
-                ref={codeRef}
-                className="h-[214px] relative bg-[#080B10] border border-[#1C2633] p-6 rounded-lg shadow-2xl"
-              >
-                <div className="flex gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-[#F43F5E]" />
-                  <div className="w-3 h-3 rounded-full bg-[#F59E0B]" />
-                  <div className="w-3 h-3 rounded-full bg-[#22C55E]" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#8B5CF6] via-[#38BDF8] to-[#3B82F6] rounded-2xl blur-lg opacity-20 group-hover:opacity-35 transition duration-700" />
+              <div ref={codeRef} className="relative">
+                <AutoCodeEditor start={codeInView} />
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Experience Section */}
+          <Reveal direction="up" delay={0.18} className="w-full pt-10">
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#0D1118] border border-[#1C2633] hover:border-[#29384A] transition-all duration-300 relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#38BDF8]/10 via-[#8B5CF6]/10 to-[#3B82F6]/10 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none" />
+
+              {/* Header Label */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-full border-2 border-[#38BDF8] animate-pulse shadow-[0_0_8px_#38BDF8]" />
+                  <span className="text-xs font-mono uppercase tracking-widest text-[#38BDF8] font-bold">
+                    WORK EXPERIENCE
+                  </span>
                 </div>
-                <pre className="font-mono text-sm text-[#A1ACBA]">
-                  <code>
-                    <AutoCodeEditor start={codeInView} />
-                  </code>
-                </pre>
+
+                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#111722] border border-[#1C2633] text-xs font-medium text-emerald-400">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_#34D399]" />
+                  <span>Full-Time</span>
+                </div>
+              </div>
+
+              {/* Experience Card Details */}
+              <div className="relative">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-4 border-b border-[#1C2633]">
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-bold text-[#F1F5F9] group-hover:text-white transition-colors">
+                      Junior Full-Stack Engineer
+                    </h2>
+                    <div className="flex flex-wrap items-center gap-2 mt-1.5 text-sm text-[#A1ACBA]">
+                      <span className="font-semibold text-[#38BDF8] flex items-center gap-1.5">
+                        <Building2 className="w-4 h-4 text-[#38BDF8]" />
+                        Maple Service Solution Limited
+                      </span>
+                      <span className="text-slate-600">·</span>
+                      <span className="flex items-center gap-1 text-slate-400">
+                        <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                        Dhaka
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="self-start sm:self-center flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#080B10] border border-[#1C2633] text-xs font-mono text-slate-300">
+                    <Calendar className="w-3.5 h-3.5 text-[#818CF8]" />
+                    <span>2025 – Present</span>
+                  </div>
+                </div>
+
+                {/* Bullets */}
+                <ul className="mt-5 space-y-3">
+                  {[
+                    "Developed and maintained ERP modules covering sales, purchasing, inventory and reporting.",
+                    "Built reusable React/Next.js components and application workflows.",
+                    "Integrated REST APIs using TanStack Query and Axios.",
+                    "Implemented state management, error handling and responsive interfaces.",
+                  ].map((bullet, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm sm:text-[15px] text-[#A1ACBA] leading-relaxed">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] mt-2 shrink-0 shadow-[0_0_6px_#38BDF8]" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Skills/Tech badges for this role */}
+                <div className="mt-6 pt-5 border-t border-[#1C2633]/60 flex flex-wrap gap-2">
+                  {["Next.js", "React", "TypeScript", "TanStack Query", "REST APIs", "ERP Modules"].map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2.5 py-1 rounded-lg text-xs font-medium bg-[#111722] text-slate-300 border border-[#1C2633]"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </Reveal>
