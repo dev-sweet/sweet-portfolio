@@ -132,7 +132,11 @@ export default function Navbar() {
                 <motion.div
                   layoutId="topNavPill"
                   className="absolute inset-0 rounded-full bg-[#3B82F6]/15 border border-[#3B82F6]/40 shadow-[0_0_14px_rgba(59,130,246,0.25)] -z-10"
-                  transition={{ type: "spring", stiffness: 350, damping: 28 }}
+                  transition={{
+                    type: "tween",
+                    ease: [0.25, 1, 0.5, 1],
+                    duration: 0.32,
+                  }}
                 />
               )}
             </Link>
@@ -166,7 +170,11 @@ export default function Navbar() {
                 <motion.div
                   layoutId="mobileNavPill"
                   className="absolute inset-0 rounded-xl bg-[#3B82F6]/15 border border-[#3B82F6]/30 shadow-[0_0_10px_rgba(59,130,246,0.25)] -z-10"
-                  transition={{ type: "spring", stiffness: 350, damping: 28 }}
+                  transition={{
+                    type: "tween",
+                    ease: [0.25, 1, 0.5, 1],
+                    duration: 0.32,
+                  }}
                 />
               )}
             </Link>

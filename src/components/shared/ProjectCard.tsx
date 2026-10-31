@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import NextLink from "next/link";
 import { motion } from "framer-motion";
@@ -17,7 +18,7 @@ interface Project {
 
 const DEFAULT_TAGS: Record<string, string[]> = {
   "Personal Portfolio": ["Next.js 16", "TypeScript", "Tailwind CSS", "Framer Motion"],
-  "HelloKhata AI": ["React", "Node.js", "OpenAI API", "MongoDB"],
+  "HelloKhata AI": ["Next.js, React.js", "TypeScript", "Tailwind CSS", "Zustand"],
   "Tech Gear": ["Next.js", "Redux Toolkit", "Stripe", "Express.js"],
 };
 
@@ -28,6 +29,71 @@ const ProjectCard = ({
   project: Project;
   index?: number;
 }) => {
+  const [naturalSize, setNaturalSize] = useState<{ width: number; height: number } | null>(null);
+  const [scrollConfig, setScrollConfig] = useState({
+    isOverflow: false,
+    renderedHeight: 0,
+    scrollDistance: 0,
+    duration: 3.5,
+  });
+  const containerRef = useRef<HTMLAnchorElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  const updateScrollConfig = useCallback((naturalWidth: number, naturalHeight: number) => {
+    if (!containerRef.current || !naturalWidth || !naturalHeight) return;
+    const containerW = containerRef.current.clientWidth;
+    const containerH = containerRef.current.clientHeight;
+
+    if (containerW === 0 || containerH === 0) return;
+
+    // Proportional rendered height when scaled to container width
+    const renderedHeight = Math.round((naturalHeight / naturalWidth) * containerW);
+    const overflow = renderedHeight - containerH;
+
+    // Only scroll if image height overflows container viewport by more than 15px
+    if (overflow > 15) {
+      // Dynamic scroll duration: ~160px per second, clamped between 2.5s and 7s
+      const duration = Math.min(Math.max(overflow / 160, 2.5), 7.0);
+      setScrollConfig({
+        isOverflow: true,
+        renderedHeight,
+        scrollDistance: overflow,
+        duration: Number(duration.toFixed(2)),
+      });
+    } else {
+      setScrollConfig({
+        isOverflow: false,
+        renderedHeight: containerH,
+        scrollDistance: 0,
+        duration: 0.5,
+      });
+    }
+  }, []);
+
+  const handleImageLoad = useCallback((naturalWidth: number, naturalHeight: number) => {
+    setNaturalSize({ width: naturalWidth, height: naturalHeight });
+    updateScrollConfig(naturalWidth, naturalHeight);
+  }, [updateScrollConfig]);
+
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0 && !naturalSize) {
+      handleImageLoad(imgRef.current.naturalWidth, imgRef.current.naturalHeight);
+    }
+  }, [naturalSize, handleImageLoad]);
+
+  useEffect(() => {
+    if (!containerRef.current || !naturalSize) return;
+
+    const handleResize = () => {
+      updateScrollConfig(naturalSize.width, naturalSize.height);
+    };
+
+    const observer = new ResizeObserver(handleResize);
+    observer.observe(containerRef.current);
+
+    return () => observer.disconnect();
+  }, [naturalSize, updateScrollConfig]);
+
   const tags =
     project.tags ||
     DEFAULT_TAGS[project.title] || [
@@ -50,21 +116,41 @@ const ProjectCard = ({
 
       {/* Horizontal Layout Container: 1 Project per Row */}
       <div className="relative z-10 flex flex-col md:flex-row gap-6 sm:gap-8 items-stretch">
-        
-        {/* Left Column: Image Preview Viewport (Scrolls image on hover) */}
+
+        {/* Left Column: Image Preview Viewport (Scrolls image on hover only if overflowing) */}
         <NextLink
+          ref={containerRef}
           href={`/projects/${project.id}`}
           className="cursor-hover relative w-full md:w-[44%] h-[220px] sm:h-[250px] rounded-2xl overflow-hidden border border-[#1C2633] bg-[#080B10] group-hover:border-[#3B82F6]/40 transition-all duration-500 flex-shrink-0 block"
         >
           {/* Scrollable Image Container */}
-          <div className="w-full h-[650px] relative transition-transform duration-[3.5s] ease-in-out group-hover:-translate-y-[62%]">
+          <div
+            style={
+              scrollConfig.isOverflow
+                ? ({
+                  height: `${scrollConfig.renderedHeight}px`,
+                  "--scroll-dist": `-${scrollConfig.scrollDistance}px`,
+                  "--scroll-dur": `${scrollConfig.duration}s`,
+                } as React.CSSProperties)
+                : undefined
+            }
+            className={`w-full relative ${scrollConfig.isOverflow
+              ? "project-card-image-scroll"
+              : "h-full transition-transform duration-500 group-hover:scale-105"
+              }`}
+          >
             <Image
+              ref={imgRef}
               src={project.image}
               alt={project.title || "Project Screenshot"}
               fill
-              sizes="(max-width: 768px) 100vw, 400px"
+              // sizes="(max-width: 768px) 100vw, 400px"
               className="object-cover object-top filter grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
               priority={index === 0}
+              onLoad={(e) => {
+                const img = e.currentTarget;
+                handleImageLoad(img.naturalWidth, img.naturalHeight);
+              }}
             />
           </div>
 

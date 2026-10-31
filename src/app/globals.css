@@ -199,4 +199,16 @@
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+.project-card-image-scroll {
+  transform: translateY(0);
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--scroll-dur, 3.5s);
+  will-change: transform;
+}
+
+.group:hover .project-card-image-scroll {
+  transform: translateY(var(--scroll-dist, 0));
 }

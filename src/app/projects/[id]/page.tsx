@@ -31,6 +31,7 @@ const CASE_STUDIES: Record<
   number,
   {
     role: string;
+    scope?: string;
     timeline: string;
     overview: string;
     challenges: string[];
@@ -39,24 +40,25 @@ const CASE_STUDIES: Record<
   }
 > = {
   1: {
-    role: "Lead Full-Stack & AI Engineer",
+    role: "Solo Frontend Engineer",
+    scope: "Frontend Architecture (Solo)",
     timeline: "8 Weeks (May - Jun 2026)",
     overview:
-      "HelloKhata is an AI-powered business management platform designed to automate and streamline accounting, sales invoices, inventory levels, dynamic purchases, customer relationship management (CRM), and financial reports. It delivers real-time business insights and AI recommendations.",
+      "Independently designed and developed the complete frontend architecture for HelloKhata AI—a business management and automated accounting web application. Engineered an intuitive, high-performance client interface handling complex financial ledgers, dynamic invoice generators, real-time analytics charts, and seamless AI recommendation streams.",
     challenges: [
-      "Integrating AI recommendation pipelines for business inventory prediction without affecting main runtime response speeds.",
-      "Formulating a secure ledger validation schema for multi-tenant bookkeeping transactions.",
-      "Synchronizing multi-currency sales calculations across real-time user dashboard sessions.",
+      "Architecting efficient client-side state synchronization for high-frequency multi-ledger calculations and balance reconciliations.",
+      "Optimizing data table rendering and interactive financial charts to eliminate UI lag when displaying extensive transaction records.",
+      "Implementing responsive UI components, resilient API error boundaries, and asynchronous streaming feedback for AI recommendations.",
     ],
     features: [
-      "AI-driven financial insights and predictive sales/purchase modeling.",
-      "Interactive accounting ledger sheets with automated balance calculations.",
-      "Real-time inventory stock alerts and automatic supplier invoice generator.",
-      "Comprehensive client CRM database with dynamic purchase histories.",
+      "Modern, fully responsive financial dashboard with modular component design and sleek dark-mode aesthetics.",
+      "Interactive accounting ledger sheets with instant automated balance calculations and multi-step invoice builders.",
+      "Real-time visual analytics and interactive metric charts tracking sales, expenditures, and inventory velocity.",
+      "Client-side form validations, dynamic filter mechanisms, and seamless RESTful API state integration.",
     ],
     lessons: [
-      "Structured database indexing of ledger logs reduces query response time by up to 55%.",
-      "Separating heavy AI prediction computations into asynchronous background tasks prevents front-end thread blocking.",
+      "Normalizing global state and decoupling table state from parent containers eliminated redundant re-renders by over 60%.",
+      "Implementing client-side memoization and route-based code splitting kept initial dashboard bundle load times under 1 second.",
     ],
   },
   2: {
@@ -130,24 +132,16 @@ export default function ProjectDetailPage() {
       .then((res) => res.json())
       .then((data: any[]) => {
         const mapped = data.map((p, index) => {
-          const text = `${p.title} ${p.description}`.toLowerCase();
-          const tags: string[] = [];
-          if (text.includes("next.js") || text.includes("nextjs"))
-            tags.push("Next.js");
-          if (text.includes("react")) tags.push("React");
-          if (text.includes("node") || text.includes("express"))
-            tags.push("Node.js");
-          if (text.includes("typescript") || text.includes("ts"))
-            tags.push("TypeScript");
-          if (text.includes("mongodb") || text.includes("mongo"))
-            tags.push("MongoDB");
-          if (
-            text.includes("ai") ||
-            text.includes("openai") ||
-            text.includes("chatbot")
-          )
-            tags.push("AI");
-          if (tags.length === 0) tags.push("React");
+          let tags: string[] = p.tags && Array.isArray(p.tags) && p.tags.length > 0 ? p.tags : [];
+          if (tags.length === 0) {
+            const text = `${p.title} ${p.description}`.toLowerCase();
+            if (text.includes("next.js") || text.includes("nextjs"))
+              tags.push("Next.js");
+            if (text.includes("react")) tags.push("React");
+            if (text.includes("typescript") || text.includes("ts"))
+              tags.push("TypeScript");
+            if (tags.length === 0) tags.push("React");
+          }
 
           const years = ["2026", "2025", "2025"];
 
@@ -402,7 +396,7 @@ export default function ProjectDetailPage() {
                 </div>
                 <div className="flex justify-between py-1 border-b border-[#1C2633]">
                   <span className="text-[#667386]">Scope</span>
-                  <span className="text-[#F1F5F9]">Full Stack</span>
+                  <span className="text-[#F1F5F9]">{study.scope || "Full Stack"}</span>
                 </div>
                 <div className="flex justify-between py-1">
                   <span className="text-[#667386]">Status</span>

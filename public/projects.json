@@ -1,7 +1,8 @@
 [
   {
     "title": "HelloKhata AI",
-    "description": "Enterprise-grade AI accounting ecosystem. Real-time ledger synchronization and automated fiscal reporting.",
+    "description": "Enterprise AI accounting & business dashboard. Solo-engineered the entire frontend architecture featuring interactive ledger sheets, real-time fiscal analytics, dynamic invoices, and seamless AI workflow integration.",
+    "tags": ["React", "TypeScript", "Tailwind CSS", "Redux Toolkit"],
     "image": "/projects/hellokhata.png",
     "liveLink": "https://hellokhata-fe.vercel.app/",
     "github": "https://github.com/dev-sweet"
@@ -9,6 +10,7 @@
   {
     "title": "Tech Gear",
     "description": "Next-gen electronics marketplace with integrated Stripe payments and robust inventory management system.",
+    "tags": ["Next.js", "Redux Toolkit", "Stripe", "Express.js"],
     "image": "/projects/1.png",
     "liveLink": "https://tech-gear-client-side.vercel.app/",
     "github": "https://github.com/dev-sweet"
@@ -16,6 +18,7 @@
   {
     "title": "Personal Portfolio",
     "description": "Modern full-stack developer portfolio showcasing professional experience, technical skills, and real-world projects, with a responsive interface, smooth animations, and a clean, recruiter-focused user experience.",
+    "tags": ["Next.js 16", "TypeScript", "Tailwind CSS", "Framer Motion"],
     "image": "/projects/portfolio.png",
     "liveLink": "https://sweet-portfolio1.vercel.app/",
     "github": "https://github.com/dev-sweet"
