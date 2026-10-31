@@ -4,7 +4,7 @@
     "description": "Enterprise AI accounting & business dashboard. Solo-engineered the entire frontend architecture featuring interactive ledger sheets, real-time fiscal analytics, dynamic invoices, and seamless AI workflow integration.",
     "tags": ["React", "TypeScript", "Tailwind CSS", "Redux Toolkit"],
     "image": "/projects/hellokhata.png",
-    "liveLink": "https://hellokhata-fe.vercel.app/",
+    "liveLink": "https://app.hellokhata.com/",
     "github": "https://github.com/dev-sweet"
   },
   {

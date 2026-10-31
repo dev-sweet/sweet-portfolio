@@ -18,15 +18,13 @@ import {
   SiPostgresql,
   SiMysql,
   SiPrisma,
-  SiFirebase,
-  SiStripe,
+  SiJsonwebtokens,
   SiGit,
   SiDocker,
   SiVercel,
   SiNetlify,
 } from "react-icons/si";
-import { TbApi } from "react-icons/tb";
-import {  Calendar, MapPin, Building2} from "lucide-react";
+import { Calendar, MapPin, Building2 } from "lucide-react";
 
 function Reveal({
   children,
@@ -106,15 +104,11 @@ const SKILLS_DATA: Record<TabGroup, SkillItem[]> = {
     { name: "TanStack Query", icon: <SiReactquery className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#FF4154]" },
     { name: "Node.js", icon: <SiNodedotjs className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#5FA04E]" },
     { name: "Express.js", icon: <SiExpress className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-zinc-200" },
-    { name: "NestJS", icon: <SiNestjs className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#E0234E]" },
     { name: "MongoDB", icon: <SiMongodb className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#47A248]" },
     { name: "PostgreSQL", icon: <SiPostgresql className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#4169E1]" },
-    { name: "Prisma", icon: <SiPrisma className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-white" },
-    { name: "Firebase", icon: <SiFirebase className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#FFCA28]" },
-    { name: "Stripe", icon: <SiStripe className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#635BFF]" },
+    // { name: "Prisma", icon: <SiPrisma className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-white" },
     { name: "Git", icon: <SiGit className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#F05032]" },
-    { name: "Docker", icon: <SiDocker className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#2496ED]" },
-    { name: "Vercel", icon: <SiVercel className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-white" },
+    // { name: "Vercel", icon: <SiVercel className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-white" },
   ],
   Frontend: [
     { name: "Next.js", icon: <SiNextdotjs className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-white" },
@@ -130,8 +124,7 @@ const SKILLS_DATA: Record<TabGroup, SkillItem[]> = {
     { name: "Express.js", icon: <SiExpress className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-zinc-200" },
     { name: "NestJS", icon: <SiNestjs className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#E0234E]" },
     { name: "TypeScript", icon: <SiTypescript className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#3178C6]" },
-    { name: "REST APIs", icon: <TbApi className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#38BDF8]" },
-    { name: "Firebase", icon: <SiFirebase className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#FFCA28]" },
+    { name: "JWT", icon: <SiJsonwebtokens className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#D63AFF]" },
   ],
   "Database & Tools": [
     { name: "PostgreSQL", icon: <SiPostgresql className="w-8 h-8 sm:w-9 sm:h-9" />, textColor: "text-[#4169E1]" },
@@ -307,7 +300,7 @@ const AboutMe = () => {
               </div>
 
               {/* Smooth Animated Skills Grid Container */}
-              <div className="pt-6 min-h-[220px]">
+              <div className="pt-6 min-h-[180px]">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeTab}
@@ -315,7 +308,7 @@ const AboutMe = () => {
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
                     transition={{ duration: 0.28, ease: [0.25, 1, 0.5, 1] }}
-                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4"
+                    className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4"
                   >
                     {SKILLS_DATA[activeTab].map((skill, i) => (
                       <motion.div
@@ -329,17 +322,19 @@ const AboutMe = () => {
                         }}
                         whileHover={{ y: -5, scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
-                        className="cursor-hover group relative flex flex-col items-center justify-center p-4 sm:p-5 rounded-2xl bg-[#080B10]/90 border border-[#1C2633] hover:border-[#3B82F6]/60 hover:bg-[#111722] transition-colors duration-300 hover:shadow-[0_8px_25px_-5px_rgba(59,130,246,0.15)] cursor-pointer select-none"
+                        className="cursor-hover group relative flex items-center justify-center p-5 sm:p-6 rounded-2xl bg-[#080B10]/90 border border-[#1C2633] hover:border-[#3B82F6]/60 hover:bg-[#111722] transition-colors duration-300 hover:shadow-[0_8px_25px_-5px_rgba(59,130,246,0.15)] cursor-pointer select-none"
                       >
                         <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8B5CF6] to-[#3B82F6] opacity-0 group-hover:opacity-20 blur-md rounded-2xl transition duration-300 pointer-events-none" />
 
-                        <div className={`relative mb-3 transition-transform duration-300 group-hover:scale-110 ${skill.textColor || ""}`}>
-                          {skill.icon}
+                        {/* Hover Tooltip */}
+                        <div className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-lg bg-[#111722] border border-[#29384A] text-xs font-medium text-[#F1F5F9] whitespace-nowrap opacity-0 translate-y-1.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 shadow-lg z-20">
+                          {skill.name}
+                          <span className="absolute left-1/2 -bottom-1 -translate-x-1/2 w-2 h-2 bg-[#111722] border-r border-b border-[#29384A] rotate-45" />
                         </div>
 
-                        <p className="relative text-xs sm:text-sm font-medium text-[#A1ACBA] group-hover:text-[#F1F5F9] transition-colors text-center truncate w-full">
-                          {skill.name}
-                        </p>
+                        <div className={`relative transition-transform duration-300 group-hover:scale-110 ${skill.textColor || ""}`}>
+                          {skill.icon}
+                        </div>
                       </motion.div>
                     ))}
                   </motion.div>
@@ -355,4 +350,3 @@ const AboutMe = () => {
 };
 
 export default AboutMe;
-
